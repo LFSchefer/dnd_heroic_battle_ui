@@ -7,3 +7,7 @@
   font-family:  Roboto, system-ui, -apple-system, Oxygen, Ubuntu ,source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
 }
+
+.link {
+  cursor: pointer;
+}

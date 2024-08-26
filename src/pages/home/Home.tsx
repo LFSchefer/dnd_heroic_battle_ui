@@ -23,15 +23,17 @@ export default function Home() {
       <FormattedMessage id="test"/>
     </h1>
     <button className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">coucou</button>
-    <ul>
-      {campaigns.map( campaign => {
-        return <CampaignCard key={campaign.campaignId}
-            campaignId={campaign.campaignId}
-            campaignName={campaign.campaignName}
-            creationDate={campaign.creationDate}
+    <div className="flex justify-center">
+      <ul className="columns-1">
+        {campaigns.map( campaign => {
+          return <CampaignCard key={campaign.campaignId}
+          campaignId={campaign.campaignId}
+          campaignName={campaign.campaignName}
+          creationDate={campaign.creationDate}
           />
-      })}
-    </ul>
+        })}
+      </ul>
+    </div>
     </>
   )
 }

@@ -1,0 +1,15 @@
+.edit {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.trash {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+}
+
+.campaign-card {
+  position: relative;
+}

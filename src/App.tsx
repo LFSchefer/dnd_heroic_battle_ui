@@ -10,7 +10,7 @@ function App() {
   return (
     <IntlProvider locale={local} defaultLocale='en' messages={English}>
       <div className="App">
-        <RouterProvider router={router} />
+        <RouterProvider router={router}></RouterProvider>
       </div>
     </IntlProvider>
   );

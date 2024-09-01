@@ -70,7 +70,7 @@ export default function Campaigns() {
       }
       <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
         {campaigns.map( campaign => {
-          return <div className="card-container flex justify-center content-center"><CampaignCard key={campaign.campaignId} campaignProps={{
+          return <div className="card-container flex justify-center content-center" key={campaign.campaignId}><CampaignCard key={campaign.campaignId} campaignProps={{
             campaignId: campaign.campaignId,
             campaignName: campaign.campaignName,
             creationDate: campaign.creationDate

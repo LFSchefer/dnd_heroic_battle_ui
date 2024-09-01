@@ -4,6 +4,7 @@ import { FormattedDate, FormattedMessage } from "react-intl";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrashCan, faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import CampaignService from "../../services/CampaignService";
+import { useLocation, useNavigate } from "react-router-dom";
 import './CampaignCard.css'
 
 type Props = {
@@ -17,6 +18,9 @@ export default function CampaignCard({campaignProps, onUpdate}:Props) {
   const [isInEdition, setIsInEdition] = useState<boolean>(false);
   const [isInFocus, setIsInFocus] = useState<boolean>(false);
   const [nameIsValid, setNameIsValid] = useState<boolean>(true);
+
+  const navigate = useNavigate();
+  const location = useLocation()
 
   const toggleEdition = (): void => {
     setIsInEdition(!isInEdition);
@@ -50,6 +54,10 @@ export default function CampaignCard({campaignProps, onUpdate}:Props) {
     onUpdate();
   }
 
+  const goToCampaign = (): void => {
+    navigate(`${location.pathname}/${campaign.campaignId}`)
+  };
+
   const isValidInputStyle = nameIsValid ? {outlineColor: "rgb(24 187 63)"  } : { outlineColor: "rgb(171 25 25)"};
   const isValidBtnStyle = nameIsValid ? {color: "rgb(24 187 63)"  } : { color: "rgb(171 25 25)"};
   const validationBtn = nameIsValid ? <FontAwesomeIcon icon={faCheck} size="lg"  className="link mx-3" onClick={saveChange} style={isValidBtnStyle}/> :
@@ -73,7 +81,7 @@ export default function CampaignCard({campaignProps, onUpdate}:Props) {
       <button>{validationBtn}</button>
       </>
       :
-      <p className="link transition-all hover:underline capitalize hover:-indent-1 text-lg font-semibold">{campaign.campaignName}</p>
+      <p className="link transition-all hover:underline capitalize hover:-indent-1 text-lg font-semibold" onClick={goToCampaign} >{campaign.campaignName}</p>
       }
       <p><FormattedMessage id="creationDate" /> <FormattedDate value={campaign.creationDate} year = 'numeric' month= 'long' day = 'numeric' weekday = 'long' /></p>
     </div>

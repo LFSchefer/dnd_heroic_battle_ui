@@ -5,6 +5,7 @@
   "backHome": "Go back home",
   "creationDate": "Creation date:",
   "goToCampaigns": "Go to Camapigns",
+  "backToCampaigns": "Back to Camapigns",
   "createNewCampaign": "Create new campaign",
   "campaignNameValidation" : "Must be unique and between 5 and 50 charaters !"
 }

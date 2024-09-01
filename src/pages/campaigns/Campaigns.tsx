@@ -54,30 +54,30 @@ export default function Campaigns() {
   <FontAwesomeIcon icon={faX}  className="link mx-3" style={isValidBtnStyle} onClick={toggleCampaignCreation} />
 
   return (
-    <>
-    <button onClick={goBackHome} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test"><FormattedMessage id="backHome"/></button>
-    {isNewCampaign ?
-      <>
-      <div className="inline-grid">
-      <input type="text" className="rounded-md py-1.5 pl-7 pr-20 ring-1 ring-inset ring-gray-300" onChange={(e) => updateNewCampaign(e.target.value)} style={isValidInputStyle}/>
-      {nameIsValid ? <></> : <span className="text-red-700 text-sm"><FormattedMessage id="campaignNameValidation"/></span>}
-      </div>
-      <button>{validationBtn}</button>
+    <div className="w-10/12 m-auto">
+      <button onClick={goBackHome} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test"><FormattedMessage id="backHome"/></button>
+      {isNewCampaign ?
+        <>
+        <div className="inline-grid">
+        <input type="text" className="rounded-md py-1.5 pl-7 pr-20 ring-1 ring-inset ring-gray-300" onChange={(e) => updateNewCampaign(e.target.value)} style={isValidInputStyle}/>
+        {nameIsValid ? <></> : <span className="text-red-700 text-sm"><FormattedMessage id="campaignNameValidation"/></span>}
+        </div>
+        <button>{validationBtn}</button>
 
-      </>
-    :
-    <button onClick={toggleCampaignCreation} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test"><FontAwesomeIcon icon={faPlus} style={{color: "#ffffff",}} size="lg"/> <FormattedMessage id="createNewCampaign"/></button>
-    }
-    <div className="flex justify-center">
-      {campaigns.map( campaign => {
-        return <CampaignCard key={campaign.campaignId} campaignProps={{
-          campaignId: campaign.campaignId,
-          campaignName: campaign.campaignName,
-          creationDate: campaign.creationDate
-        }} onUpdate={getCampaings}
-        />
-      })}
+        </>
+      :
+      <button onClick={toggleCampaignCreation} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test"><FontAwesomeIcon icon={faPlus} style={{color: "#ffffff",}} size="lg"/> <FormattedMessage id="createNewCampaign"/></button>
+      }
+      <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
+        {campaigns.map( campaign => {
+          return <div className="card-container flex justify-center content-center"><CampaignCard key={campaign.campaignId} campaignProps={{
+            campaignId: campaign.campaignId,
+            campaignName: campaign.campaignName,
+            creationDate: campaign.creationDate
+          }} onUpdate={getCampaings}
+          /></div>
+        })}
+      </div>
     </div>
-    </>
   )
 }

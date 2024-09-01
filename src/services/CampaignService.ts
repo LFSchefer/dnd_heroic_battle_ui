@@ -58,4 +58,12 @@ export default class CampaignService {
       console.log("oups");
     }
   }
+
+  static isValid = (params:string): boolean => {
+    let isValid = false;
+    if (params.trim().length >= 5 && params.trim().length <= 50) {
+      isValid = true;
+    }
+    return isValid;
+  }
 }

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Campaign } from "../../models/campaign/Campaign";
 import { FormattedDate, FormattedMessage } from "react-intl";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPenToSquare, faTrashCan, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faPenToSquare, faTrashCan, faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import CampaignService from "../../services/CampaignService";
 import './CampaignCard.css'
 
@@ -16,6 +16,7 @@ export default function CampaignCard({campaignProps, onUpdate}:Props) {
   const [campaign, setCampaign] = useState<Campaign>(campaignProps);
   const [isInEdition, setIsInEdition] = useState<boolean>(false);
   const [isInFocus, setIsInFocus] = useState<boolean>(false);
+  const [nameIsValid, setNameIsValid] = useState<boolean>(true);
 
   const toggleEdition = (): void => {
     setIsInEdition(!isInEdition);
@@ -26,7 +27,8 @@ export default function CampaignCard({campaignProps, onUpdate}:Props) {
   };
 
   const updateState = (input: string): void => {
-    // TODO validation
+    // TODO validation unique name ?
+    setNameIsValid(CampaignService.isValid(input));
     setCampaign( prev => {
       return { ...prev,
         campaignName: input
@@ -35,9 +37,11 @@ export default function CampaignCard({campaignProps, onUpdate}:Props) {
   };
 
   const saveChange = async (): Promise<void> => {
-    await CampaignService.updateCampaign(campaign);
-    onUpdate();
-    toggleEdition();
+    if (nameIsValid) {
+      await CampaignService.updateCampaign(campaign);
+      onUpdate();
+      toggleEdition();
+    }
   }
 
   const deleteCampaign = async (): Promise<void> => {
@@ -45,6 +49,12 @@ export default function CampaignCard({campaignProps, onUpdate}:Props) {
     await CampaignService.deleteCampaign(campaign);
     onUpdate();
   }
+
+  const isValidInputStyle = nameIsValid ? {outlineColor: "rgb(24 187 63)"  } : { outlineColor: "rgb(171 25 25)"};
+  const isValidBtnStyle = nameIsValid ? {color: "rgb(24 187 63)"  } : { color: "rgb(171 25 25)"};
+  const validationBtn = nameIsValid ? <FontAwesomeIcon icon={faCheck} size="lg"  className="link mx-3" onClick={saveChange} style={isValidBtnStyle}/> :
+  <FontAwesomeIcon icon={faX}  className="link mx-3" style={isValidBtnStyle} onClick={toggleEdition} />
+
 
   return (
     <div className="campaign-card bg-blue-200 w-full max-w-96 rounded-lg shadow-md py-4 px-4 m-5" onMouseEnter={toggleInFocus} onMouseLeave={toggleInFocus}>
@@ -59,8 +69,8 @@ export default function CampaignCard({campaignProps, onUpdate}:Props) {
       {isInEdition ?
       <>
       <input id="campaign-name" name="campaign-name" type="text" className="rounded-md py-1.5 pl-7 pr-20 ring-1 ring-inset ring-gray-300"
-      value={campaign.campaignName} onChange={e => updateState(e.target.value)}/>
-      <FontAwesomeIcon icon={faCheck} size="lg"  className="link mx-3" onClick={saveChange} />
+      value={campaign.campaignName} onChange={e => updateState(e.target.value)} style={isValidInputStyle}/>
+      <button>{validationBtn}</button>
       </>
       :
       <p className="link transition-all hover:underline capitalize hover:-indent-1 text-lg font-semibold">{campaign.campaignName}</p>

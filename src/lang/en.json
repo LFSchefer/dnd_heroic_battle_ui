@@ -4,5 +4,6 @@
   "pageNotFound": "Sorry, we couldn’t find the page you’re looking for.",
   "backHome": "Go back home",
   "creationDate": "Creation date:",
-  "goToCampaigns": "Go to Camapigns"
+  "goToCampaigns": "Go to Camapigns",
+  "createNewCampaign": "Create new campaign"
 }

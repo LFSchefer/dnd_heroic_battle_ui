@@ -5,7 +5,7 @@ export default function Home() {
 
   const navigate = useNavigate();
 
-  const goToCampaigns = () => {
+  const goToCampaigns = (): void => {
     navigate("/campaigns")
   }
 

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Campaign } from "../../models/Campaign";
+import { Campaign } from "../../models/campaign/Campaign";
 import { FormattedDate, FormattedMessage } from "react-intl";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrashCan, faCheck } from '@fortawesome/free-solid-svg-icons';
-import './CampaignCard.css'
 import CampaignService from "../../services/CampaignService";
+import './CampaignCard.css'
 
 type Props = {
   campaignProps: Campaign,
@@ -40,12 +40,18 @@ export default function CampaignCard({campaignProps, onUpdate}:Props) {
     toggleEdition();
   }
 
+  const deleteCampaign = async (): Promise<void> => {
+    // TODO confirm ?
+    await CampaignService.deleteCampaign(campaign);
+    onUpdate();
+  }
+
   return (
     <div className="campaign-card bg-blue-200 w-full max-w-96 rounded-lg shadow-md py-4 px-4 m-5" onMouseEnter={toggleInFocus} onMouseLeave={toggleInFocus}>
       {isInFocus && !isInEdition ?
         <div className="edition">
           <FontAwesomeIcon icon={faPenToSquare} className="link opacity-70 edit" onClick={toggleEdition} />
-          <FontAwesomeIcon icon={faTrashCan} className="link opacity-70 trash" />
+          <FontAwesomeIcon icon={faTrashCan} className="link opacity-70 trash" onClick={deleteCampaign} />
         </div>
         :
         <></>

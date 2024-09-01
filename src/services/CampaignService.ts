@@ -1,6 +1,7 @@
 import axios from "axios";
-import { Campaign } from "../models/Campaign";
+import { Campaign } from "../models/campaign/Campaign";
 import axiosClient from "./AxiosClient";
+import { CampaignCreate } from "../models/campaign/CampaignCreate";
 
 export default class CampaignService {
 
@@ -19,7 +20,7 @@ export default class CampaignService {
     }
   }
 
-  static updateCampaign = async (params:Campaign) => {
+  static updateCampaign = async (params:Campaign): Promise<void> => {
     const data = {
       campaignId: params.campaignId,
       campaignName: params.campaignName
@@ -32,6 +33,29 @@ export default class CampaignService {
       }
       console.log("oups");
 
+    }
+  }
+
+  static deleteCampaign = async (params:Campaign): Promise<void> => {
+    const data = params.campaignId;
+    try {
+      await axiosClient.delete(`/campaigns/${data}`)
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.log(console.error());
+      }
+      console.log("oups");
+    }
+  }
+
+  static createCampaign = async (params:CampaignCreate): Promise<void> => {
+    try {
+      await axiosClient.post('/campaigns', params)
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.log(console.error());
+      }
+      console.log("oups");
     }
   }
 }

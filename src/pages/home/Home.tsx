@@ -1,5 +1,6 @@
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
+import DiceRoller from "../../components/dice-roller/diceRoller";
 
 export default function Home() {
 
@@ -17,6 +18,7 @@ export default function Home() {
     <button onClick={goToCampaigns} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
       <FormattedMessage id="goToCampaigns"/>
     </button>
+    < DiceRoller/>
     </>
   )
 }

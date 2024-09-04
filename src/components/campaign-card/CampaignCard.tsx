@@ -76,8 +76,11 @@ export default function CampaignCard({campaignProps, onUpdate}:Props) {
        }
       {isInEdition ?
       <>
+      <div className="inline-grid">
       <input id="campaign-name" name="campaign-name" type="text" className="rounded-md py-1.5 pl-7 pr-20 ring-1 ring-inset ring-gray-300"
-      value={campaign.campaignName} onChange={e => updateState(e.target.value)} style={isValidInputStyle}/>
+      value={campaign.campaignName} onChange={e => updateState(e.target.value)} style={isValidInputStyle} autoFocus/>
+      {nameIsValid ? <></> : <span className="text-red-700 text-sm"><FormattedMessage id="campaignNameValidation"/></span>}
+      </div>
       <button>{validationBtn}</button>
       </>
       :

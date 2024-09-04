@@ -30,6 +30,8 @@ export default function CampaignBattles() {
     navigate("/campaigns")
   }
 
+  const toto = new Array(5).fill(null,0);
+  console.log(toto);
 
   return (
     <>

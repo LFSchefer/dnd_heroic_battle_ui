@@ -1,0 +1,187 @@
+import { useCallback, useEffect, useState } from "react";
+import { Dices } from "../../models/Dice/Dices";
+
+export default function DiceRoller() {
+
+  const [roll, setRoll] = useState<Dices>({
+    "4": null,
+    "6": null,
+    "8": null,
+    "10": null,
+    "12": null,
+    "20": null,
+    "100": null,
+    });
+    const [bonus, setBonus] = useState<number>(0);
+    const [total, setTotal] = useState<number>(0);
+    const [diceIsRoll, setDiceIsRoll] = useState<boolean>(false);
+
+  const handleNumberOfdices = (params: string) => {
+    const dice: string = params.split("").slice(1).join("");
+    const plusMinus: string = params[0]
+    const numberOfXDice: number = roll[dice] === null ? 0 : roll[dice].length;
+
+    if (plusMinus === "+") {
+      setRoll(prev => {
+        return {...prev,
+          [dice]: new Array(numberOfXDice + 1).fill(0)
+        }})
+    }  else if (roll[dice] !== null && plusMinus === "-" && roll[dice].length === 1) {
+      setRoll(prev => {
+        return {...prev,
+          [dice]: null
+        }})
+    } else if (roll[dice] !== null && plusMinus === "-" && roll[dice].length > 1) {
+      setRoll(prev => {
+        return {...prev,
+          [dice]: new Array(numberOfXDice - 1).fill(0)
+        }})
+    }
+    setDiceIsRoll(false);
+  }
+
+  const updateBonusMalus = (params: string) => {
+    if (params === "+") {
+      setBonus(prev => prev +1)
+    } else {
+      setBonus( prev => prev -1)
+    }
+  }
+
+  const rollTheDice = () => {
+    setRoll({
+      "4": roll["4"] === null ? null : roll["4"].map(d => Math.floor(Math.random() * 4)+ 1),
+      "6": roll["6"] === null ? null : roll["6"].map(d => Math.floor(Math.random() * 6)+ 1),
+      "8": roll["8"] === null ? null : roll["8"].map(d => Math.floor(Math.random() * 8)+ 1),
+      "10": roll["10"] === null ? null : roll["10"].map(d => Math.floor(Math.random() * 10)+ 1),
+      "12": roll["12"] === null ? null : roll["12"].map(d => Math.floor(Math.random() * 12)+ 1),
+      "20": roll["20"] === null ? null : roll["20"].map(d => Math.floor(Math.random() * 20)+ 1),
+      "100": roll["100"] === null ? null : roll["100"].map(d => Math.floor(Math.random() * 100)+ 1)
+    })
+    setDiceIsRoll(true);
+  }
+
+  const sumOfDiceDx = (params: string): number |undefined => {
+    return roll[params]?.reduce((a: number,b: number) => a + b,0);
+  }
+
+  const calculateTotal = useCallback((roll: Dices) => {
+    let preTotal = 0;
+    for (let key in roll) {
+      if (roll[key] !== null) {
+        preTotal += roll[key].reduce((a: number,b: number) => a + b,0)
+      }
+    }
+    setTotal(preTotal + bonus)
+  },[bonus])
+
+  useEffect(() => {
+    calculateTotal(roll)
+  }, [calculateTotal, roll])
+
+  return (
+    <div className="dice-container flex flex-row bg-cyan-300	w-2/3 min-h-40">
+      <div className="dice grow">
+        <div className="d4 grow flex justify-center	items-start">
+          <div className="flex flex-col">
+            <div onClick={e => handleNumberOfdices("+4")} className="link btn border-2 border-sky-500 border-sonk rounded-full bg-slate-300 px-1">+</div>
+            <p>{roll["4"]?.length ? roll["4"]?.length : 0}</p>
+            <div onClick={e => handleNumberOfdices("-4")} className="btn border-2 border-sky-500 border-solid btn link rounded-full bg-slate-300 px-1">-</div>
+          </div>
+          <p>d4</p>
+        </div>
+        <p>result</p>
+        <p>{diceIsRoll && sumOfDiceDx("4")}</p>
+      </div>
+      <div className="dice grow">
+        <div className="d6 grow flex justify-center	items-start">
+          <div className="flex flex-col">
+            <div onClick={e => handleNumberOfdices("+6")} className="btn border-2 border-sky-500 border-solid btn link rounded-full bg-slate-300 px-1">+</div>
+            <p>{roll["6"]?.length ? roll["6"]?.length : 0}</p>
+            <div onClick={e => handleNumberOfdices("-6")} className="btn border-2 border-sky-500 border-solid btn link rounded-full bg-slate-300 px-1">-</div>
+          </div>
+          <p>d6</p>
+        </div>
+        <p>result</p>
+        <p>{diceIsRoll && sumOfDiceDx("6")}</p>
+      </div>
+      <div className="dice grow">
+        <div className="d_ grow flex justify-center	items-start">
+          <div className="flex flex-col">
+            <div onClick={e => handleNumberOfdices("+8")} className="btn border-2 border-sky-500 border-solid btn link rounded-full bg-slate-300 px-1">+</div>
+            <p>{roll["8"]?.length ? roll["8"]?.length : 0}</p>
+            <div onClick={e => handleNumberOfdices("-8")} className="btn border-2 border-sky-500 border-solid btn link rounded-full bg-slate-300 px-1">-</div>
+          </div>
+          <p>d8</p>
+        </div>
+        <p>result</p>
+        <p>{diceIsRoll && sumOfDiceDx("8")}</p>
+      </div>
+      <div className="dice grow">
+        <div className="d10 grow flex justify-center	items-start">
+          <div className="flex flex-col">
+            <div onClick={e => handleNumberOfdices("+10")} className="btn border-2 border-sky-500 border-solid btn link rounded-full bg-slate-300 px-1">+</div>
+            <p>{roll["10"]?.length ? roll["10"]?.length : 0}</p>
+            <div onClick={e => handleNumberOfdices("-10")} className="btn border-2 border-sky-500 border-solid btn link rounded-full bg-slate-300 px-1">-</div>
+          </div>
+          <p>d10</p>
+        </div>
+        <p>result</p>
+        <p>{diceIsRoll && sumOfDiceDx("10")}</p>
+      </div>
+      <div className="dice grow">
+        <div className="d12 grow flex justify-center	items-start">
+          <div className="flex flex-col">
+            <div onClick={e => handleNumberOfdices("+12")} className="btn border-2 border-sky-500 border-solid btn link rounded-full bg-slate-300 px-1">+</div>
+            <p>{roll["12"]?.length ? roll["12"]?.length : 0}</p>
+            <div onClick={e => handleNumberOfdices("-12")} className="btn border-2 border-sky-500 border-solid btn link rounded-full bg-slate-300 px-1">-</div>
+          </div>
+          <p>d12</p>
+        </div>
+        <p>result</p>
+        <p>{diceIsRoll && sumOfDiceDx("12")}</p>
+      </div>
+      <div className="dice grow">
+        <div className="d20 grow flex justify-center	items-start">
+          <div className="flex flex-col">
+            <div onClick={e => handleNumberOfdices("+20")} className="btn border-2 border-sky-500 border-solid btn link rounded-full bg-slate-300 px-1">+</div>
+            <p>{roll["20"]?.length ? roll["20"]?.length : 0}</p>
+            <div onClick={e => handleNumberOfdices("-20")} className="btn border-2 border-sky-500 border-solid btn link rounded-full bg-slate-300 px-1">-</div>
+          </div>
+          <p>d20</p>
+        </div>
+        <p>result</p>
+        <p>{diceIsRoll && sumOfDiceDx("20")}</p>
+      </div>
+      <div className="dice grow">
+        <div className="d100 grow flex justify-center	items-start">
+          <div className="flex flex-col">
+            <div onClick={e => handleNumberOfdices("+100")} className="btn border-2 border-sky-500 border-solid btn link rounded-full bg-slate-300 px-1">+</div>
+            <p>{roll["100"]?.length ? roll["100"]?.length : 0}</p>
+            <div onClick={e => handleNumberOfdices("-100")} className="btn border-2 border-sky-500 border-solid btn link rounded-full bg-slate-300 px-1">-</div>
+          </div>
+          <p>d100</p>
+        </div>
+        <p>result</p>
+        <p>{diceIsRoll && sumOfDiceDx("100")}</p>
+      </div>
+      <div className="dice grow">
+        <div className="+ grow flex justify-center	items-start">
+          <div className="flex flex-col">
+            <div onClick={ e => updateBonusMalus("+")} className="btn border-2 border-sky-500 border-solid btn link rounded-full bg-slate-300 px-1">+</div>
+            <p>{bonus}</p>
+            <div onClick={ e => updateBonusMalus("-")} className="btn border-2 border-sky-500 border-solid btn link rounded-full bg-slate-300 px-1">-</div>
+          </div>
+          <p>(+)</p>
+        </div>
+      </div>
+      <div className="roll grow flex justify-center	items-start">
+        <div>
+          <p onClick={rollTheDice} className="border-2 border-sky-500 border-solid btn link rounded-full bg-slate-300 px-1">roll</p>
+          <p>total</p>
+          <p>{diceIsRoll && total}</p>
+        </div>
+      </div>
+    </div>
+  );
+};

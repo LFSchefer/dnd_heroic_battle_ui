@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Campaign } from "../../models/campaign/Campaign";
 import CampaignService from "../../services/CampaignService";
@@ -17,10 +17,10 @@ export default function Campaigns() {
 
   const navigate = useNavigate();
 
-  const  getCampaings = async (): Promise<void> => {
+  const getCampaings = useCallback(async (): Promise<void> => {
     const result: Campaign[] = await CampaignService.getCampaigns();
     setCampaigns(result);
-  };
+  },[])
 
   const createCampaign = async (): Promise<void> => {
       if (nameIsValid && newCampaign) {
@@ -32,7 +32,7 @@ export default function Campaigns() {
 
   useEffect(() => {
     getCampaings();
-  }, []);
+  }, [getCampaings]);
 
   const goBackHome = (): void => {
     navigate("/");
@@ -59,7 +59,7 @@ export default function Campaigns() {
       {isNewCampaign ?
         <>
         <div className="inline-grid">
-        <input type="text" className="rounded-md py-1.5 pl-7 pr-20 ring-1 ring-inset ring-gray-300" onChange={(e) => updateNewCampaign(e.target.value)} style={isValidInputStyle}/>
+        <input type="text" className="rounded-md py-1.5 pl-7 pr-20 ring-1 ring-inset ring-gray-300" onChange={(e) => updateNewCampaign(e.target.value)} style={isValidInputStyle} autoFocus/>
         {nameIsValid ? <></> : <span className="text-red-700 text-sm"><FormattedMessage id="campaignNameValidation"/></span>}
         </div>
         <button>{validationBtn}</button>

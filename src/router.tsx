@@ -12,9 +12,6 @@ export const router = createBrowserRouter ([
   {
     path: "/campaigns",
     element: < Campaigns />,
-    children: [
-
-    ]
   },
   {
     path:"/campaigns/:campaignId",

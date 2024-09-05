@@ -63,7 +63,6 @@ export default function Campaigns() {
         {nameIsValid ? <></> : <span className="text-red-700 text-sm"><FormattedMessage id="campaignNameValidation"/></span>}
         </div>
         <button>{validationBtn}</button>
-
         </>
       :
       <button onClick={toggleCampaignCreation} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test"><FontAwesomeIcon icon={faPlus} style={{color: "#ffffff",}} size="lg"/> <FormattedMessage id="createNewCampaign"/></button>

@@ -7,9 +7,11 @@
   "goToCampaigns": "Go to Camapigns",
   "backToCampaigns": "Back to Camapigns",
   "createNewCampaign": "Create new campaign",
+  "createNewBattle": "Create new battle",
   "campaignNameValidation" : "Must be unique and between 5 and 50 charaters !",
   "result": "result:",
   "reset": "Reset",
   "roll": "Roll",
-  "total": "Total:"
+  "total": "Total:",
+  "noBattle": "Sorry, not battles found"
 }

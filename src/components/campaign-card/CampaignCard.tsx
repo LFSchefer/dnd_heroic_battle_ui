@@ -23,11 +23,11 @@ export default function CampaignCard({campaignProps, onUpdate}:Props) {
   const location = useLocation()
 
   const toggleEdition = (): void => {
-    setIsInEdition(!isInEdition);
+    setIsInEdition(prev => !prev);
   };
 
   const toggleInFocus = (): void => {
-    setIsInFocus(!isInFocus);
+    setIsInFocus(prev => !prev);
   };
 
   const updateState = (input: string): void => {

@@ -1,5 +1,6 @@
 export type Battle = {
   battleId: number,
   battleName: string,
-  turn: number
+  turn: number,
+  campaignId: number
 }

@@ -38,4 +38,31 @@ export default class BattleService {
     }
   }
 
+  static updateBattle = async (battle: Battle): Promise<void> => {
+    try {
+      const data = {
+        id: battle.battleId,
+        battleName: battle.battleName,
+        turn: battle.turn
+      }
+      await axiosClient.patch("battles", data);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.log(console.error());
+      }
+      console.log("oups");
+    }
+  }
+
+  static deleteBattle = async (id: number): Promise<void> => {
+    try {
+      await axiosClient.delete(`battles/${id}`);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.log(console.error());
+      }
+      console.log("oups");
+    }
+  }
+
 }

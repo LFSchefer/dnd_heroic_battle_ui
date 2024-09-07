@@ -7,6 +7,7 @@ import { Battle } from "../../models/battle/Battle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faPlus, faX } from "@fortawesome/free-solid-svg-icons";
 import { BattleCreate } from "../../models/battle/BattleCreate";
+import BattleCard from "../../components/battle-card/BattleCard";
 
 export default function CampaignBattles() {
 
@@ -22,8 +23,8 @@ export default function CampaignBattles() {
     navigate("/campaigns")
   },[navigate])
 
-  const getBattles = useCallback(async (params:number): Promise<void> => {
-    const data: Battle[] = await BattleService.getAllByCampaignId(params);
+  const getBattles = useCallback(async (id:number): Promise<void> => {
+    const data: Battle[] = await BattleService.getAllByCampaignId(id);
     setBattles(data);
   },[])
 
@@ -77,11 +78,17 @@ export default function CampaignBattles() {
             </>
     }
     { ( campaignId && battles[0] !== undefined ) ? (
-      <>
+      <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
         {battles.map( (battle) => {
-          return <p key={battle.battleId}>{battle.battleName}</p>
+          return <BattleCard key={battle.battleId} battle={{
+            battleId: battle.battleId,
+            battleName: battle.battleName,
+            turn: battle.turn,
+            campaignId: campaignId
+          }} onUpdate={getBattles} />
+
         })}
-      </>
+      </div>
     )
     : (<h1><FormattedMessage id="noBattle" /></h1>)
     }

@@ -1,9 +1,12 @@
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import DiceRoller from "../../components/dice-roller/diceRoller";
+import { useStoreState } from '../../store/hooks';
+import store from "../../store";
 
 export default function Home() {
 
+  const {name, course} = useStoreState((store) => store)
   const navigate = useNavigate();
 
   const goToCampaigns = (): void => {

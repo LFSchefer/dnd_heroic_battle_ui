@@ -62,7 +62,7 @@ export default function DiceRoller() {
     setDiceIsRoll(true);
   }
 
-  const sumOfDiceDx = (params: string): number |undefined => {
+  const sumOfDiceDx = (params: string): number | undefined => {
     return roll[params]?.reduce((a: number,b: number) => a + b,0);
   }
 
@@ -85,7 +85,9 @@ export default function DiceRoller() {
       "12": null,
       "20": null,
       "100": null,
+
       });
+    setBonus(0);
     setDiceIsRoll(false);
   }
 

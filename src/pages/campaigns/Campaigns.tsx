@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import { CampaignCreate } from "../../models/campaign/CampaignCreate";
+import { useStoreState } from "../../store/hooks";
+import store from "../../store";
+import { UserModel } from "../../store/models/user";
 
 
 export default function Campaigns() {
@@ -14,8 +17,13 @@ export default function Campaigns() {
   const [isNewCampaign, setIsNewCampaign] = useState<boolean>(false);
   const [newCampaign, setNewCampaign] = useState<CampaignCreate>();
   const [nameIsValid, setNameIsValid] = useState<boolean>(false);
+  const {userName, email} = useStoreState<UserModel>((store) => store.user)
 
   const navigate = useNavigate();
+
+  const goBackHome = (): void => {
+    navigate("/");
+  };
 
   const getCampaings = useCallback(async (): Promise<void> => {
     const result: Campaign[] = await CampaignService.getCampaigns();
@@ -33,10 +41,6 @@ export default function Campaigns() {
   useEffect(() => {
     getCampaings();
   }, [getCampaings]);
-
-  const goBackHome = (): void => {
-    navigate("/");
-  };
 
   const toggleCampaignCreation = (): void => {
     setIsNewCampaign(!isNewCampaign);
@@ -69,7 +73,8 @@ export default function Campaigns() {
       }
       <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
         {campaigns.map( campaign => {
-          return <div className="card-container flex justify-center content-center" key={campaign.campaignId}><CampaignCard key={campaign.campaignId} campaignProps={{
+          return <div className="card-container flex justify-center content-center" key={campaign.campaignId}>
+            <CampaignCard key={campaign.campaignId} campaignProps={{
             campaignId: campaign.campaignId,
             campaignName: campaign.campaignName,
             creationDate: campaign.creationDate

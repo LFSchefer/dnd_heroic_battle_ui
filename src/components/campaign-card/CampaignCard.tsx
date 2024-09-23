@@ -22,6 +22,10 @@ export default function CampaignCard({campaignProps, onUpdate}:Props) {
   const navigate = useNavigate();
   const location = useLocation()
 
+  const goToCampaign = (): void => {
+    navigate(`${location.pathname}/${campaign.campaignId}`)
+  };
+
   const toggleEdition = (): void => {
     setIsInEdition(prev => !prev);
   };
@@ -53,10 +57,6 @@ export default function CampaignCard({campaignProps, onUpdate}:Props) {
     await CampaignService.deleteCampaign(campaign);
     onUpdate();
   }
-
-  const goToCampaign = (): void => {
-    navigate(`${location.pathname}/${campaign.campaignId}`)
-  };
 
   const isValidInputStyle = nameIsValid ? {outlineColor: "rgb(24 187 63)"  } : { outlineColor: "rgb(171 25 25)"};
   const isValidBtnStyle = nameIsValid ? {color: "rgb(24 187 63)"  } : { color: "rgb(171 25 25)"};

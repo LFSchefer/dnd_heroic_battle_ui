@@ -1,6 +1,6 @@
 export interface UserModelState {
-  name: string,
-  course: string,
+  userName: string,
+  email: string,
 }
 
 export interface UserModelActions {
@@ -12,8 +12,8 @@ export interface UserModelThunks {
 export interface UserModel extends UserModelState, UserModelActions, UserModelThunks{};
 
 const user: UserModel  = {
-  name: 'lf',
-  course: 'easy-peasy',
+  userName: 'toto',
+  email: 'admin@mail.com',
 }
 
 export default user;

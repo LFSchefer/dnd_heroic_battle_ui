@@ -3,10 +3,11 @@ import { useNavigate } from "react-router-dom";
 import DiceRoller from "../../components/dice-roller/diceRoller";
 import { useStoreState } from '../../store/hooks';
 import store from "../../store";
+import { UserModel } from "../../store/models/user";
 
 export default function Home() {
 
-  const {name, course} = useStoreState((store) => store.user)
+  const {userName, email} = useStoreState<UserModel>((store) => store.user)
   const navigate = useNavigate();
 
   const goToCampaigns = (): void => {

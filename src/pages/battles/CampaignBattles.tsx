@@ -60,7 +60,7 @@ export default function CampaignBattles() {
   <FontAwesomeIcon icon={faX}  className="link mx-3" style={isValidBtnStyle} onClick={toggleBattleCreation} />
 
   return (
-    <>
+    <div className="w-10/12 m-auto">
     <button onClick={backToCampaigns} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
       <FormattedMessage id="backToCampaigns"/>
     </button>
@@ -80,18 +80,19 @@ export default function CampaignBattles() {
     { ( campaignId && battles[0] !== undefined ) ? (
       <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
         {battles.map( (battle) => {
-          return <BattleCard key={battle.battleId} battle={{
+          return <div className="card-container flex justify-center content-center">
+            <BattleCard key={battle.battleId} battle={{
             battleId: battle.battleId,
             battleName: battle.battleName,
             turn: battle.turn,
             campaignId: campaignId
           }} onUpdate={getBattles} />
-
+          </div>
         })}
       </div>
     )
     : (<h1><FormattedMessage id="noBattle" /></h1>)
     }
-    </>
+    </div>
   )
 }

@@ -6,7 +6,7 @@ import store from "../../store";
 
 export default function Home() {
 
-  const {name, course} = useStoreState((store) => store)
+  const {name, course} = useStoreState((store) => store.user)
   const navigate = useNavigate();
 
   const goToCampaigns = (): void => {

@@ -1,13 +1,18 @@
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import DiceRoller from "../../components/dice-roller/diceRoller";
-import { useStoreState } from '../../store/hooks';
-import { UserModel } from "../../store/models/user";
+import { useStoreActions, useStoreState } from "../../store/hooks";
 
 export default function Home() {
 
-  const {userName, email} = useStoreState<UserModel>((store) => store.user);
+  const { userName, isLogin } = useStoreState(state => state.user);
+  const { logout } = useStoreActions(action => action.user)
+
   const navigate = useNavigate();
+
+  const handleLogout = (): void => {
+    logout()
+  }
 
   const goToCampaigns = (): void => {
     navigate("/campaigns");
@@ -21,17 +26,26 @@ export default function Home() {
     <>
     <h1 className="text-xl">
       <FormattedMessage id="test"/>
+      {isLogin ? ' ' + userName : ''}
     </h1>
     <button onClick={goToCampaigns} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
       <FormattedMessage id="goToCampaigns"/>
     </button>
     <div className="login">
+      {!isLogin ? 
+      <>
       <button onClick={goToLogin} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
         <FormattedMessage id="login"/>
       </button>
-      <button onClick={goToCampaigns} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
+      <button onClick={goToLogin} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
         <FormattedMessage id="signIn"/>
       </button>
+      </>
+      :
+      <button onClick={handleLogout} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
+        <FormattedMessage id="logout"/>
+      </button>
+      }
     </div>
     < DiceRoller/>
     </>

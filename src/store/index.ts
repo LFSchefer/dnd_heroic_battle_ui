@@ -1,6 +1,10 @@
-import { createStore } from "easy-peasy";
-import model from './models'
+import { userStoreModel, UserStoreModel } from "./models/user.model";
 
-const store = createStore(model)
+export interface StoreModel {
+    user: UserStoreModel
+}
 
-export default store;
+export const storeModel: StoreModel = {
+    user: userStoreModel,
+}
+

@@ -7,9 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import { CampaignCreate } from "../../models/campaign/CampaignCreate";
-import { useStoreState } from "../../store/hooks";
-import store from "../../store";
-import { UserModel } from "../../store/models/user";
+
 
 
 export default function Campaigns() {
@@ -17,7 +15,6 @@ export default function Campaigns() {
   const [isNewCampaign, setIsNewCampaign] = useState<boolean>(false);
   const [newCampaign, setNewCampaign] = useState<CampaignCreate>();
   const [nameIsValid, setNameIsValid] = useState<boolean>(false);
-  const {userName, email} = useStoreState<UserModel>((store) => store.user)
 
   const navigate = useNavigate();
 

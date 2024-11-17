@@ -4,11 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { LoginForm } from "../../models/user/loginForm";
 import UserService from "../../services/UserService";
 import { LoginResponse } from "../../models/user/loginResponse";
+import { useStoreActions } from "../../store/hooks";
 
 export default function Login() {
 
     const [formInput, setFormInput] = useState<LoginForm>({email: '', password:''});
     const [apiResponse, setApiResponse] = useState<LoginResponse | undefined>(undefined);
+    const {setUser} = useStoreActions( action => action.user)
 
     const navigate = useNavigate();
 
@@ -26,6 +28,7 @@ export default function Login() {
         const response: LoginResponse = await UserService.login(formInput);
         setApiResponse(response)
         if (!response.error) {
+            setUser(response)
             navigate("/")
         }
     }

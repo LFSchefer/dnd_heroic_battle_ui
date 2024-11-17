@@ -1,19 +1,35 @@
-export interface UserModelState {
-  userName: string,
-  email: string,
-}
+import { Action, action } from "easy-peasy";
+import { LoginResponse } from "../../models/user/loginResponse";
 
-export interface UserModelActions {
-}
+// export interface UserModelState {
+//   userName: string | undefined,
+//   email: string | undefined, 
+// }
 
-export interface UserModelThunks {
-}
+// export interface UserModelActions {
+//   setUser: Action<this, LoginResponse>;
+// }
 
-export interface UserModel extends UserModelState, UserModelActions, UserModelThunks{};
+// export interface UserModelThunks {
+// }
+
+// export interface UserModel extends UserModelState, UserModelActions, UserModelThunks{};
+
+export interface UserModel {
+  userName: string | undefined,
+  email: string | undefined, 
+  // setUser: Action<UserModel, LoginResponse>;
+};
+
+
 
 const user: UserModel  = {
-  userName: 'toto',
-  email: 'admin@mail.com',
+  userName: undefined,
+  email: undefined,
+  // setUser: action((state, payload) => {
+  //   state.userName = payload.userName;
+  //   state.email = payload.email;
+  // }),
 }
 
 export default user;

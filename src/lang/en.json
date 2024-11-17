@@ -13,5 +13,14 @@
   "reset": "Reset",
   "roll": "Roll",
   "total": "Total:",
-  "noBattle": "Sorry, not battles found"
+  "noBattle": "Sorry, not battles found",
+  "login": "Login",
+  "signIn": "Sign in",
+  "signInToAccount": "Sign in to your account",
+  "emailAdresse": "Email address",
+  "password": "Password",
+  "passwordForgot": "Forgot password?",
+  "notAMember": "Not a member ?",
+  "createAAccount": "Create a account now !",
+  "loginError": "Wrong email or password !"
 }

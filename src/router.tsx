@@ -3,7 +3,8 @@ import Home from "./pages/home/Home";
 import Campaigns from "./pages/campaigns/Campaigns";
 import NotFound from "./pages/notfound/NotFound";
 import CampaignBattles from "./pages/battles/CampaignBattles";
-import Login from "./pages/login/Login";
+import SignIn from "./pages/signin/SignIn";
+import SignUp from "./pages/signup/SignUp";
 
 export const router = createBrowserRouter ([
   {
@@ -11,8 +12,12 @@ export const router = createBrowserRouter ([
     element: < Home />
   },
   {
-    path: "/login",
-    element: < Login />
+    path: "/sign-in",
+    element: < SignIn />
+  },
+  {
+    path: "/sign-up",
+    element: < SignUp />
   },
   {
     path: "/campaigns",

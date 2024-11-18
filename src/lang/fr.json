@@ -14,8 +14,8 @@
   "roll": "Roll",
   "total": "Total:",
   "noBattle": "Sorry, not battles found",
-  "login": "Login",
   "signIn": "Sign in",
+  "signUp": "Sign Up",
   "signInToAccount": "Sign in to your account",
   "emailAdresse": "Email address",
   "password": "Password",
@@ -23,5 +23,6 @@
   "notAMember": "Not a member ?",
   "createAAccount": "Create a account now !",
   "loginError": "Wrong email or password !",
-    "logout": "logout"
+  "logout": "logout",
+  "allReadyMember": "Already a member ?"
 }

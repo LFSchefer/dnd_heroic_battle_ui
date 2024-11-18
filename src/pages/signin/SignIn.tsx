@@ -6,7 +6,7 @@ import UserService from "../../services/UserService";
 import { LoginResponse } from "../../models/user/loginResponse";
 import { useStoreActions } from "../../store/hooks";
 
-export default function Login() {
+export default function SignIn() {
 
     const [formInput, setFormInput] = useState<LoginForm>({email: '', password:''});
     const [apiResponse, setApiResponse] = useState<LoginResponse | undefined>(undefined);
@@ -33,8 +33,8 @@ export default function Login() {
         }
     }
 
-    const goToSignIn = (): void => {
-        navigate("/");
+    const goToSignUp = (): void => {
+        navigate("/sign-up");
     };
     
     return (
@@ -106,7 +106,7 @@ export default function Login() {
 
                 <p className="mt-10 text-center text-sm/6 text-gray-500">
                     < FormattedMessage id="notAMember"/>{' '}
-                    <a onClick={goToSignIn} className="font-semibold text-cyan-500 hover:text-cyan-600">
+                    <a onClick={goToSignUp} className="font-semibold text-cyan-500 hover:text-cyan-600">
                         < FormattedMessage id="createAAccount"/>
                     </a>
                 </p>

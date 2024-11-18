@@ -18,8 +18,12 @@ export default function Home() {
     navigate("/campaigns");
   };
 
-  const goToLogin = ():void => {
-    navigate("/login");
+  const goToSignIn = ():void => {
+    navigate("/sign-in");
+  };
+
+  const goToSignUp = ():void => {
+    navigate("/sign-up");
   };
 
   return (
@@ -34,11 +38,11 @@ export default function Home() {
     <div className="login">
       {!isLogin ? 
       <>
-      <button onClick={goToLogin} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
-        <FormattedMessage id="login"/>
-      </button>
-      <button onClick={goToLogin} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
+      <button onClick={goToSignIn} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
         <FormattedMessage id="signIn"/>
+      </button>
+      <button onClick={goToSignUp} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
+        <FormattedMessage id="signUp"/>
       </button>
       </>
       :

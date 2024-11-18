@@ -23,5 +23,7 @@
   "notAMember": "Not a member ?",
   "createAAccount": "Create a account now !",
   "loginError": "Wrong email or password !",
-  "logout": "logout"
+  "logout": "logout",
+  "userName": "User name",
+  "confirmPassword": "Confirm password"
 }

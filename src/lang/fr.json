@@ -24,5 +24,7 @@
   "createAAccount": "Create a account now !",
   "loginError": "Wrong email or password !",
   "logout": "logout",
-  "allReadyMember": "Already a member ?"
+  "allReadyMember": "Already a member ?",
+  "userName": "User name",
+  "confirmPassword": "Confirm password"
 }

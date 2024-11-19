@@ -40,7 +40,14 @@ export default function SignUp() {
         }
     }
 
-      console.log(validateEmail(signUpData.email))
+    const validatePassword = (input: string): boolean=> {
+        let valid = false;
+        if (input.match(/[A-Z].*[A-Z]/) && input.match(/[a-z];*[a-z]/) && input.match(/[0-9]/)) {
+            valid = true
+        }
+        console.log(valid)
+        return valid
+    }
 
     const validateInputs = (): boolean => {
         let isValid = true;
@@ -76,7 +83,7 @@ export default function SignUp() {
                 }
             })
         }
-        if (!signUpData.password) {
+        if (!validatePassword(signUpData.password)) {
             setErrorSignUpForm( prev => {
                 return {
                     ...prev,

@@ -25,5 +25,8 @@
   "loginError": "Wrong email or password !",
   "logout": "logout",
   "userName": "User name",
-  "confirmPassword": "Confirm password"
-}
+  "confirmPassword": "Confirm password",
+  "invalidUserName": "user name must be between 5 and 50 characters",
+  "invalidEmail": "please enter a valid email",
+  "invalidPassword": "TODO password rule",
+  "invalidPasswordConfirm": "confirm password don't match password"}

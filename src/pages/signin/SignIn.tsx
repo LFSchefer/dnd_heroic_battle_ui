@@ -27,7 +27,7 @@ export default function SignIn() {
         event.preventDefault();
         const response: SignInResponse = await UserService.signIn(formInput);
         setApiResponse(response)
-        if (!response.error) {
+        if (response.userName && !response.error) {
             setUser(response)
             navigate("/")
         }
@@ -88,7 +88,7 @@ export default function SignIn() {
                     </div>
 
                     <div>
-                        {apiResponse?.error && <p className="my-2 text-red-600 italic text-sm">< FormattedMessage id="loginError"/></p>}
+                        {(apiResponse?.error || apiResponse?.userName === null) && <p className="my-2 text-red-600 italic text-sm">< FormattedMessage id="loginError"/></p>}
                     <button
                         type="submit"
                         className="flex w-full justify-center rounded-md bg-cyan-500 hover:bg-cyan-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

@@ -1,8 +1,10 @@
 import { SyntheticEvent, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { signUpForm } from "../../models/user/signUpForm";
 import { validateEmail, validatePassword } from "../../utils/utils";
+import UserService from "../../services/UserService";
+import { faNavicon } from "@fortawesome/free-solid-svg-icons";
 
 export default function SignUp() {
 
@@ -19,6 +21,8 @@ export default function SignUp() {
         confirmPassword: false
     });
 
+    const navigate = useNavigate();
+
     const setField = (input: string, field: string): void => {
         setSignUpData( prev => {
             return {
@@ -28,10 +32,13 @@ export default function SignUp() {
         })
     }
 
-    const handleSubmit = (event: SyntheticEvent): void => {
+    const handleSubmit = async (event: SyntheticEvent): Promise<void> => {
         event.preventDefault();
         if (validateInputs()) {
-            // TODO
+            const response = await UserService.signUp(signUpData);
+            if (!response.error) {
+                navigate("/sign-in")
+            }
         }
     }
 

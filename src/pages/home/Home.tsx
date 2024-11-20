@@ -28,30 +28,30 @@ export default function Home() {
 
   return (
     <>
-    <h1 className="text-xl">
-      <FormattedMessage id="test"/>
-      {isLogin ? ' ' + userName : ''}
-    </h1>
-    <button onClick={goToCampaigns} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
-      <FormattedMessage id="goToCampaigns"/>
-    </button>
-    <div className="login">
-      {!isLogin ? 
-      <>
-      <button onClick={goToSignIn} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
-        <FormattedMessage id="signIn"/>
+      <h1 className="text-xl">
+        <FormattedMessage id="welcome"/>
+        {isLogin && ' ' + userName}
+      </h1>
+      <button onClick={goToCampaigns} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
+        <FormattedMessage id="goToCampaigns"/>
       </button>
-      <button onClick={goToSignUp} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
-        <FormattedMessage id="signUp"/>
-      </button>
-      </>
-      :
-      <button onClick={handleLogout} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
-        <FormattedMessage id="logout"/>
-      </button>
-      }
-    </div>
-    < DiceRoller/>
+      <div className="login">
+        {!isLogin ? 
+        <>
+        <button onClick={goToSignIn} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
+          <FormattedMessage id="signIn"/>
+        </button>
+        <button onClick={goToSignUp} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
+          <FormattedMessage id="signUp"/>
+        </button>
+        </>
+        :
+        <button onClick={handleLogout} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
+          <FormattedMessage id="logout"/>
+        </button>
+        }
+      </div>
+      < DiceRoller/>
     </>
   )
 }

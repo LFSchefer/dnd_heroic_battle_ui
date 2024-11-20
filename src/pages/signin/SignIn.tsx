@@ -1,15 +1,15 @@
 import { SyntheticEvent, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
-import { LoginForm } from "../../models/user/loginForm";
+import { NavLink, useNavigate } from "react-router-dom";
 import UserService from "../../services/UserService";
-import { LoginResponse } from "../../models/user/loginResponse";
+import { SignInForm } from "../../models/user/SignInForm";
+import { SignInResponse } from "../../models/user/SignInResponse";
 import { useStoreActions } from "../../store/hooks";
 
 export default function SignIn() {
 
-    const [formInput, setFormInput] = useState<LoginForm>({email: '', password:''});
-    const [apiResponse, setApiResponse] = useState<LoginResponse | undefined>(undefined);
+    const [formInput, setFormInput] = useState<SignInForm>({email: '', password:''});
+    const [apiResponse, setApiResponse] = useState<SignInResponse | undefined>(undefined);
     const {setUser} = useStoreActions( action => action.user)
 
     const navigate = useNavigate();
@@ -25,17 +25,13 @@ export default function SignIn() {
 
     const handleClick = async (event: SyntheticEvent) => {
         event.preventDefault();
-        const response: LoginResponse = await UserService.login(formInput);
+        const response: SignInResponse = await UserService.signIn(formInput);
         setApiResponse(response)
         if (!response.error) {
             setUser(response)
             navigate("/")
         }
     }
-
-    const goToSignUp = (): void => {
-        navigate("/sign-up");
-    };
     
     return (
         <>
@@ -73,11 +69,9 @@ export default function SignIn() {
                         <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">
                             < FormattedMessage id="password"/>
                         </label>
-                        <div className="text-sm">
-                        <a href="#" className="font-semibold text-cyan-500 hover:text-cyan-600">
+                        <NavLink to="#" className="text-sm font-semibold text-cyan-500 hover:text-cyan-600">
                             < FormattedMessage id="passwordForgot"/>
-                        </a>
-                        </div>
+                        </NavLink>
                     </div>
                     <div className="mt-2">
                         <input
@@ -94,7 +88,7 @@ export default function SignIn() {
                     </div>
 
                     <div>
-                        {apiResponse?.error && <p className="my-2 text-red-600">< FormattedMessage id="loginError"/></p>}
+                        {apiResponse?.error && <p className="my-2 text-red-600 italic text-sm">< FormattedMessage id="loginError"/></p>}
                     <button
                         type="submit"
                         className="flex w-full justify-center rounded-md bg-cyan-500 hover:bg-cyan-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -106,9 +100,9 @@ export default function SignIn() {
 
                 <p className="mt-10 text-center text-sm/6 text-gray-500">
                     < FormattedMessage id="notAMember"/>{' '}
-                    <a onClick={goToSignUp} className="font-semibold text-cyan-500 hover:text-cyan-600">
+                    <NavLink to="/sign-up" className="text-sm font-semibold text-cyan-500 hover:text-cyan-600">
                         < FormattedMessage id="createAAccount"/>
-                    </a>
+                    </NavLink>
                 </p>
                 </div>
             </div>

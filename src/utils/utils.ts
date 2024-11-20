@@ -1,4 +1,4 @@
-export const validateEmail = (email: string) => {
+export const validateEmail = (email: string): boolean => {
     const result = String(email)
     .toLowerCase()
     .match(
@@ -6,3 +6,11 @@ export const validateEmail = (email: string) => {
     );
     return result === null ? false : true;
   };
+
+  export const validatePassword = (password: string): boolean=> {
+    let valid = false;
+    if (password.match(/[A-Z]/) && password.match(/[a-z].*[a-z]/) && password.match(/[0-9]/) && password.match(/(!|%|#|\$|~|\?|&|:|;|\^|\+|-)/)) {
+        valid = true
+    }
+    return valid
+}

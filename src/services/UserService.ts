@@ -1,11 +1,10 @@
 import axios from "axios";
-import { LoginForm } from "../models/user/loginForm";
+import { SignInForm } from "../models/user/SignInForm";
 import axiosClient from "./AxiosClient";
-import { LoginResponse } from "../models/user/loginResponse";
 
 export default class UserService {
 
-    static login = async (input: LoginForm) => {
+    static signIn = async (input: SignInForm) => {
         try {
             const { data } = await axiosClient.post("/users", input);
             return data;

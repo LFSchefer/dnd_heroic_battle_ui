@@ -1,11 +1,11 @@
 import { action, Action } from "easy-peasy";
-import { LoginResponse } from "../../models/user/loginResponse";
+import { SignInResponse } from "../../models/user/SignInResponse";
 
 export interface UserStoreModel {
     userName: string | undefined,
     email: string | undefined,
     isLogin: boolean,
-    setUser: Action<UserStoreModel, LoginResponse>,
+    setUser: Action<UserStoreModel, SignInResponse>,
     logout: Action<UserStoreModel>,
 }
 

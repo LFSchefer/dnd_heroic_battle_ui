@@ -1,24 +1,23 @@
 import { SyntheticEvent, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { signUpForm } from "../../models/user/signUpForm";
-import { validateEmail } from "../../utils/utils";
+import { validateEmail, validatePassword } from "../../utils/utils";
 
 export default function SignUp() {
 
     const [signUpData, setSignUpData] = useState<signUpForm>({
         userName: '',
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
     });
-    const [confirmPassword, setConfirmPassword] = useState<string>('');
     const [errorSignUpForm, setErrorSignUpForm] = useState({
         userName: false,
         email: false,
         password: false,
         confirmPassword: false
     });
-    const navigate = useNavigate();
 
     const setField = (input: string, field: string): void => {
         setSignUpData( prev => {
@@ -29,24 +28,11 @@ export default function SignUp() {
         })
     }
 
-    const handleChangeConfirmPassword = (value: string): void => {
-        setConfirmPassword(value);
-    }
-
     const handleSubmit = (event: SyntheticEvent): void => {
         event.preventDefault();
         if (validateInputs()) {
             // TODO
         }
-    }
-
-    const validatePassword = (input: string): boolean=> {
-        let valid = false;
-        if (input.match(/[A-Z].*[A-Z]/) && input.match(/[a-z];*[a-z]/) && input.match(/[0-9]/)) {
-            valid = true
-        }
-        console.log(valid)
-        return valid
     }
 
     const validateInputs = (): boolean => {
@@ -99,7 +85,7 @@ export default function SignUp() {
                 }
             })
         }
-        if (signUpData.password !== confirmPassword) {
+        if (signUpData.password !== signUpData.confirmPassword) {
             setErrorSignUpForm( prev => {
                 return {
                     ...prev,
@@ -117,10 +103,6 @@ export default function SignUp() {
         }
         return isValid;
     }
-
-    const goToSignIn = (): void => {
-        navigate("/sign-in");
-    };
 
     return (
         <>
@@ -149,7 +131,7 @@ export default function SignUp() {
                     value={signUpData.userName}
                     onChange={e => setField(e.target.value, "userName")}
                     />
-                    {errorSignUpForm.userName && <span className="text-red-600 italic"><FormattedMessage id="invalidUserName"/></span>}
+                    {errorSignUpForm.userName && <span className="text-red-600 italic text-sm"><FormattedMessage id="invalidUserName"/></span>}
                 </div>
                 </div>
                 <div>
@@ -169,7 +151,7 @@ export default function SignUp() {
                     value={signUpData.email}
                     onChange={e => setField(e.target.value, "email")}
                     />
-                    {errorSignUpForm.email && <span className="text-red-600 italic"><FormattedMessage id="invalidEmail"/></span>}
+                    {errorSignUpForm.email && <span className="text-red-600 italic text-sm"><FormattedMessage id="invalidEmail"/></span>}
                 </div>
                 </div>
                 <div>
@@ -189,7 +171,7 @@ export default function SignUp() {
                     value={signUpData.password}
                     onChange={e => setField(e.target.value, "password")}
                     />
-                    {errorSignUpForm.password && <span className="text-red-600 italic"><FormattedMessage id="invalidPassword"/></span>}
+                    {errorSignUpForm.password && <span className="text-red-600 italic text-sm"><FormattedMessage id="invalidPassword"/></span>}
                 </div>
                 </div>
                 <div>
@@ -206,10 +188,10 @@ export default function SignUp() {
                     required
                     autoComplete="current-password"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:text-sm/6 px-4"
-                    value={confirmPassword}
-                    onChange={e => handleChangeConfirmPassword(e.target.value)}
+                    value={signUpData.confirmPassword}
+                    onChange={e => setField(e.target.value, "confirmPassword")}
                     />
-                    {errorSignUpForm.confirmPassword && <span className="text-red-600 italic"><FormattedMessage id="invalidPasswordConfirm"/></span>}
+                    {errorSignUpForm.confirmPassword && <span className="text-red-600 italic text-sm"><FormattedMessage id="invalidPasswordConfirm"/></span>}
                 </div>
                 </div>
                 <div>
@@ -224,13 +206,12 @@ export default function SignUp() {
 
             <p className="mt-10 text-center text-sm/6 text-gray-500">
                 < FormattedMessage id="allReadyMember"/>{' '}
-                <a onClick={goToSignIn} className="font-semibold text-cyan-500 hover:text-cyan-600">
+                <NavLink to="/sign-in" className="text-sm font-semibold text-cyan-500 hover:text-cyan-600">
                     < FormattedMessage id="signIn"/>
-                </a>
+                </NavLink>
             </p>
             </div>
         </div>
     </>
-
     )
 }

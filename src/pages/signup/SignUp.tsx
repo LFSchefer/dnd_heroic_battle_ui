@@ -4,7 +4,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { signUpForm } from "../../models/user/signUpForm";
 import { validateEmail, validatePassword } from "../../utils/utils";
 import UserService from "../../services/UserService";
-import { faNavicon } from "@fortawesome/free-solid-svg-icons";
 
 export default function SignUp() {
 

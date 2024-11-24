@@ -26,12 +26,12 @@ export default function SignIn() {
     const handleClick = async (event: SyntheticEvent) => {
         event.preventDefault();
         const response: SignInResponse = await UserService.signIn(formInput);
-        setApiResponse(response)
-        if (response.userName && !response.error) {
-            setUser(response)
-            navigate("/")
+        setApiResponse(response);
+        if (response.token && !response.error) {
+            setUser(response);
+            navigate("/");
         }
-    }
+    };
     
     return (
         <>

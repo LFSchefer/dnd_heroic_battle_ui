@@ -11,8 +11,8 @@ export default function Home() {
   const navigate = useNavigate();
 
   const handleLogout = (): void => {
-    logout()
-  }
+    logout();
+  };
 
   const goToCampaigns = (): void => {
     navigate("/campaigns");

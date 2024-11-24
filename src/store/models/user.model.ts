@@ -13,14 +13,16 @@ export const userStoreModel: UserStoreModel = {
     userName: undefined,
     email: undefined,
     isLogin: false,
-    setUser: action((state, payload) => {
+    setUser: action((state, payload: SignInResponse) => {
         state.userName = payload.userName;
         state.email = payload.email;
         state.isLogin = true;
+        sessionStorage.setItem('access_token',payload.token!);
     }),
     logout: action((state) => {
         state.userName = undefined;
         state.email = undefined;
         state.isLogin = false;
+        sessionStorage.removeItem('access_token');
     })
 }

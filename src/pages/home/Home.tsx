@@ -52,6 +52,7 @@ export default function Home() {
         }
       </div>
       < DiceRoller/>
+      <button className="dnd-btn">Test go on</button>
     </>
   )
 }

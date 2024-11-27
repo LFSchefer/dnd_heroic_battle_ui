@@ -87,7 +87,7 @@ export default function SignIn() {
                     </div>
                     </div>
 
-                    <div>
+                    <div className="pt-6">
                         {(apiResponse?.error || apiResponse?.userName === null) && <p className="my-2 text-red-600 italic text-sm">< FormattedMessage id="loginError"/></p>}
                     <button
                         type="submit"

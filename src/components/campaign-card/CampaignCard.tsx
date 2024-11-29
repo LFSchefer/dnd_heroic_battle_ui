@@ -59,8 +59,8 @@ export default function CampaignCard({campaignProps, onUpdate}:Props) {
   }
 
   const isValidInputStyle = nameIsValid ? {outlineColor: "rgb(24 187 63)"  } : { outlineColor: "rgb(171 25 25)"};
-  const isValidBtnStyle = nameIsValid ? {color: "rgb(24 187 63)"  } : { color: "rgb(171 25 25)"};
-  const validationBtn = nameIsValid ? <FontAwesomeIcon icon={faCheck} size="lg"  className="link mx-3" onClick={saveChange} style={isValidBtnStyle}/> :
+  const isValidBtnStyle = nameIsValid ? {color: "rgb(255 255 255)"  } : { color: "rgb(171 25 25)"};
+  const validationBtn = nameIsValid ? <button className="dnd-btn-small"><FontAwesomeIcon icon={faCheck} size="lg"  className="link mx-3" onClick={saveChange} style={isValidBtnStyle}/></button> :
   <FontAwesomeIcon icon={faX}  className="link mx-3" style={isValidBtnStyle} onClick={toggleEdition} />
 
 

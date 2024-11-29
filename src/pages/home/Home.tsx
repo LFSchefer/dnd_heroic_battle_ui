@@ -32,27 +32,26 @@ export default function Home() {
         <FormattedMessage id="welcome"/>
         {isLogin && ' ' + userName}
       </h1>
-      <button onClick={goToCampaigns} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
+      <button onClick={goToCampaigns} className="my-5 dnd-btn">
         <FormattedMessage id="goToCampaigns"/>
       </button>
       <div className="login">
         {!isLogin ? 
         <>
-        <button onClick={goToSignIn} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
+        <button onClick={goToSignIn} className="dnd-btn mx-4">
           <FormattedMessage id="signIn"/>
         </button>
-        <button onClick={goToSignUp} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
+        <button onClick={goToSignUp} className="dnd-btn mx-4">
           <FormattedMessage id="signUp"/>
         </button>
         </>
         :
-        <button onClick={handleLogout} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
+        <button onClick={handleLogout} className="dnd-btn">
           <FormattedMessage id="logout"/>
         </button>
         }
       </div>
       < DiceRoller/>
-      <button className="dnd-btn">Test go on</button>
     </>
   )
 }

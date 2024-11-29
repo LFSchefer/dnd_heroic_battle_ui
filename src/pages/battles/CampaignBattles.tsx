@@ -55,17 +55,17 @@ export default function CampaignBattles() {
   }
 
   const isValidInputStyle = nameIsValid ? {outlineColor: "rgb(24 187 63)"  } : { outlineColor: "rgb(171 25 25)"};
-  const isValidBtnStyle = nameIsValid ? {color: "rgb(24 187 63)"  } : { color: "rgb(171 25 25)"};
-  const validationBtn = nameIsValid ? <FontAwesomeIcon icon={faCheck} size="lg"  className="link mx-3" onClick={createBattle} style={isValidBtnStyle}/> :
+  const isValidBtnStyle = nameIsValid ? {color: "rgb(255 255 255)"  } : { color: "rgb(171 25 25)"};
+  const validationBtn = nameIsValid ? <button className="dnd-btn-small"><FontAwesomeIcon icon={faCheck} size="lg"  className="link mx-3" onClick={createBattle} style={isValidBtnStyle}/></button> :
   <FontAwesomeIcon icon={faX}  className="link mx-3" style={isValidBtnStyle} onClick={toggleBattleCreation} />
 
   return (
     <div className="w-10/12 m-auto">
-    <button onClick={backToCampaigns} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
+    <button onClick={backToCampaigns} className="dnd-btn m-4">
       <FormattedMessage id="backToCampaigns"/>
     </button>
     <h1>CampaignBattles</h1>
-    <button onClick={toggleBattleCreation} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
+    <button onClick={toggleBattleCreation} className="dnd-btn m-2">
       <FontAwesomeIcon icon={faPlus} style={{color: "#ffffff",}} size="lg"/> <FormattedMessage id="createNewBattle"/>
     </button>
     {isBattleCreation &&

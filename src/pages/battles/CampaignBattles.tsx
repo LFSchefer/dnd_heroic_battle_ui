@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
 import BattleService from "../../services/BattleService";
 import { Battle } from "../../models/battle/Battle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -64,10 +63,12 @@ export default function CampaignBattles() {
     <button onClick={backToCampaigns} className="dnd-btn m-4">
       <FormattedMessage id="backToCampaigns"/>
     </button>
-    <h1>CampaignBattles</h1>
+    <h1>Campaign Battles</h1>
+    {!isBattleCreation && 
     <button onClick={toggleBattleCreation} className="dnd-btn m-2">
       <FontAwesomeIcon icon={faPlus} style={{color: "#ffffff",}} size="lg"/> <FormattedMessage id="createNewBattle"/>
     </button>
+    }
     {isBattleCreation &&
             <>
             <div className="inline-grid">

@@ -6,6 +6,7 @@ import './BattleCard.css'
 import { FormattedMessage } from "react-intl";
 import BattleService from "../../services/BattleService";
 import { useNavigate } from "react-router-dom";
+import ConfirmModal from "../confirm-modal/ConfirmModal";
 
 
 type Props = {
@@ -19,6 +20,7 @@ export default function BattleCard(props:Props) {
   const [isInFocus, setIsInFocus] = useState<boolean>(false);
   const [isInEdition, setIsInEdition] = useState<boolean>(false);
   const [nameIsValid, setNameIsValid] = useState<boolean>(true);
+  const [confirmModalIsOpen, setConfirmModalIsOpen] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
@@ -49,6 +51,17 @@ export default function BattleCard(props:Props) {
     props.onUpdate(battle.campaignId);
   }
 
+  const openModal = (): void => {
+    setConfirmModalIsOpen(true);
+  }
+
+  const closeModal = (params: string): void => {
+    setConfirmModalIsOpen(false);
+    if (params === "yes") {
+      deleteBattle()
+    }
+  }
+
   const saveChange = async (): Promise<void> => {
     if (nameIsValid) {
       await BattleService.updateBattle(battle);
@@ -69,7 +82,7 @@ export default function BattleCard(props:Props) {
       {isInFocus && !isInEdition ?
         <div className="edition">
           <FontAwesomeIcon icon={faPenToSquare} className="link opacity-70 edit" onClick={toggleEdition} />
-          <FontAwesomeIcon icon={faTrashCan} className="link opacity-70 trash" onClick={deleteBattle} />
+          <FontAwesomeIcon icon={faTrashCan} className="link opacity-70 trash" onClick={openModal} />
         </div>
         :
         <></>
@@ -88,6 +101,10 @@ export default function BattleCard(props:Props) {
       }
         <p className="text-lg">turn: {battle.turn}</p>
       </div>
+      <ConfirmModal 
+        isOpen={confirmModalIsOpen}
+        handleClick={closeModal}
+      />
     </>
   )
 }

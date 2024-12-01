@@ -29,4 +29,8 @@
   "invalidUserName": "User name must be between 5 and 50 characters",
   "invalidEmail": "Please enter a valid email",
   "invalidPassword": "Password must have: 1 capital letter, 1 number, 1 character in !%#$~?&:;^+-",
-  "invalidPasswordConfirm": "Confirm password don't match password"}
+  "invalidPasswordConfirm": "Confirm password don't match password",
+  "yes": "Yes",
+  "no": "No",
+  "areYouSure": "Are you sure ?"
+}

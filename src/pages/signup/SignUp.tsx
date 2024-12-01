@@ -1,4 +1,4 @@
-import { SyntheticEvent, useState } from "react";
+import { ChangeEvent, SyntheticEvent, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { NavLink, useNavigate } from "react-router-dom";
 import { signUpForm } from "../../models/user/signUpForm";
@@ -22,11 +22,11 @@ export default function SignUp() {
 
     const navigate = useNavigate();
 
-    const setField = (input: string, field: string): void => {
+    const setField = (event: ChangeEvent<HTMLInputElement>): void => {
         setSignUpData( prev => {
             return {
                 ...prev,
-                [field]: input
+                [event.target.name]: event.target.value
             }
         })
     }
@@ -119,8 +119,8 @@ export default function SignUp() {
             </h2>
             </div>
 
-            <div className="mt-10 sm:mx-auto sm:w-7/12 ">
-            <form className="border rounded-lg border-cyan-800/20 px-8 py-12" onSubmit={handleSubmit} noValidate>
+            <div className="mt-10 sm:mx-auto sm:w-7/12">
+            <form className="border rounded-lg border-cyan-800/20 px-8 py-12 bg-sky-600/10 shadow-md" onSubmit={handleSubmit} noValidate>
                 <div className="part-one md:flex md:justify-between">
 
                     <div className="user-name w-full md:w-6/12 mx-2 mt-4">
@@ -132,12 +132,12 @@ export default function SignUp() {
                     <div className="mt-2">
                         <input
                         id="user-name"
-                        name="user-name"
+                        name="userName"
                         type="text"
                         required
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:text-sm/6 px-4"
                         value={signUpData.userName}
-                        onChange={e => setField(e.target.value, "userName")}
+                        onChange={setField}
                         />
                         {errorSignUpForm.userName && <span className="text-red-600 italic text-sm"><FormattedMessage id="invalidUserName"/></span>}
                     </div>
@@ -157,7 +157,7 @@ export default function SignUp() {
                         autoComplete="email"
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:text-sm/6 px-4"
                         value={signUpData.email}
-                        onChange={e => setField(e.target.value, "email")}
+                        onChange={setField}
                         />
                         {errorSignUpForm.email && <span className="text-red-600 italic text-sm"><FormattedMessage id="invalidEmail"/></span>}
                     </div>
@@ -181,7 +181,7 @@ export default function SignUp() {
                             autoComplete="current-password"
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:text-sm/6 px-4"
                             value={signUpData.password}
-                            onChange={e => setField(e.target.value, "password")}
+                            onChange={setField}
                             />
                             {errorSignUpForm.password && <span className="text-red-600 italic text-sm"><FormattedMessage id="invalidPassword"/></span>}
                         </div>
@@ -195,13 +195,13 @@ export default function SignUp() {
                         <div className="mt-2">
                             <input
                             id="passwordConfirm"
-                            name="passwordConfirm"
+                            name="confirmPassword"
                             type="password"
                             required
                             autoComplete="current-password"
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:text-sm/6 px-4"
                             value={signUpData.confirmPassword}
-                            onChange={e => setField(e.target.value, "confirmPassword")}
+                            onChange={setField}
                             />
                             {errorSignUpForm.confirmPassword && <span className="text-red-600 italic text-sm"><FormattedMessage id="invalidPasswordConfirm"/></span>}
                         </div>
@@ -211,9 +211,9 @@ export default function SignUp() {
                 <div className="submit-btn mt-10 flex justify-center md:justify-end">
                     <button
                         type="submit"
-                        className="justify-center rounded-md bg-cyan-500 hover:bg-cyan-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-6/12 md:w-4/12 md:mx-2"
+                        className="w-6/12 md:w-4/12 md:mx-2 dnd-btn"
                     >
-                        < FormattedMessage id="signIn"/>
+                        < FormattedMessage id="signUp"/>
                     </button>
                 </div>
             </form>

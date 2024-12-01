@@ -96,7 +96,7 @@ export default function DiceRoller() {
   }, [calculateTotal, roll])
 
   return (
-    <div className="dice-container bg-slate-200	max-w-2xl min-h-40 px-4 py-4 m-5 rounded-lg	shadow-md md:flex md:flex-row">
+    <div className="dice-container bg-sky-800/15 max-w-2xl min-h-40 px-4 py-4 m-5 rounded-lg	shadow-md md:flex md:flex-row">
       
       <div className="part-one flex flex-row">
         

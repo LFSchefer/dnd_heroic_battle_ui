@@ -3,7 +3,7 @@ import { FormattedMessage } from "react-intl";
 import { Campaign } from "../../models/campaign/Campaign";
 import CampaignService from "../../services/CampaignService";
 import CampaignCard from "../../components/campaign-card/CampaignCard";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import { CampaignCreate } from "../../models/campaign/CampaignCreate";

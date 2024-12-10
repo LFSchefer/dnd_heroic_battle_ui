@@ -5,7 +5,7 @@ import { faPenToSquare, faTrashCan, faCheck, faX } from '@fortawesome/free-solid
 import './BattleCard.css'
 import { FormattedMessage } from "react-intl";
 import BattleService from "../../services/BattleService";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import ConfirmModal from "../confirm-modal/ConfirmModal";
 
 

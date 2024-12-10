@@ -4,7 +4,7 @@ import { FormattedDate, FormattedMessage } from "react-intl";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrashCan, faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import CampaignService from "../../services/CampaignService";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router";
 import './CampaignCard.css'
 import ConfirmModal from "../confirm-modal/ConfirmModal";
 

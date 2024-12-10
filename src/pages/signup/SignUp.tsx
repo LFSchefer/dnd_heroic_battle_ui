@@ -1,6 +1,6 @@
 import { ChangeEvent, SyntheticEvent, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router";
 import { signUpForm } from "../../models/user/signUpForm";
 import { validateEmail, validatePassword } from "../../utils/utils";
 import UserService from "../../services/UserService";

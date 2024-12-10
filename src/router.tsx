@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router";
 import ProtectedRoute from "./components/protected-route/ProtectedRoute";
 import Home from "./pages/home/Home";
 import NotFound from "./pages/notfound/NotFound";

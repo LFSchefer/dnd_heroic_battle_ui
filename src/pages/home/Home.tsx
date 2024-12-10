@@ -1,5 +1,5 @@
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import DiceRoller from "../../components/dice-roller/diceRoller";
 import { useStoreActions, useStoreState } from "../../store/hooks";
 

@@ -6,6 +6,8 @@ import SignIn from "./pages/signin/SignIn";
 import SignUp from "./pages/signup/SignUp";
 import Campaigns from "./pages/campaigns/Campaigns";
 import CampaignBattles from "./pages/battles/CampaignBattles";
+import BattlePage from "./pages/battles/Battle";
+import BattleInit from "./pages/battles/BattleInit";
 
 export const router = createBrowserRouter ([
   {
@@ -34,6 +36,14 @@ export const router = createBrowserRouter ([
       {
         path:"/campaigns/:campaignId",
         element: < CampaignBattles />
+      },
+      {
+        path:"/battles/:battleId",
+        element: < BattlePage />
+      },
+      {
+        path:"/battles/:battleId/initialize",
+        element: < BattleInit />
       },
     ]
   },

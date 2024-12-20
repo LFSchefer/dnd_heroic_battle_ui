@@ -32,5 +32,6 @@
   "invalidPasswordConfirm": "Confirm password don't match password",
   "yes": "Yes",
   "no": "No",
-  "areYouSure": "Are you sure ?"
+  "areYouSure": "Are you sure ?",
+  "goToBattleInit": "Go to battle Initialization"
 }

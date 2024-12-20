@@ -65,4 +65,14 @@ export default class BattleService {
     }
   }
 
+  static getOneBattle = async (id: number): Promise<Battle | undefined> => {
+    try {
+      const {data} = await axiosClient.get(`battles/${id}`);
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.log(console.error())
+      }
+    }
+  }
 }

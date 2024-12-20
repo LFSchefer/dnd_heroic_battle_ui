@@ -25,7 +25,7 @@ export default function BattleCard(props:Props) {
   const navigate = useNavigate();
 
   const goToBattle = (): void => {
-    //TODO
+    navigate(`/battles/${battle.battleId}`)
   }
 
   const toggleIsInFocus = (): void => {

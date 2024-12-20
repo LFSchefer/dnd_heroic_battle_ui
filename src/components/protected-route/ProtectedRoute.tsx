@@ -3,9 +3,9 @@ import { useStoreState } from '../../store/hooks';
 
 const ProtectedRoute = () => {
 
-    const { isLogin } = useStoreState(state => state.user)
+    // const { isLogin } = useStoreState(state => state.user)
 
-  if (!isLogin) {
+  if (!sessionStorage.getItem('access_token')) {
     return <Navigate to="/sign-in" replace />;
   }
 

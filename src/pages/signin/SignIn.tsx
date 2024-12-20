@@ -27,7 +27,7 @@ export default function SignIn() {
         event.preventDefault();
         const response: SignInResponse = await UserService.signIn(formInput);
         setApiResponse(response);
-        if (response.token && !response.error) {
+        if (!response.error) {
             setUser(response);
             navigate("/");
         }

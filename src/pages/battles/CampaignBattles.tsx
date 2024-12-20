@@ -81,8 +81,8 @@ export default function CampaignBattles() {
     { ( campaignId && battles[0] !== undefined ) ? (
       <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
         {battles.map( (battle) => {
-          return <div className="card-container flex justify-center content-center">
-            <BattleCard key={battle.battleId} battle={{
+          return <div className="card-container flex justify-center content-center" key={battle.battleId}>
+            <BattleCard  battle={{
             battleId: battle.battleId,
             battleName: battle.battleName,
             turn: battle.turn,

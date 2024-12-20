@@ -28,14 +28,14 @@ export default class UserService {
                 return {
                     userName: undefined,
                     email: undefined,
-                    token: undefined,
+                    tokens: undefined,
                     error: error.code
                 }
             } 
                 return {
                     userName: undefined,
                     email: undefined,
-                    token: undefined,
+                    tokens: undefined,
                     error: 'error'
                 }
         }

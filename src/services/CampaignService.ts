@@ -2,7 +2,6 @@ import axios from "axios";
 import { Campaign } from "../models/campaign/Campaign";
 import axiosClient from "./AxiosClient";
 import { CampaignCreate } from "../models/campaign/CampaignCreate";
-// import renewalToken from "./RenewalToken";
 
 export default class CampaignService {
 
@@ -12,13 +11,7 @@ export default class CampaignService {
       return data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        // if (error.response?.status === 401 && error.response.data.type) {
-        //   const {status, data} = await renewalToken(error.response.data.type);
-        //   if (status === 201) {
-        //     sessionStorage.setItem('access_token', data.token);
-        //     return this.getCampaigns();
-        //   }
-        // }
+
         return [];
       } 
       return [];

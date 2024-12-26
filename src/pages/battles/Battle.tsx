@@ -8,7 +8,7 @@ export default function BattlePage() {
 
     const params = useParams();
     const navigate = useNavigate();
-    const [battleId, setBattleId] = useState<number>();
+    const [ battleId, setBattleId] = useState<number>();
     const [ battle, setBattle] = useState<Battle>();
 
 
@@ -24,6 +24,10 @@ export default function BattlePage() {
     const goToBattleInit = (): void => {
         navigate(`/battles/${battleId}/initialize`);
     }
+
+    const goToBattleList = (): void => {
+        navigate(`/campaigns/${battle?.campaignId}`);
+    }
     
     useEffect(() => {
         if (params.battleId !== undefined && parseInt(params.battleId)) {
@@ -37,6 +41,7 @@ export default function BattlePage() {
     return (
         <>
         <h1>TODO</h1>
+        <button className="dnd-btn" onClick={goToBattleList}>Back to Battle List</button>
         { battle?.turn === 0 && 
         <>
             <h1>Initialize your battle !</h1>

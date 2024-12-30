@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Battle } from "../../models/battle/Battle"
+import { BattlePreview } from "../../models/battle/BattlePreview"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan, faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import './BattleCard.css'
@@ -10,13 +10,13 @@ import ConfirmModal from "../confirm-modal/ConfirmModal";
 
 
 type Props = {
-  battle: Battle,
+  battle: BattlePreview,
   onUpdate: (params: number) => Promise<void>
 };
 
 export default function BattleCard(props:Props) {
 
-  const [battle, setBattle] = useState<Battle>(props.battle);
+  const [battle, setBattle] = useState<BattlePreview>(props.battle);
   const [isInFocus, setIsInFocus] = useState<boolean>(false);
   const [isInEdition, setIsInEdition] = useState<boolean>(false);
   const [nameIsValid, setNameIsValid] = useState<boolean>(true);
@@ -48,7 +48,7 @@ export default function BattleCard(props:Props) {
 
   const deleteBattle = async (): Promise<void> => {
     await BattleService.deleteBattle(battle.battleId);
-    props.onUpdate(battle.campaignId);
+    props.onUpdate(battle.campaignId!);
   }
 
   const openModal = (): void => {
@@ -66,7 +66,7 @@ export default function BattleCard(props:Props) {
     if (nameIsValid) {
       await BattleService.updateBattle(battle);
     }
-    props.onUpdate(battle.campaignId);
+    props.onUpdate(battle.campaignId!);
     toggleEdition();
   }
 

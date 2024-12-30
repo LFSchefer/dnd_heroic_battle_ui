@@ -1,3 +1,4 @@
+
 export type MonsterPreview = {
     monsterId: number,
     monsterName: string,

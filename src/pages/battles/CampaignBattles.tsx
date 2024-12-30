@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import { FormattedMessage } from "react-intl";
 import BattleService from "../../services/BattleService";
-import { Battle } from "../../models/battle/Battle";
+import { BattlePreview } from "../../models/battle/BattlePreview";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faPlus, faX } from "@fortawesome/free-solid-svg-icons";
 import { BattleCreate } from "../../models/battle/BattleCreate";
@@ -13,7 +13,7 @@ export default function CampaignBattles() {
   const params = useParams();
   const navigate = useNavigate();
   const [campaignId, setCampaignId] = useState<number>(0)
-  const [battles, setBattles] = useState<Battle[]>([])
+  const [battles, setBattles] = useState<BattlePreview[]>([])
   const [isBattleCreation, setIsBattleCreation] = useState<boolean>(false);
   const [nameIsValid, setNameIsValid] = useState<boolean>(false);
   const [newBattle, setNewBattle] = useState<BattleCreate>();
@@ -23,7 +23,7 @@ export default function CampaignBattles() {
   },[navigate])
 
   const getBattles = useCallback(async (id:number): Promise<void> => {
-    const data: Battle[] = await BattleService.getAllByCampaignId(id);
+    const data: BattlePreview[] = await BattleService.getAllByCampaignId(id);
     setBattles(data);
   },[])
 

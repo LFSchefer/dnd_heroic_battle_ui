@@ -82,7 +82,7 @@ export default function MonsterSearch(props: Props) {
 
     const openCreation = (monsterId: number) => {
         setCreationModalIsOpen(true);
-        setSelectMonster(monsterViews.filter(m => m.monsterId === monsterId)[0]);
+        setSelectMonster(monsterViews.filter(m => m.modelId === monsterId)[0]);
     }
 
     const closeModal = () => {
@@ -123,8 +123,8 @@ export default function MonsterSearch(props: Props) {
                     <tbody>
                         {monsterViews.map( (monster) => {
                             return <MonsterSearchResult 
-                                    key={monster.monsterId} 
-                                    monsterId={monster.monsterId}
+                                    key={monster.modelId} 
+                                    monsterId={monster.modelId}
                                     monsterName={monster.monsterName}
                                     challenge={monster.challengeRating}
                                     handleAdd={openCreation}

@@ -40,7 +40,7 @@ export default function AddBattleMonsterModal(props: Props) {
                     </form>
                     <div className="flex justify-around">
                         <button className="dnd-btn" onClick={close}><FontAwesomeIcon icon={faXmark} style={{color: "#ffffff",}} size="lg"/></button>
-                        <button className="dnd-btn" onClick={e => save(monster.monsterId, customName)}><FontAwesomeIcon icon={faCheck} style={{color: "#ffffff",}} size="lg"/></button>
+                        <button className="dnd-btn" onClick={e => save(monster.modelId, customName)}><FontAwesomeIcon icon={faCheck} style={{color: "#ffffff",}} size="lg"/></button>
                     </div>
                 </div>
             </div>

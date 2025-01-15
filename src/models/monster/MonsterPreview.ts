@@ -1,6 +1,6 @@
 
 export type MonsterPreview = {
-    monsterId: number,
+    modelId: number,
     monsterName: string,
     challengeRating: number,
 }

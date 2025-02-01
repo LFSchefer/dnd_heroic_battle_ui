@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { MonsterPreview } from "../../models/monster/MonsterPreview";
-import MonsterService from "../../services/MonsterService";
+import MonsterModelService from "../../services/MonsterModelService";
 import { SearchInput } from "../../models/monster/SearchInput";
 import MonsterSearchResult from "../monster-search-result/MonsterSearchResult";
 import AddBattleMonsterModal from "../add-battle-monster-modal/AddBattleMonsterModal";
@@ -8,14 +8,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FormattedMessage } from "react-intl";
 import { useParams } from "react-router";
-import BattleMonsterService from "../../services/BattleMonsterService";
+import MonsterService from "../../services/MonsterService";
 
 type Props = {
     updateBattle:() => void
 }
 
 
-export default function MonsterSearch(props: Props) {
+export default function MonsterModelSearch(props: Props) {
 
     const {updateBattle} = props;
 
@@ -33,7 +33,7 @@ export default function MonsterSearch(props: Props) {
     const [selectMonster, setSelectMonster] = useState<MonsterPreview | null>(null)
 
     const getMonsterPreviews = useCallback( async () => {
-        const response = await MonsterService.getMonsterPreview(searchInput);
+        const response = await MonsterModelService.getMonsterPreview(searchInput);
         setMonsterViews(response?.result!);
         setTotalPages(response?.totalPages!);
     },[searchInput])
@@ -90,7 +90,7 @@ export default function MonsterSearch(props: Props) {
     }
 
     const saveBattleMonster = async (id: number, name: string) => {
-        await BattleMonsterService.createBattleMonster(id, name, battleId);
+        await MonsterService.createBattleMonster(id, name.trim(), battleId);
         closeModal();
         updateBattle();
     }

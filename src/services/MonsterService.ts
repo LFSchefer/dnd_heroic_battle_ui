@@ -1,17 +1,14 @@
-import { SearchInput } from "../models/monster/SearchInput";
-import { SearchResult } from "../models/monster/SearchResult";
 import axiosClient from "./AxiosClient"
 
 export default class MonsterService {
-
-    static getMonsterPreview = async (searchInput: SearchInput): Promise<SearchResult | undefined> => {
+   
+   static createBattleMonster = async(monsterId: number, name: string, battleId: number): Promise<void> => {
         try {
-            const {data} = await axiosClient.get("/monsters", 
-                { params: {name: searchInput.name , limit: searchInput.limit, page: searchInput.page } })
-            return data;
+            const data = {monsterId, name, battleId}
+            await axiosClient.post("/monsters", data );
         } catch (error) {
-            
+            console.log(error);
+            return Promise.reject(error)
         }
-    }
-
+   }
 }

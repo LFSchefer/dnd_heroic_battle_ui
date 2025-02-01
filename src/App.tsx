@@ -8,15 +8,15 @@ import French from './lang/fr.json';
 const local = navigator.language
 
 let lang: any;
-if (local==="en-EN") {
-   lang = English;
-} else if (local === "fr-FR") {
-       lang = French;
+if (local==="fr-FR") {
+  lang = French;
+} else  {
+  lang = English;
 }
 
 function App() {
   return (
-    <IntlProvider locale={local} defaultLocale='en' messages={lang}>
+    <IntlProvider locale={local} defaultLocale='en-US' messages={lang}>
       <div className="App">
         <RouterProvider router={router}></RouterProvider>
       </div>

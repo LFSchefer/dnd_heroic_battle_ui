@@ -44,5 +44,8 @@
   "page": "page",
   "backToBattleList": "Back to battle list",
   "backToBattle": "Back to battle",
-  "details": "details"
+  "details": "details",
+  "currentHitPoints": "Current Hit Points",
+  "maxHitPoints": "Maximum Hit Points",
+  "whenToRollYourself": "When to roll yourself ?"
 }

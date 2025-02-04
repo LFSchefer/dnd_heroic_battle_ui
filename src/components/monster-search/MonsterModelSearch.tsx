@@ -3,7 +3,7 @@ import { MonsterPreview } from "../../models/monster/MonsterPreview";
 import MonsterModelService from "../../services/MonsterModelService";
 import { SearchInput } from "../../models/monster/SearchInput";
 import MonsterSearchResult from "../monster-search-result/MonsterSearchResult";
-import AddBattleMonsterModal from "../add-battle-monster-modal/AddBattleMonsterModal";
+import AddBattleMonsterModal from "../add-battle-monster-modal/AddMonsterModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FormattedMessage } from "react-intl";
@@ -134,7 +134,7 @@ export default function MonsterModelSearch(props: Props) {
                 </table>
                 <AddBattleMonsterModal
                 isOpen={creationModalIsOpen}
-                monster={selectMonster!}
+                monsterId={selectMonster?.modelId}
                 close={closeModal}
                 save={saveBattleMonster}
                 />

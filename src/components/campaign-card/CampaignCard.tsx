@@ -38,7 +38,6 @@ export default function CampaignCard({campaignProps, onUpdate}:Props) {
   };
 
   const updateState = (input: string): void => {
-    // TODO validation unique name ?
     setNameIsValid(CampaignService.isValid(input));
     setCampaign( prev => {
       return { ...prev,

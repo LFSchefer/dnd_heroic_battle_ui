@@ -47,5 +47,8 @@
   "details": "details",
   "currentHitPoints": "Current Hit Points",
   "maxHitPoints": "Maximum Hit Points",
-  "whenToRollYourself": "When to roll yourself ?"
+  "wantToRollYourself": "Want to roll yourself ?",
+  "nameBlank": "Name can't be blank",
+  "currentHpValid": "Current HP can't be > Max HP",
+  "maxHpValid": "Hp must be > 0"
 }

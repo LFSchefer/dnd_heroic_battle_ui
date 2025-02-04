@@ -89,8 +89,8 @@ export default function MonsterModelSearch(props: Props) {
         setCreationModalIsOpen(false);
     }
 
-    const saveBattleMonster = async (id: number, name: string) => {
-        await MonsterService.createBattleMonster(id, name.trim(), battleId);
+    const saveBattleMonster = async (id: number, name: string, currentHitPoints: number, maxHitPoints: number) => {
+        await MonsterService.createBattleMonster(id, name.trim(), currentHitPoints, maxHitPoints, battleId);
         closeModal();
         updateBattle();
     }

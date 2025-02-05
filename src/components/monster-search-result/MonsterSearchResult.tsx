@@ -8,21 +8,19 @@ type Props = {
     monsterName: string,
     challenge: number,
     handleAdd: (params: number) => void;
+    handleDetail: (params: number) => void;
 }
 
 export default function MonsterSearchResult(props: Props) {
 
-    const {monsterId, monsterName, challenge, handleAdd} = props;
-
-    const showDetails = () => {
-    };
+    const {monsterId, monsterName, challenge, handleAdd, handleDetail} = props;
 
     return (
         <>
         <tr>
             <th>{monsterName}</th>
             <th>{challenge}</th>
-            <th className="link" onClick={showDetails}><FormattedMessage id="details"/></th>
+            <th className="link" onClick={e => handleDetail(monsterId)}><FormattedMessage id="details"/></th>
             <th><button className="dnd-btn-small" onClick={e => handleAdd(monsterId)}><FontAwesomeIcon icon={faPlus} style={{color: "#ffffff",}} size="lg"/></button></th>
         </tr>
         </>

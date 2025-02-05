@@ -5,7 +5,7 @@ import axiosClient from "./AxiosClient"
 
 export default class MonsterModelService {
 
-    static getMonsterPreview = async (searchInput: SearchInput): Promise<SearchResult | undefined> => {
+    static getMonsterPreview = async (searchInput: SearchInput): Promise< SearchResult | undefined > => {
         try {
             const {data} = await axiosClient.get("/monster-models", 
                 { params: {name: searchInput.name , limit: searchInput.limit, page: searchInput.page } })
@@ -15,7 +15,7 @@ export default class MonsterModelService {
         }
     }
 
-    static getMonsterPreviewCreation = async (modelId: number): Promise< MonsterPreviewCreation | undefined> => {
+    static getMonsterPreviewCreation = async (modelId: number): Promise< MonsterPreviewCreation | undefined > => {
         try {
             const {data} = await axiosClient.get(`/monster-models/${modelId}`)
             return data;

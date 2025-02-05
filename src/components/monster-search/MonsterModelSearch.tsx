@@ -5,10 +5,11 @@ import { SearchInput } from "../../models/monster/SearchInput";
 import MonsterSearchResult from "../monster-search-result/MonsterSearchResult";
 import AddBattleMonsterModal from "../add-battle-monster-modal/AddMonsterModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faArrowLeft, faL } from '@fortawesome/free-solid-svg-icons';
 import { FormattedMessage } from "react-intl";
 import { useParams } from "react-router";
 import MonsterService from "../../services/MonsterService";
+import MonsterModelDetailModal from "../monster-model-detail-modal/MonsterModelDetailModal";
 
 type Props = {
     updateBattle:() => void
@@ -22,15 +23,16 @@ export default function MonsterModelSearch(props: Props) {
     const params = useParams();
     const battleId = +params?.battleId!;
 
-    const [monsterViews, setMonsterViews] = useState<MonsterPreview[]>([]);
     const [creationModalIsOpen, setCreationModalIsOpen] = useState<boolean>(false);
+    const [detailModalIsOpen, setDetailModalIsOpen] = useState<boolean>(false);
+    const [monsterViews, setMonsterViews] = useState<MonsterPreview[]>([]);
+    const [totalpages, setTotalPages] = useState<number>(1);
+    const [selectMonster, setSelectMonster] = useState<MonsterPreview | null>(null)
     const [searchInput, setSearchInput] = useState<SearchInput>({
         name: "",
         limit: 10,
         page: 1
     });
-    const [totalpages, setTotalPages] = useState<number>(1);
-    const [selectMonster, setSelectMonster] = useState<MonsterPreview | null>(null)
 
     const getMonsterPreviews = useCallback( async () => {
         const response = await MonsterModelService.getMonsterPreview(searchInput);
@@ -85,13 +87,23 @@ export default function MonsterModelSearch(props: Props) {
         setSelectMonster(monsterViews.filter(m => m.modelId === monsterId)[0]);
     }
 
-    const closeModal = () => {
+    const openDetail = (monsterId: number) => {
+        setDetailModalIsOpen(true);
+        setSelectMonster(monsterViews.filter(m => m.modelId === monsterId)[0]);
+    }
+
+    const closeDetailModal = () => {
+        setDetailModalIsOpen(false);
+    }
+
+
+    const closeCreationModal = () => {
         setCreationModalIsOpen(false);
     }
 
-    const saveBattleMonster = async (id: number, name: string, currentHitPoints: number, maxHitPoints: number) => {
+    const saveMonster = async (id: number, name: string, currentHitPoints: number, maxHitPoints: number) => {
         await MonsterService.createBattleMonster(id, name.trim(), currentHitPoints, maxHitPoints, battleId);
-        closeModal();
+        closeCreationModal();
         updateBattle();
     }
 
@@ -128,6 +140,7 @@ export default function MonsterModelSearch(props: Props) {
                                     monsterName={monster.monsterName}
                                     challenge={monster.challengeRating}
                                     handleAdd={openCreation}
+                                    handleDetail={openDetail}
                                     />
                         })}
                     </tbody>
@@ -135,8 +148,13 @@ export default function MonsterModelSearch(props: Props) {
                 <AddBattleMonsterModal
                 isOpen={creationModalIsOpen}
                 monsterId={selectMonster?.modelId}
-                close={closeModal}
-                save={saveBattleMonster}
+                close={closeCreationModal}
+                save={saveMonster}
+                />
+                <MonsterModelDetailModal
+                isOpen={detailModalIsOpen}
+                monsterId={selectMonster?.modelId}
+                close={closeDetailModal}
                 />
             </div>
             <div className="page-navigation flex">

@@ -5,7 +5,7 @@ import { SearchInput } from "../../models/monster/SearchInput";
 import MonsterSearchResult from "../monster-search-result/MonsterSearchResult";
 import AddBattleMonsterModal from "../add-battle-monster-modal/AddMonsterModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faArrowLeft, faL } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FormattedMessage } from "react-intl";
 import { useParams } from "react-router";
 import MonsterService from "../../services/MonsterService";
@@ -94,11 +94,13 @@ export default function MonsterModelSearch(props: Props) {
 
     const closeDetailModal = () => {
         setDetailModalIsOpen(false);
+        setSelectMonster(null);
     }
 
 
     const closeCreationModal = () => {
         setCreationModalIsOpen(false);
+        setSelectMonster(null);
     }
 
     const saveMonster = async (id: number, name: string, currentHitPoints: number, maxHitPoints: number) => {

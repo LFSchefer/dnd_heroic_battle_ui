@@ -1,0 +1,23 @@
+.detail-modal {
+    border: 1px solid rgba(0, 0, 0, 0.349);
+    padding: 1rem 2rem;
+    position: fixed;
+    z-index: 2;
+    left: 50%;
+    top: 30%;
+    width: 300px;
+    margin-left: -150px;
+    margin-top: -75px;
+    overflow: auto;
+    background-color: rgb(236, 235, 224);
+}
+
+.bg-modal {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.295);
+}

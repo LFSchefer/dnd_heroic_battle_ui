@@ -3,9 +3,10 @@
     padding: 1rem 2rem;
     position: fixed;
     z-index: 2;
-    left: 50%;
-    top: 30%;
-    width: 300px;
+    left: 45%;
+    top: 20%;
+    width: 600px;
+    height: 600px;
     margin-left: -150px;
     margin-top: -75px;
     overflow: auto;
@@ -20,4 +21,11 @@
     left: 0;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.295);
+}
+
+.close-detail-modal {
+    position: absolute;
+    top: 12%;
+    right: 39%;
+    z-index: 3;
 }

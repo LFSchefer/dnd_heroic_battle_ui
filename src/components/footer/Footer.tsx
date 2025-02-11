@@ -1,14 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./Footer.css"
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons"
+import { FormattedMessage } from "react-intl"
 
 export default function Footer() {
 
     return (
         <div className="footer">
             <div className="flex justify-between min-h-full items-center mx-4">
-                <div className="items-center">Dnd Heroic Battle v{process.env.REACT_APP_VERSION}</div>
-                <div>CGU</div>
+                <div className="items-center"><FormattedMessage id="appVersion"/>{process.env.REACT_APP_VERSION}</div>
+                <div><FormattedMessage id="cgu"/></div>
                 <div className="icons flex">
                     <div className="mr-4">
                         <a href="https://github.com/LFSchefer/dnd_heroic_battle/wiki" target="_blank" rel="noreferrer">

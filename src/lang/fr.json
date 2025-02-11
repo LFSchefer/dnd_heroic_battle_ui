@@ -78,5 +78,7 @@
   "xp": "Xp",
   "dndOriginal": "Dnd original monster",
   "passivePerception": "Passive perception",
-  "darkvision": "Darvision"
+  "darkvision": "Darvision",
+  "cgu": "CGU",
+  "appVersion": "Dnd Heroic Battle v"
 }

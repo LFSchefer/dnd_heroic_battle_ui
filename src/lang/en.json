@@ -80,5 +80,9 @@
   "passivePerception": "Passive perception",
   "darkvision": "Darvision",
   "cgu": "CGU",
-  "appVersion": "Dnd Heroic Battle v"
-}
+  "appVersion": "Dnd Heroic Battle v",
+  "presentationText": "Welcome to our application, specially designed for Dungeons and Dragons game masters! This end-of-study project for an Application Designer Developer aims to simplify and enhance the combat experience in your role-playing games.",
+  "presentationTextDetail1": "Monster Management: Create, edit, and track your characters' and monsters' statistics in real-time.",
+  "presentationTextDetail2": "Initiative and Combat Turns: Easily manage turn order with an intuitive initiative system.",
+  "presentationTextDetail3": "Automated Calculations: Let the application handle damage calculations, dice rolls, and modifiers for you.",
+  "presentationTextDetail4": "User-Friendly Interface: Enjoy a clear and ergonomic interface designed to optimize your gaming experience."}

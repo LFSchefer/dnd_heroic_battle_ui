@@ -44,7 +44,6 @@ export default function Campaigns() {
   };
 
   const updateNewCampaign = (params: string): void => {
-    // TODO validation unique name ?
     setNameIsValid(CampaignService.isValid(params));
     setNewCampaign({campaignName: params});
   };

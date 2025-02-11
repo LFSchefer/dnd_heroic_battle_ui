@@ -103,8 +103,8 @@ export default function MonsterModelSearch(props: Props) {
         setSelectMonster(null);
     }
 
-    const saveMonster = async (id: number, name: string, currentHitPoints: number, maxHitPoints: number) => {
-        await MonsterService.createBattleMonster(id, name.trim(), currentHitPoints, maxHitPoints, battleId);
+    const saveMonster = async (modelId: number, name: string, currentHitPoints: number, maxHitPoints: number) => {
+        await MonsterService.createBattleMonster(modelId, name.trim(), currentHitPoints, maxHitPoints, battleId);
         closeCreationModal();
         updateBattle();
     }
@@ -138,7 +138,7 @@ export default function MonsterModelSearch(props: Props) {
                         {monsterViews.map( (monster) => {
                             return <MonsterSearchResult 
                                     key={monster.modelId} 
-                                    monsterId={monster.modelId}
+                                    modelId={monster.modelId}
                                     monsterName={monster.monsterName}
                                     challenge={monster.challengeRating}
                                     handleAdd={openCreation}
@@ -149,13 +149,13 @@ export default function MonsterModelSearch(props: Props) {
                 </table>
                 <AddBattleMonsterModal
                 isOpen={creationModalIsOpen}
-                monsterId={selectMonster?.modelId}
+                modelId={selectMonster?.modelId}
                 close={closeCreationModal}
                 save={saveMonster}
                 />
                 <MonsterModelDetailModal
                 isOpen={detailModalIsOpen}
-                monsterId={selectMonster?.modelId}
+                modelId={selectMonster?.modelId}
                 close={closeDetailModal}
                 />
             </div>

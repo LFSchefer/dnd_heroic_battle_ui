@@ -4,7 +4,7 @@ import { FormattedMessage } from "react-intl";
 
 
 type Props = {
-    monsterId: number,
+    modelId: number,
     monsterName: string,
     challenge: number,
     handleAdd: (params: number) => void;
@@ -13,15 +13,15 @@ type Props = {
 
 export default function MonsterSearchResult(props: Props) {
 
-    const {monsterId, monsterName, challenge, handleAdd, handleDetail} = props;
+    const {modelId, monsterName, challenge, handleAdd, handleDetail} = props;
 
     return (
         <>
         <tr>
             <th className="font-semibold text-left">{monsterName}</th>
             <th className="font-semibold">{challenge}</th>
-            <th className="link font-semibold" onClick={e => handleDetail(monsterId)}><FormattedMessage id="details"/></th>
-            <th><button className="dnd-btn-small" onClick={e => handleAdd(monsterId)}><FontAwesomeIcon icon={faPlus} style={{color: "#ffffff",}} size="lg"/></button></th>
+            <th className="link font-semibold" onClick={e => handleDetail(modelId)}><FormattedMessage id="details"/></th>
+            <th><button className="dnd-btn-small" onClick={e => handleAdd(modelId)}><FontAwesomeIcon icon={faPlus} style={{color: "#ffffff",}} size="lg"/></button></th>
         </tr>
         </>
     )

@@ -8,25 +8,25 @@ import { FormattedMessage } from "react-intl"
 
 type Props = {
     isOpen: boolean,
-    monsterId: number | undefined,
+    modelId: number | undefined,
     close: () => void
 }
 
 export default function MonsterModelDetailModal(props: Props) {
 
-    const {isOpen, monsterId, close} = props;
+    const {isOpen, modelId, close} = props;
     const [monsterDetail, setMonsterDetail] = useState< MonsterModelDetail | undefined >(undefined);
 
     const fetchDetails = useCallback( async() => {
-        const data = await MonsterModelService.getMonsterDetails(monsterId!);
+        const data = await MonsterModelService.getMonsterDetails(modelId!);
         setMonsterDetail(data);
-    },[monsterId]);
+    },[modelId]);
 
     useEffect(() => {
-        if (monsterId && isOpen) {
+        if (modelId && isOpen) {
             fetchDetails();
         }
-    },[fetchDetails, isOpen, monsterId]);
+    },[fetchDetails, isOpen, modelId]);
 
     return (
         <>

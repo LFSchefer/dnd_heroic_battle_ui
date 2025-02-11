@@ -7,14 +7,14 @@ import MonsterModelService from "../../services/MonsterModelService";
 
 type Props = {
     isOpen: boolean,
-    monsterId: number | undefined,
+    modelId: number | undefined,
     close: () => void,
     save: (id: number, name: string, currentHitPoints: number, maxHitPoints: number) => void
 }
 
 export default function AddMonsterModal(props: Props) {
 
-    const {isOpen, monsterId, close, save} = props;
+    const {isOpen, modelId, close, save} = props;
     const [customName, setCustomName] = useState<string>("");
     const [maxHitPoints, setMaxHitPoints] = useState<number>(0);
     const [hitPointsRoll, setHitPointsRoll] = useState<string>("");
@@ -26,17 +26,17 @@ export default function AddMonsterModal(props: Props) {
     });
 
     const getModel = useCallback( async(): Promise<void> =>  {
-        const data = await MonsterModelService.getMonsterPreviewCreation(monsterId!);
+        const data = await MonsterModelService.getMonsterPreviewCreation(modelId!);
         setCustomName(data?.monsterName!)
         setMaxHitPoints(data?.hitPoints!)
         setHitPointsRoll(data?.hitPointsRoll!)
-    },[monsterId])
+    },[modelId])
 
     useEffect(() => {
-        if (isOpen && monsterId) {
+        if (isOpen && modelId) {
             getModel()
         }
-    },[getModel, isOpen, monsterId])
+    },[getModel, isOpen, modelId])
 
     useEffect(() => {
         setCurrentHitPoints(maxHitPoints)
@@ -137,7 +137,7 @@ export default function AddMonsterModal(props: Props) {
                     <div className="flex justify-around">
                         <button className="dnd-btn" onClick={close}><FontAwesomeIcon icon={faXmark} style={{color: "#ffffff",}} size="lg"/></button>
                         {inputsAreValid.name && inputsAreValid.currentHitPoints && inputsAreValid.maxHitPoints &&
-                        <button className="dnd-btn" onClick={e => save(monsterId!, customName, currentHitPoints, maxHitPoints)}><FontAwesomeIcon icon={faCheck} style={{color: "#ffffff",}} size="lg"/></button>
+                        <button className="dnd-btn" onClick={e => save(modelId!, customName, currentHitPoints, maxHitPoints)}><FontAwesomeIcon icon={faCheck} style={{color: "#ffffff",}} size="lg"/></button>
                         }
                     </div>
                 </div>

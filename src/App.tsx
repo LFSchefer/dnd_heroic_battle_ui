@@ -4,6 +4,7 @@ import { router } from './router';
 import { IntlProvider } from 'react-intl';
 import English from './lang/en.json';
 import French from './lang/fr.json';
+import Footer from './components/footer/Footer';
 
 const local = navigator.language
 
@@ -20,6 +21,7 @@ function App() {
       <div className="App">
         <RouterProvider router={router}></RouterProvider>
       </div>
+      <Footer/>
     </IntlProvider>
   );
 }

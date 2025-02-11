@@ -4,6 +4,7 @@ import "./MonsterModelDetailModal.css"
 import { useCallback, useEffect, useState } from "react"
 import { MonsterModelDetail } from "../../models/monster/MonsterDetail"
 import MonsterModelService from "../../services/MonsterModelService"
+import { FormattedMessage } from "react-intl"
 
 type Props = {
     isOpen: boolean,
@@ -27,15 +28,13 @@ export default function MonsterModelDetailModal(props: Props) {
         }
     },[fetchDetails, isOpen, monsterId]);
 
-    console.log(monsterDetail)
-
     return (
         <>
         {isOpen && 
         <div className="bg-modal">
-            <button className="dnd-btn close-detail-modal" onClick={close}><FontAwesomeIcon icon={faXmark} style={{color: "#ffffff",}} size="lg"/></button>
             <div className="detail-modal w-full rounded-lg shadow-md py-4 px-4 m-5 w-1/4">
-                <div className="space-y-8">
+                <div className="space-y-8 relative">
+                    <button className="dnd-btn close-detail-modal" onClick={close}><FontAwesomeIcon icon={faXmark} style={{color: "#ffffff",}} size="lg"/></button>
                     {monsterDetail && 
                     <div>
                         {monsterDetail.imageUrl && 
@@ -43,56 +42,56 @@ export default function MonsterModelDetailModal(props: Props) {
                         }
                         <h2 className="font-bold">{monsterDetail.monsterName}</h2>
                         <div className="">
-                            <p className="border-b-2 border-slate-950/50 mt-4 font-semibold">Type</p>
+                            <p className="border-b-2 border-slate-950/50 mt-4 font-semibold"><FormattedMessage id="type"/></p>
                             <div className="flex justify-around">
                                 <p>{monsterDetail.size}</p>
                                 <p>{monsterDetail.monsterType}</p>
                             </div>
-                            <p className="border-b-2 border-slate-950/50 mt-4 font-semibold">Armor</p>
+                            <p className="border-b-2 border-slate-950/50 mt-4 font-semibold"><FormattedMessage id="armor"/></p>
                             <div className="flex justify-around">
                                 <p>{monsterDetail.armorClass}</p>
                                 <p>{monsterDetail.armorType}</p>
                             </div>
-                            <p className="border-b-2 border-slate-950/50 mt-4 font-semibold">Hit points</p>
+                            <p className="border-b-2 border-slate-950/50 mt-4 font-semibold"><FormattedMessage id="hitPoints"/></p>
                             <div className="flex justify-around">
                                 <p>{monsterDetail.hitPoints}</p>
                                 <p>{monsterDetail.hitPointsRoll}</p>
                             </div>
-                            <p className="border-b-2 border-slate-950/50 mt-4 font-semibold">Stats</p>
+                            <p className="border-b-2 border-slate-950/50 mt-4 font-semibold"><FormattedMessage id="stats"/></p>
                             <div className="flex justify-around">
                                 <div>
-                                    <p>Strength: {monsterDetail.strength}</p>
-                                    <p>Constitution: {monsterDetail.constitution}</p>
-                                    <p>Wisdom: {monsterDetail.wisdom}</p>
+                                    <p><FormattedMessage id="strength"/>: {monsterDetail.strength}</p>
+                                    <p><FormattedMessage id="constitution"/>: {monsterDetail.constitution}</p>
+                                    <p><FormattedMessage id="wisdom"/>: {monsterDetail.wisdom}</p>
                                 </div>
                                 <div>
-                                    <p>Dexterity: {monsterDetail.dexterity}</p>
-                                    <p>Intelligence: {monsterDetail.intelligence}</p>
-                                    <p>Charisma: {monsterDetail.charisma}</p>
+                                    <p><FormattedMessage id="dexterity"/>: {monsterDetail.dexterity}</p>
+                                    <p><FormattedMessage id="intelligence"/>: {monsterDetail.intelligence}</p>
+                                    <p><FormattedMessage id="charisma"/>: {monsterDetail.charisma}</p>
                                 </div>
                             </div>
-                            <p className="border-b-2 border-slate-950/50 mt-4 font-semibold">Perception</p>
+                            <p className="border-b-2 border-slate-950/50 mt-4 font-semibold"><FormattedMessage id="perception"/></p>
                             <div className="flex justify-around">
-                                <p>Passive perception: {monsterDetail.passivePerception}</p>
+                                <p><FormattedMessage id="passivePerception"/>: {monsterDetail.passivePerception}</p>
                                 {monsterDetail.darkvision ?
-                                <p>Darkvision: {monsterDetail.darkvision} ft</p> : <p>Drakvision: no</p>
+                                <p><FormattedMessage id="darkvision"/>: {monsterDetail.darkvision} ft</p> : <p>Drakvision: no</p>
                                 }
                             </div>
-                            <p className="border-b-2 border-slate-950/50 mt-4 font-semibold">Speed</p>
+                            <p className="border-b-2 border-slate-950/50 mt-4 font-semibold"><FormattedMessage id="speed"/></p>
                             <div className="flex justify-around">
                                 {monsterDetail.walk &&
-                                <p>Walk: {monsterDetail.walk} ft</p>
+                                <p><FormattedMessage id="walk"/>: {monsterDetail.walk} ft</p>
                                 }
                                 {monsterDetail.fly &&
-                                <p>Fly: {monsterDetail.fly} ft</p>
+                                <p><FormattedMessage id="fly"/>: {monsterDetail.fly} ft</p>
                                 }
                                 {monsterDetail.swim &&
-                                <p>Swim: {monsterDetail.swim} ft</p>
+                                <p><FormattedMessage id="swim"/>: {monsterDetail.swim} ft</p>
                                 }
                             </div>
                             {monsterDetail.languages.length > 0 &&
                             <div>
-                                <p className="border-b-2 border-slate-950/50 mt-4 font-semibold">Languages</p>
+                                <p className="border-b-2 border-slate-950/50 mt-4 font-semibold"><FormattedMessage id="languages"/></p>
                                 <div className="grid grid-cols-2 gap-4">
                                     {monsterDetail.languages.map((language) => {
                                         return <p>{language}</p>
@@ -102,7 +101,7 @@ export default function MonsterModelDetailModal(props: Props) {
                             }
                             {monsterDetail.conditionsImmunities.length > 0 &&
                             <div>
-                                <p className="border-b-2 border-slate-950/50 mt-4 font-semibold">Condition immunities</p>
+                                <p className="border-b-2 border-slate-950/50 mt-4 font-semibold"><FormattedMessage id="conditionImmunities"/></p>
                                 <div className="grid grid-cols-2 gap-4">
                                     {monsterDetail.conditionsImmunities.map((condition) => {
                                             return <p>{condition}</p>
@@ -112,7 +111,7 @@ export default function MonsterModelDetailModal(props: Props) {
                             }
                             {monsterDetail.monsterVulnerabilities.length > 0 &&
                             <div>
-                                <p className="border-b-2 border-slate-950/50 mt-4 font-semibold">Vulnerabilities</p>
+                                <p className="border-b-2 border-slate-950/50 mt-4 font-semibold"><FormattedMessage id="vulnerabilities"/></p>
                                 <div className="grid grid-cols-2 gap-4">
                                     {monsterDetail.monsterVulnerabilities.map((vulnarability) => {
                                         return <p>{vulnarability}</p>
@@ -122,7 +121,7 @@ export default function MonsterModelDetailModal(props: Props) {
                             }
                             {monsterDetail.monsterResistances.length > 0 &&
                             <div>
-                                <p className="border-b-2 border-slate-950/50 mt-4 font-semibold">Resistances</p>
+                                <p className="border-b-2 border-slate-950/50 mt-4 font-semibold"><FormattedMessage id="resistances"/></p>
                                 <div className="grid grid-cols-2 gap-4">
                                     {monsterDetail.monsterResistances.map((resistance) => {
                                         return <p>{resistance}</p>
@@ -132,7 +131,7 @@ export default function MonsterModelDetailModal(props: Props) {
                             }
                             {monsterDetail.monsterImunities.length > 0 &&
                             <div>
-                                <p className="border-b-2 border-slate-950/50 mt-4 font-semibold">Immunities</p>
+                                <p className="border-b-2 border-slate-950/50 mt-4 font-semibold"><FormattedMessage id="immunities"/></p>
                                 <div className="grid grid-cols-2 gap-4">
                                     {monsterDetail.monsterImunities.map((immunities) => {
                                         return <p>{immunities}</p>
@@ -142,7 +141,7 @@ export default function MonsterModelDetailModal(props: Props) {
                             }
                             {monsterDetail.specialAbilities.length > 0 &&
                             <div>
-                                <p className="border-b-2 border-slate-950/50 mt-4 font-semibold">Special abilities</p>
+                                <p className="border-b-2 border-slate-950/50 mt-4 font-semibold"><FormattedMessage id="specialAbilities"/></p>
                                 <div className="grid grid-cols-2 gap-4">
                                     {monsterDetail.specialAbilities.map((specialAbility) => {
                                         return <p>{specialAbility}</p>
@@ -150,15 +149,15 @@ export default function MonsterModelDetailModal(props: Props) {
                                 </div>
                             </div>
                             }
-                            <p className="border-b-2 border-slate-950/50 mt-4 font-semibold">Other</p>
+                            <p className="border-b-2 border-slate-950/50 mt-4 font-semibold"><FormattedMessage id="other"/></p>
                             <div className="text-left">
                             {monsterDetail.alignment &&
-                            <p>Alignment: {monsterDetail.alignment}</p>
+                            <p><FormattedMessage id="alignment"/>: {monsterDetail.alignment}</p>
                             }
-                            <p>Challenge rating: {monsterDetail.challengeRating}</p>
-                            <p>Xp: {monsterDetail.xp}</p>
+                            <p><FormattedMessage id="challengeRating"/>: {monsterDetail.challengeRating}</p>
+                            <p><FormattedMessage id="xp"/>: {monsterDetail.xp}</p>
                             
-                            <p>Dnd original monster: {monsterDetail.dnd5Native ? "Yes" : "No"}</p>
+                            <p><FormattedMessage id="dndOriginal"/>: {monsterDetail.dnd5Native ? "Yes" : "No"}</p>
                             </div>
                         </div>
                     </div>

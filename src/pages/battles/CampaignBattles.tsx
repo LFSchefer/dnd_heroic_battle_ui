@@ -63,7 +63,7 @@ export default function CampaignBattles() {
     <button onClick={backToCampaigns} className="dnd-btn m-4">
       <FormattedMessage id="backToCampaigns"/>
     </button>
-    <h1>Campaign Battles</h1>
+    <h1><FormattedMessage id="campaignBattles"/> :</h1>
     {!isBattleCreation && 
     <button onClick={toggleBattleCreation} className="dnd-btn m-2">
       <FontAwesomeIcon icon={faPlus} style={{color: "#ffffff",}} size="lg"/> <FormattedMessage id="createNewBattle"/>
@@ -92,7 +92,7 @@ export default function CampaignBattles() {
         })}
       </div>
     )
-    : (<h1><FormattedMessage id="noBattle" /></h1>)
+    : !isBattleCreation && (<h1><FormattedMessage id="noBattle" /></h1>)
     }
     </div>
   )

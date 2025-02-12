@@ -18,10 +18,10 @@ export default function MonsterSearchResult(props: Props) {
     return (
         <>
         <tr>
-            <th className="font-semibold text-left">{monsterName}</th>
-            <th className="font-semibold">{challenge}</th>
-            <th className="link font-semibold" onClick={e => handleDetail(modelId)}><FormattedMessage id="details"/></th>
-            <th><button className="dnd-btn-small" onClick={e => handleAdd(modelId)}><FontAwesomeIcon icon={faPlus} style={{color: "#ffffff",}} size="lg"/></button></th>
+            <th className="text-left border border-slate-700/50 font-medium">{monsterName}</th>
+            <th className="border border-slate-700/50 font-medium">{challenge}</th>
+            <th className="link border border-slate-700/50 font-medium" onClick={e => handleDetail(modelId)}><FormattedMessage id="details"/></th>
+            <th className="border border-slate-700/50"><button className="dnd-btn-small" onClick={e => handleAdd(modelId)}><FontAwesomeIcon icon={faPlus} style={{color: "#ffffff",}} size="lg"/></button></th>
         </tr>
         </>
     )

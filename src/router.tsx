@@ -8,6 +8,7 @@ import Campaigns from "./pages/campaigns/Campaigns";
 import CampaignBattles from "./pages/battles/CampaignBattles";
 import BattlePage from "./pages/battles/Battle";
 import BattleInit from "./pages/battles/BattleInit";
+import Cgu from "./pages/cgu/Cgu";
 
 export const router = createBrowserRouter ([
   {
@@ -17,6 +18,10 @@ export const router = createBrowserRouter ([
   {
     path: "*",
     element: < NotFound/>
+  },
+  {
+    path: "/cgu",
+    element: < Cgu/>
   },
   {
     path: "/sign-in",

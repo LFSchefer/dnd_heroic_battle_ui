@@ -9,6 +9,8 @@
   "createNewCampaign": "Create new campaign",
   "createNewBattle": "Create new battle",
   "campaignNameValidation" : "Must be unique and between 5 and 50 charaters !",
+  "yourCampaigns":"Your Campaigns",
+  "yourBattles":"Your Battles",
   "result": "result:",
   "reset": "Reset",
   "roll": "Roll",

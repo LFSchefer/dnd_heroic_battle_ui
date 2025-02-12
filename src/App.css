@@ -2,12 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+#root {
+  background-color: rgb(240, 240, 235);
+}
+
 .App {
   text-align: center;
   font-family: Livvic ,Roboto, system-ui, -apple-system, Oxygen, Ubuntu ,source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
   background-color: rgb(240, 240, 235);
-  min-height: 95vh;
+  min-height: 100vh;
 }
 
 .link {

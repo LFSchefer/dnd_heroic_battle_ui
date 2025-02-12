@@ -119,7 +119,7 @@ export default function SignUp() {
             </h2>
             </div>
 
-            <div className="mt-10 sm:mx-auto sm:w-7/12">
+            <div className="mt-10 sm:mx-auto sm:w-7/12 max-w-3xl">
             <form className="border rounded-lg border-cyan-800/20 px-8 py-12 bg-sky-600/10 shadow-md" onSubmit={handleSubmit} noValidate>
                 <div className="part-one md:flex md:justify-between">
 
@@ -129,7 +129,7 @@ export default function SignUp() {
                                 < FormattedMessage id="userName"/>
                             </label>
                         </div>
-                    <div className="mt-2">
+                    <div className="mt-2 max-w-96">
                         <input
                         id="user-name"
                         name="userName"
@@ -148,7 +148,7 @@ export default function SignUp() {
                                 < FormattedMessage id="emailAdresse"/>
                             </label>
                         </div>
-                    <div className="mt-2">
+                    <div className="mt-2 max-w-96">
                         <input
                         id="email"
                         name="email"
@@ -172,7 +172,7 @@ export default function SignUp() {
                                 < FormattedMessage id="password"/>
                             </label>
                         </div>
-                        <div className="mt-2">
+                        <div className="mt-2 max-w-96">
                             <input
                             id="password"
                             name="password"
@@ -192,7 +192,7 @@ export default function SignUp() {
                                 < FormattedMessage id="confirmPassword"/>
                             </label>
                         </div>
-                        <div className="mt-2">
+                        <div className="mt-2 max-w-96">
                             <input
                             id="passwordConfirm"
                             name="confirmPassword"

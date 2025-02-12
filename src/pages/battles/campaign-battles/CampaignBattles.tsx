@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import { FormattedMessage } from "react-intl";
-import BattleService from "../../services/BattleService";
-import { BattlePreview } from "../../models/battle/BattlePreview";
+import BattleService from "../../../services/BattleService";
+import { BattlePreview } from "../../../models/battle/BattlePreview";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faPlus, faX } from "@fortawesome/free-solid-svg-icons";
-import { BattleCreate } from "../../models/battle/BattleCreate";
-import BattleCard from "../../components/battle-card/BattleCard";
+import { BattleCreate } from "../../../models/battle/BattleCreate";
+import BattleCard from "../../../components/battle-card/BattleCard";
+import "./CampaignBattles.css"
 
 export default function CampaignBattles() {
 
@@ -78,18 +79,21 @@ export default function CampaignBattles() {
             <button>{validationBtn}</button>
             </>
     }
+    <h2 className="text-2xl font-bold mt-8 mb-4"><FormattedMessage id="yourBattles"/>:</h2>
     { ( campaignId && battles[0] !== undefined ) ? (
-      <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
-        {battles.map( (battle) => {
-          return <div className="card-container flex justify-center content-center" key={battle.battleId}>
-            <BattleCard  battle={{
-            battleId: battle.battleId,
-            battleName: battle.battleName,
-            turn: battle.turn,
-            campaignId: campaignId
-          }} onUpdate={getBattles} />
-          </div>
-        })}
+      <div className="grid-bg border border-slate-700/10 min-h-screen max-w-screen-xl mt-12 mx-auto py-12 rounded-md shadow-lg">
+        <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
+          {battles.map( (battle) => {
+            return <div className="card-container flex justify-center content-center" key={battle.battleId}>
+              <BattleCard  battle={{
+              battleId: battle.battleId,
+              battleName: battle.battleName,
+              turn: battle.turn,
+              campaignId: campaignId
+            }} onUpdate={getBattles} />
+            </div>
+          })}
+        </div>
       </div>
     )
     : !isBattleCreation && (<h1><FormattedMessage id="noBattle" /></h1>)

@@ -110,7 +110,7 @@ export default function MonsterModelSearch(props: Props) {
 
     return (
         <div className="monster-search flex flex-col items-center w-8/12">
-            <div className="search-form border-2 border-neutral-800/10 rounded-md m-4 p-2 bg-blue-200 shadow-md">
+            <div className="search-form border border-neutral-800/10 rounded-md m-4 p-2 bg-blue-200 shadow-md">
                 <form noValidate className="flex justify-around">
                     <div className="monster-name mx-4">
                         <label htmlFor="monster-name" className="mx-2"><FormattedMessage id="search"/></label>
@@ -127,7 +127,7 @@ export default function MonsterModelSearch(props: Props) {
                     </div>
                 </form>
             </div>
-            <div className="result-search border-2 border-neutral-800/10 rounded-md p-6 m-4 bg-blue-200 shadow-md">
+            <div className="result-search border border-neutral-800/10 rounded-md p-6 m-4 bg-blue-200 shadow-md">
                 <table className="border-collapse border border-slate-500">
                     <thead>
                         <tr>

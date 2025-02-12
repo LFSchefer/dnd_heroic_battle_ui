@@ -11,7 +11,7 @@ export default function Footer() {
  }
 
     return (
-        <div className="footer">
+        <div className="footer mt-12">
             <div className="flex justify-between min-h-full items-center mx-4">
                 <div className="items-center"><FormattedMessage id="appVersion"/>{process.env.REACT_APP_VERSION}</div>
                 <div><button onClick={goToCgu}><FormattedMessage id="cgu"/></button></div>

@@ -1,15 +1,22 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router";
+import ProtectedRoute from "./components/protected-route/ProtectedRoute";
 import Home from "./pages/home/Home";
-import Campaigns from "./pages/campaigns/Campaigns";
 import NotFound from "./pages/notfound/NotFound";
-import CampaignBattles from "./pages/battles/CampaignBattles";
 import SignIn from "./pages/signin/SignIn";
 import SignUp from "./pages/signup/SignUp";
+import Campaigns from "./pages/campaigns/Campaigns";
+import CampaignBattles from "./pages/battles/CampaignBattles";
+import BattlePage from "./pages/battles/Battle";
+import BattleInit from "./pages/battles/BattleInit";
 
 export const router = createBrowserRouter ([
   {
     path: "/",
     element: < Home />
+  },
+  {
+    path: "*",
+    element: < NotFound/>
   },
   {
     path: "/sign-in",
@@ -20,15 +27,24 @@ export const router = createBrowserRouter ([
     element: < SignUp />
   },
   {
-    path: "/campaigns",
-    element: < Campaigns />,
+    element:<ProtectedRoute />,
+    children: [
+      {
+        path:"/campaigns",
+        element: <Campaigns/>
+      },
+      {
+        path:"/campaigns/:campaignId",
+        element: < CampaignBattles />
+      },
+      {
+        path:"/battles/:battleId",
+        element: < BattlePage />
+      },
+      {
+        path:"/battles/:battleId/initialize",
+        element: < BattleInit />
+      },
+    ]
   },
-  {
-    path:"/campaigns/:campaignId",
-    element: < CampaignBattles />
-  },
-  {
-    path: "*",
-    element: < NotFound/>
-  }
 ])

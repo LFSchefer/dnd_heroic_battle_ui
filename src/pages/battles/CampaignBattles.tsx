@@ -1,9 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router";
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
 import BattleService from "../../services/BattleService";
-import { Battle } from "../../models/battle/Battle";
+import { BattlePreview } from "../../models/battle/BattlePreview";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faPlus, faX } from "@fortawesome/free-solid-svg-icons";
 import { BattleCreate } from "../../models/battle/BattleCreate";
@@ -14,7 +13,7 @@ export default function CampaignBattles() {
   const params = useParams();
   const navigate = useNavigate();
   const [campaignId, setCampaignId] = useState<number>(0)
-  const [battles, setBattles] = useState<Battle[]>([])
+  const [battles, setBattles] = useState<BattlePreview[]>([])
   const [isBattleCreation, setIsBattleCreation] = useState<boolean>(false);
   const [nameIsValid, setNameIsValid] = useState<boolean>(false);
   const [newBattle, setNewBattle] = useState<BattleCreate>();
@@ -24,7 +23,7 @@ export default function CampaignBattles() {
   },[navigate])
 
   const getBattles = useCallback(async (id:number): Promise<void> => {
-    const data: Battle[] = await BattleService.getAllByCampaignId(id);
+    const data: BattlePreview[] = await BattleService.getAllByCampaignId(id);
     setBattles(data);
   },[])
 
@@ -55,19 +54,21 @@ export default function CampaignBattles() {
   }
 
   const isValidInputStyle = nameIsValid ? {outlineColor: "rgb(24 187 63)"  } : { outlineColor: "rgb(171 25 25)"};
-  const isValidBtnStyle = nameIsValid ? {color: "rgb(24 187 63)"  } : { color: "rgb(171 25 25)"};
-  const validationBtn = nameIsValid ? <FontAwesomeIcon icon={faCheck} size="lg"  className="link mx-3" onClick={createBattle} style={isValidBtnStyle}/> :
+  const isValidBtnStyle = nameIsValid ? {color: "rgb(255 255 255)"  } : { color: "rgb(171 25 25)"};
+  const validationBtn = nameIsValid ? <button className="dnd-btn-small"><FontAwesomeIcon icon={faCheck} size="lg"  className="link mx-3" onClick={createBattle} style={isValidBtnStyle}/></button> :
   <FontAwesomeIcon icon={faX}  className="link mx-3" style={isValidBtnStyle} onClick={toggleBattleCreation} />
 
   return (
     <div className="w-10/12 m-auto">
-    <button onClick={backToCampaigns} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
+    <button onClick={backToCampaigns} className="dnd-btn m-4">
       <FormattedMessage id="backToCampaigns"/>
     </button>
-    <h1>CampaignBattles</h1>
-    <button onClick={toggleBattleCreation} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test">
+    <h1><FormattedMessage id="campaignBattles"/> :</h1>
+    {!isBattleCreation && 
+    <button onClick={toggleBattleCreation} className="dnd-btn m-2">
       <FontAwesomeIcon icon={faPlus} style={{color: "#ffffff",}} size="lg"/> <FormattedMessage id="createNewBattle"/>
     </button>
+    }
     {isBattleCreation &&
             <>
             <div className="inline-grid">
@@ -80,8 +81,8 @@ export default function CampaignBattles() {
     { ( campaignId && battles[0] !== undefined ) ? (
       <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
         {battles.map( (battle) => {
-          return <div className="card-container flex justify-center content-center">
-            <BattleCard key={battle.battleId} battle={{
+          return <div className="card-container flex justify-center content-center" key={battle.battleId}>
+            <BattleCard  battle={{
             battleId: battle.battleId,
             battleName: battle.battleName,
             turn: battle.turn,
@@ -91,7 +92,7 @@ export default function CampaignBattles() {
         })}
       </div>
     )
-    : (<h1><FormattedMessage id="noBattle" /></h1>)
+    : !isBattleCreation && (<h1><FormattedMessage id="noBattle" /></h1>)
     }
     </div>
   )

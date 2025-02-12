@@ -1,29 +1,31 @@
 import { useState } from "react"
-import { Battle } from "../../models/battle/Battle"
+import { BattlePreview } from "../../models/battle/BattlePreview"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan, faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import './BattleCard.css'
 import { FormattedMessage } from "react-intl";
 import BattleService from "../../services/BattleService";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
+import ConfirmModal from "../confirm-modal/ConfirmModal";
 
 
 type Props = {
-  battle: Battle,
+  battle: BattlePreview,
   onUpdate: (params: number) => Promise<void>
 };
 
 export default function BattleCard(props:Props) {
 
-  const [battle, setBattle] = useState<Battle>(props.battle);
+  const [battle, setBattle] = useState<BattlePreview>(props.battle);
   const [isInFocus, setIsInFocus] = useState<boolean>(false);
   const [isInEdition, setIsInEdition] = useState<boolean>(false);
   const [nameIsValid, setNameIsValid] = useState<boolean>(true);
+  const [confirmModalIsOpen, setConfirmModalIsOpen] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
   const goToBattle = (): void => {
-    //TODO
+    navigate(`/battles/${battle.battleId}`)
   }
 
   const toggleIsInFocus = (): void => {
@@ -46,20 +48,31 @@ export default function BattleCard(props:Props) {
 
   const deleteBattle = async (): Promise<void> => {
     await BattleService.deleteBattle(battle.battleId);
-    props.onUpdate(battle.campaignId);
+    props.onUpdate(battle.campaignId!);
+  }
+
+  const openModal = (): void => {
+    setConfirmModalIsOpen(true);
+  }
+
+  const closeModal = (params: string): void => {
+    setConfirmModalIsOpen(false);
+    if (params === "yes") {
+      deleteBattle()
+    }
   }
 
   const saveChange = async (): Promise<void> => {
     if (nameIsValid) {
       await BattleService.updateBattle(battle);
     }
-    props.onUpdate(battle.campaignId);
+    props.onUpdate(battle.campaignId!);
     toggleEdition();
   }
 
   const isValidInputStyle = nameIsValid ? {outlineColor: "rgb(24 187 63)"  } : { outlineColor: "rgb(171 25 25)"};
-  const isValidBtnStyle = nameIsValid ? {color: "rgb(24 187 63)"  } : { color: "rgb(171 25 25)"};
-  const validationBtn = nameIsValid ? <FontAwesomeIcon icon={faCheck} size="lg"  className="link mx-3" onClick={saveChange} style={isValidBtnStyle}/> :
+  const isValidBtnStyle = nameIsValid ? {color: "rgb(255 255 255)"  } : { color: "rgb(171 25 25)"};
+  const validationBtn = nameIsValid ? <button className="dnd-btn-small mx-1"><FontAwesomeIcon icon={faCheck} size="lg"  className="link mx-3" onClick={saveChange} style={isValidBtnStyle}/></button> :
   <FontAwesomeIcon icon={faX}  className="link mx-3" style={isValidBtnStyle} onClick={toggleEdition} />
 
 
@@ -69,7 +82,7 @@ export default function BattleCard(props:Props) {
       {isInFocus && !isInEdition ?
         <div className="edition">
           <FontAwesomeIcon icon={faPenToSquare} className="link opacity-70 edit" onClick={toggleEdition} />
-          <FontAwesomeIcon icon={faTrashCan} className="link opacity-70 trash" onClick={deleteBattle} />
+          <FontAwesomeIcon icon={faTrashCan} className="link opacity-70 trash" onClick={openModal} />
         </div>
         :
         <></>
@@ -88,6 +101,10 @@ export default function BattleCard(props:Props) {
       }
         <p className="text-lg">turn: {battle.turn}</p>
       </div>
+      <ConfirmModal 
+        isOpen={confirmModalIsOpen}
+        handleClick={closeModal}
+      />
     </>
   )
 }

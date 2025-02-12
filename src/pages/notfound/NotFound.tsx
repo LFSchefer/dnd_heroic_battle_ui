@@ -1,5 +1,5 @@
 import { FormattedMessage } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 export default function NotFound() {
 
@@ -10,7 +10,7 @@ export default function NotFound() {
   }
 
   return (
-<main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
+<main className="grid place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8 h-screen">
   <div className="text-center">
     <p className="text-4xl font-semibold text-cyan-500">404</p>
     <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">

@@ -1,7 +1,8 @@
 import axios from "axios";
 import axiosClient from "./AxiosClient";
-import { Battle } from "../models/battle/Battle";
+import { BattlePreview } from "../models/battle/BattlePreview";
 import { BattleCreate } from "../models/battle/BattleCreate";
+import { Battle } from "../models/battle/Battle";
 
 export default class BattleService {
 
@@ -13,7 +14,7 @@ export default class BattleService {
     return valid;
   }
 
-  static getAllByCampaignId = async (campaignId:number): Promise<Battle[]> => {
+  static getAllByCampaignId = async (campaignId:number): Promise<BattlePreview[]> => {
     try {
       const {data} = await axiosClient.get(`battles/campaign?id=${campaignId}`)
       return data;
@@ -38,7 +39,7 @@ export default class BattleService {
     }
   }
 
-  static updateBattle = async (battle: Battle): Promise<void> => {
+  static updateBattle = async (battle: BattlePreview): Promise<void> => {
     try {
       const data = {
         id: battle.battleId,
@@ -65,4 +66,14 @@ export default class BattleService {
     }
   }
 
+  static getOneBattle = async (id: number): Promise<Battle | undefined> => {
+    try {
+      const {data} = await axiosClient.get(`battles/${id}`);
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.log(console.error())
+      }
+    }
+  }
 }

@@ -1,0 +1,31 @@
+.detail-modal {
+    border: 1px solid rgba(0, 0, 0, 0.349);
+    padding: 1rem 2rem;
+    position: fixed;
+    z-index: 2;
+    left: 45%;
+    top: 20%;
+    width: 600px;
+    height: 600px;
+    margin-left: -150px;
+    margin-top: -75px;
+    overflow: auto;
+    background-color: rgb(236, 235, 224);
+}
+
+.bg-modal {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.295);
+}
+
+.close-detail-modal {
+    position: absolute;
+    top: -3%;
+    right: -4%;
+    z-index: 3;
+}

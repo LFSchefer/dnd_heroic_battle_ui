@@ -3,7 +3,7 @@ import { FormattedMessage } from "react-intl";
 import { Campaign } from "../../models/campaign/Campaign";
 import CampaignService from "../../services/CampaignService";
 import CampaignCard from "../../components/campaign-card/CampaignCard";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import { CampaignCreate } from "../../models/campaign/CampaignCreate";
@@ -44,19 +44,18 @@ export default function Campaigns() {
   };
 
   const updateNewCampaign = (params: string): void => {
-    // TODO validation unique name ?
     setNameIsValid(CampaignService.isValid(params));
     setNewCampaign({campaignName: params});
   };
 
   const isValidInputStyle = nameIsValid ? {outlineColor: "rgb(24 187 63)"  } : { outlineColor: "rgb(171 25 25)"};
-  const isValidBtnStyle = nameIsValid ? {color: "rgb(24 187 63)"  } : { color: "rgb(171 25 25)"};
-  const validationBtn = nameIsValid ? <FontAwesomeIcon icon={faCheck} size="lg"  className="link mx-3" onClick={createCampaign} style={isValidBtnStyle}/> :
+  const isValidBtnStyle = nameIsValid ? {color: "rgb(255 255 255)"  } : { color: "rgb(171 25 25)"};
+  const validationBtn = nameIsValid ? <button className="dnd-btn-small mx-1"><FontAwesomeIcon icon={faCheck} size="lg"  className="link mx-3" onClick={createCampaign} style={isValidBtnStyle}/></button> :
   <FontAwesomeIcon icon={faX}  className="link mx-3" style={isValidBtnStyle} onClick={toggleCampaignCreation} />
 
   return (
     <div className="w-10/12 m-auto">
-      <button onClick={goBackHome} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test"><FormattedMessage id="backHome"/></button>
+      <button onClick={goBackHome} className="dnd-btn m-4"><FormattedMessage id="backHome"/></button>
       {isNewCampaign ?
         <>
         <div className="inline-grid">
@@ -66,7 +65,7 @@ export default function Campaigns() {
         <button>{validationBtn}</button>
         </>
       :
-      <button onClick={toggleCampaignCreation} className="py-2 px-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-semibold rounded-md shadow focus:outline-none test"><FontAwesomeIcon icon={faPlus} style={{color: "#ffffff",}} size="lg"/> <FormattedMessage id="createNewCampaign"/></button>
+      <button onClick={toggleCampaignCreation} className="dnd-btn"><FontAwesomeIcon icon={faPlus} style={{color: "#ffffff",}} size="lg"/> <FormattedMessage id="createNewCampaign"/></button>
       }
       <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
         {campaigns.map( campaign => {

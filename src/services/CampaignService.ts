@@ -11,12 +11,10 @@ export default class CampaignService {
       return data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
+
         return [];
-        // handleAxiosError(error);
-      } else {
-        // handleUnexpectedError(error);
-        return [];
-      }
+      } 
+      return [];
     }
   }
 

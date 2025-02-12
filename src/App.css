@@ -4,8 +4,10 @@
 
 .App {
   text-align: center;
-  font-family:  Roboto, system-ui, -apple-system, Oxygen, Ubuntu ,source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: Livvic ,Roboto, system-ui, -apple-system, Oxygen, Ubuntu ,source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
+  background-color: rgb(240, 240, 235);
+  min-height: 95vh;
 }
 
 .link {
@@ -15,3 +17,36 @@
 a {
   cursor: pointer;
 }
+
+
+.dnd-btn {
+cursor: pointer;
+box-sizing: border-box;
+padding: 0.4rem 1.5rem;
+background: #05a7d8;
+border: 1px solid rgba(0, 0, 0, 0.2);
+box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15), 3px 2px 5.8px 2px rgba(0, 0, 0, 0.1), inset 0px 0px 7.6px 9px rgba(0, 0, 0, 0.05), inset 0px 0px 4px 4px rgba(0, 0, 0, 0.05);
+border-radius: 4px;
+color: white;
+transition: 0.2s;
+}
+
+.dnd-btn:hover {
+  background: #0bbaf0;
+}
+
+.dnd-btn-small {
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 0.2rem 0.4rem;
+  background: #05a7d8;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15), 3px 2px 5.8px 2px rgba(0, 0, 0, 0.1), inset 0px 0px 7.6px 9px rgba(0, 0, 0, 0.05), inset 0px 0px 4px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  color: white;
+  transition: 0.2s;
+  }
+
+  .dnd-btn-small:hover {
+    background: #0bbaf0;
+  }

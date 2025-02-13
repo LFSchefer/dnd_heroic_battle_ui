@@ -12,7 +12,7 @@ export default function NotFound() {
   return (
 <main className="grid place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8 h-screen">
   <div className="text-center">
-    <p className="text-4xl font-semibold text-cyan-500">404</p>
+    <p className="text-4xl font-semibold text-cyan-600">404</p>
     <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
       < FormattedMessage id="404"/>
     </h1>
@@ -21,7 +21,7 @@ export default function NotFound() {
     </p>
     <div className="mt-10 flex items-center justify-center gap-x-6">
       <button onClick={handleClick}
-      className="rounded-md bg-cyan-500 hover:bg-cyan-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+      className="dnd-btn">
         < FormattedMessage id="backHome"/>
       </button>
     </div>

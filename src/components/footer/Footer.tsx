@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./Footer.css"
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons"
 import { FormattedMessage } from "react-intl"
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 export default function Footer() {
 
@@ -18,12 +18,14 @@ export default function Footer() {
                 <div className="icons flex">
                     <div className="mr-4">
                         <a href="https://github.com/LFSchefer/dnd_heroic_battle/wiki" target="_blank" rel="noreferrer">
-                            <FontAwesomeIcon icon={faGithub} size="xl" />
+                            {/* <FontAwesomeIcon icon={faGithub} size="xl" /> */}
+                            <p>Github</p>
                         </a>
                     </div>
                     <div className="mr-4">
                         <a href="https://www.linkedin.com/in/lfschefer/" target="_blank" rel="noopener noreferrer">
-                            <FontAwesomeIcon icon={faLinkedin} size="xl" />
+                            {/* <FontAwesomeIcon icon={faLinkedin} size="xl" /> */}
+                            <p>Linkedin</p>
                         </a>
                     </div>
                 </div>

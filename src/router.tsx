@@ -5,7 +5,7 @@ import NotFound from "./pages/notfound/NotFound";
 import SignIn from "./pages/signin/SignIn";
 import SignUp from "./pages/signup/SignUp";
 import Campaigns from "./pages/campaigns/Campaigns";
-import CampaignBattles from "./pages/battles/campaign-battles/CampaignBattles";
+import CampaignBattles from "./pages/battles/CampaignBattles";
 import BattlePage from "./pages/battles/Battle";
 import BattleInit from "./pages/battles/BattleInit";
 import Cgu from "./pages/cgu/Cgu";

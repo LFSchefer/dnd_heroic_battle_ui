@@ -7,7 +7,6 @@ import { useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import { CampaignCreate } from "../../models/campaign/CampaignCreate";
-import "./Campaigns.css"
 
 
 
@@ -68,19 +67,16 @@ export default function Campaigns() {
       :
       <button onClick={toggleCampaignCreation} className="dnd-btn"><FontAwesomeIcon icon={faPlus} style={{color: "#ffffff",}} size="lg"/> <FormattedMessage id="createNewCampaign"/></button>
       }
-      <h2 className="text-2xl font-bold mt-8"><FormattedMessage id="yourCampaigns"/>:</h2>
-      <div className="grid-bg border border-slate-700/10 max-w-screen-xl mt-12 mx-auto py-12 rounded-md shadow-lg">
-        <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
-          {campaigns.map( campaign => {
-            return <div className="card-container flex justify-center content-center" key={campaign.campaignId}>
-              <CampaignCard key={campaign.campaignId} campaignProps={{
-                campaignId: campaign.campaignId,
-                campaignName: campaign.campaignName,
-                creationDate: campaign.creationDate
-              }} onUpdate={getCampaings}
-              /></div>
-            })}
-        </div>
+      <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
+        {campaigns.map( campaign => {
+          return <div className="card-container flex justify-center content-center" key={campaign.campaignId}>
+            <CampaignCard key={campaign.campaignId} campaignProps={{
+            campaignId: campaign.campaignId,
+            campaignName: campaign.campaignName,
+            creationDate: campaign.creationDate
+          }} onUpdate={getCampaings}
+          /></div>
+        })}
       </div>
     </div>
   )

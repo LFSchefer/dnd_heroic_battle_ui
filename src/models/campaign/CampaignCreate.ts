@@ -1,3 +1,3 @@
 export type CampaignCreate = {
-  "campaignName": string
+  campaignName: string
 }

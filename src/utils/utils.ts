@@ -7,10 +7,10 @@ export const validateEmail = (email: string): boolean => {
     return result === null ? false : true;
   };
 
-  export const validatePassword = (password: string): boolean=> {
-    let valid = false;
-    if (password.match(/[A-Z]/) && password.match(/[a-z].*[a-z]/) && password.match(/[0-9]/) && password.match(/(!|%|#|\$|~|\?|&|:|;|\^|\+|-)/)) {
-        valid = true
-    }
-    return valid
+export const validatePassword = (password: string): boolean => {
+  let valid = false;
+  if (password.match(/[A-Z]/) && password.match(/[a-z].*[a-z]/) && password.match(/[0-9]/) && password.match(/(!|%|#|\$|~|\?|&|:|;|\^|\+|-)/)) {
+      valid = true
+  }
+  return valid
 }

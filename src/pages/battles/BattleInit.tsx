@@ -4,6 +4,7 @@ import MonsterSearch from "../../components/monster-search/MonsterModelSearch";
 import { Battle } from "../../models/battle/Battle";
 import BattleService from "../../services/BattleService";
 import { FormattedMessage } from "react-intl";
+import MonsterBattlePreview from "../../components/monster-battle-preview/MonsterBattlePreview";
 
 
 export default function BattleInit() {
@@ -42,12 +43,8 @@ export default function BattleInit() {
     return (
         <div className="flex flex-col items-center">
             <h1>Battle init !</h1>
-            <div className="border-2 border-sky-500">
-                <h2>TODO</h2>
-                <h3>Battle monsters list</h3>
-                <p>Number of Monster: {battle?.battleMonsters.length}</p>
-                <button className="dnd-btn" onClick={backToBattle}><FormattedMessage id="backToBattle"/></button>
-            </div>
+            <button className="dnd-btn" onClick={backToBattle}><FormattedMessage id="backToBattle"/></button>
+            <MonsterBattlePreview battleMonsters={battle?.battleMonsters}/>
             <MonsterSearch
             updateBattle={update}/>
         </div>

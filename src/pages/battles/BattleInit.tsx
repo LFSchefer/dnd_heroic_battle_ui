@@ -42,9 +42,10 @@ export default function BattleInit() {
 
     return (
         <div className="flex flex-col items-center">
-            <h1>Battle init !</h1>
+            <h1>Battle initialization !</h1>
             <button className="dnd-btn" onClick={backToBattle}><FormattedMessage id="backToBattle"/></button>
             <MonsterBattlePreview battleMonsters={battle?.battleMonsters}/>
+            <button className="dnd-btn"><FormattedMessage id="searchMonster"/></button>
             <MonsterSearch
             updateBattle={update}/>
         </div>

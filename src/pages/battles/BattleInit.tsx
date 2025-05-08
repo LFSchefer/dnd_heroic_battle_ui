@@ -5,6 +5,7 @@ import { Battle } from "../../models/battle/Battle";
 import BattleService from "../../services/BattleService";
 import { FormattedMessage } from "react-intl";
 import MonsterBattlePreview from "../../components/monster-battle-preview/MonsterBattlePreview";
+import BattleInitiative from "../../components/battle-initiative/BattleInitiative";
 
 
 export default function BattleInit() {
@@ -87,7 +88,8 @@ export default function BattleInit() {
             updateBattle={update}/>
             }
             {initiativeIsOpen && 
-            <p>TODO</p>
+            <BattleInitiative
+            updateBattle={update}/>
             }
         </div>
     )

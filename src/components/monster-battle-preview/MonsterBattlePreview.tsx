@@ -21,7 +21,7 @@ export default function MonsterBattlePreview(props: Props) {
                                 monster={monster} />
                             })
                         }
-                    </div>
+                    </div> 
                 }
         </div>
     )

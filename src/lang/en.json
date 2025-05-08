@@ -88,5 +88,8 @@
   "presentationTextDetail4": "User-Friendly Interface: Enjoy a clear and ergonomic interface designed to optimize your gaming experience.",
   "campaignBattles": "Battles of your campaign",
   "GCU": "General Conditions of Use (GCU)",
-  "searchMonster": "search monster"
+  "addMonster": "add monster",
+  "closeMonsterSearch": "close monster search",
+  "calculateInitiative": "calculate initiative",
+  "closeInitiative": "close initiative"
 }

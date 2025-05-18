@@ -1,3 +1,4 @@
+import { MonsterInitiative } from "../models/battle-monster/MonterInitiative";
 import axiosClient from "./AxiosClient"
 
 export default class MonsterService {
@@ -10,6 +11,17 @@ export default class MonsterService {
         } catch (error) {
             console.log(error);
             Promise.reject(error)
+        }
+   }
+
+   static getMonstersInitiativesFromBattle = async(battleId: number): Promise<MonsterInitiative[]> => {
+        try{
+            const {data} = await axiosClient.get(`/monsters/get-initiatives?battle=${battleId}`)
+            return data;
+        } catch (error) {
+            console.log(error);
+            Promise.reject(error)
+            return [];
         }
    }
 }

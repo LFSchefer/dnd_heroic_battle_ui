@@ -91,5 +91,6 @@
   "addMonster": "add monster",
   "closeMonsterSearch": "close monster search",
   "calculateInitiative": "calculate initiative",
-  "closeInitiative": "close initiative"
+  "closeInitiative": "close initiative",
+  "uniqueUserCreate": "email or user name already exists"
 }

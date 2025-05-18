@@ -13,7 +13,7 @@ export default class UserService {
             return data;
         } catch (error) {
             if ( axios.isAxiosError(error)) {
-                return {error: error.code}
+                return {error: error.response?.data}
             }
             return console.error("oups")
         }
@@ -29,14 +29,14 @@ export default class UserService {
                     userName: undefined,
                     email: undefined,
                     tokens: undefined,
-                    error: error.code
+                    error: error.response?.data
                 }
             } 
                 return {
                     userName: undefined,
                     email: undefined,
                     tokens: undefined,
-                    error: 'error'
+                    error: error
                 }
         }
     }

@@ -32,8 +32,6 @@ export default function SignIn() {
             navigate("/");
         }
     };
-
-    console.log(apiResponse)
     
     return (
         <>

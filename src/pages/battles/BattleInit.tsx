@@ -66,8 +66,6 @@ export default function BattleInit() {
         getBattle(battleId!);
     }
 
-    console.log(battle)
-
     return (
         <div className="flex flex-col items-center">
             <h1>Battle initialization !</h1>

@@ -3,5 +3,5 @@ export type MonsterInitiative = {
     name: string;
     dexterity: number;
     bonus: number;
-    initiative: number | undefined
+    initiative: number | null
 }

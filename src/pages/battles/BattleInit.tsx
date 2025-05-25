@@ -39,15 +39,6 @@ export default function BattleInit() {
         }
     },[goTo404, params.battleId])
 
-    // useEffect(() => {
-    //     if (searchIsOpen) {
-    //         setInitiativeIsOpen(false)
-    //     }
-    //     if (initiativeIsOpen) {
-    //         setSearchIsOpen(false)
-    //     }
-    // },[searchIsOpen, initiativeIsOpen])
-
     const toggleSearch = () => {
         setSearchIsOpen(!searchIsOpen)
         if (initiativeIsOpen) {

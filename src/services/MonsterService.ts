@@ -16,7 +16,6 @@ export default class MonsterService {
 
    static getMonstersInitiativesFromBattle = async(battleId: number): Promise<MonsterInitiative[]> => {
         try{
-            // const {data} = await axiosClient.get(`/monsters/get-initiatives?battle=${battleId}`)
             const {data} = await axiosClient.get(`/monsters/get-initiatives`, {
                 params: {battle: battleId}
             })

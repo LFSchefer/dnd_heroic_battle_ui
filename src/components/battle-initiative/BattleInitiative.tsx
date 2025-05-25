@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import MonsterService from "../../services/MonsterService";
 import { MonsterInitiative } from "../../models/battle-monster/MonterInitiative";
+import InitiativeCard from "../initiative-card/InitiativeCard";
 
 type Props = {
     updateBattle:() => void
@@ -28,7 +29,14 @@ export default function BattleInitiative(props: Props) {
     },[battleId, fetchInitiatives])
 
     return (
-        <>
-        </>
+        <div className="calculate-initiative-container">
+            { monsterInitiativePreview.map((monster) => {
+                return <InitiativeCard
+                key={monster.id}
+                monster={monster}
+                updateBattle={updateBattle}
+                />
+            })}
+        </div>
     )
 }

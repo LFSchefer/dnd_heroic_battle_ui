@@ -92,5 +92,12 @@
   "closeMonsterSearch": "close monster search",
   "calculateInitiative": "calculate initiative",
   "closeInitiative": "close initiative",
-  "uniqueUserCreate": "email or user name already exists"
+  "uniqueUserCreate": "email or user name already exists",
+  "calculateAllInititative": "Calculate all Inititative",
+  "bonus": "Bonus",
+  "initiative": "Initiative",
+  "automatic": "Automatic",
+  "save": "Save",
+  "d20": "D20",
+  "howToInitiative": "How to calculate: roll a D20 + bonus = initiative"
 }

@@ -1,6 +1,7 @@
 import { ChangeEvent, SyntheticEvent, useEffect, useState } from "react";
 import { MonsterInitiative } from "../../models/battle-monster/MonterInitiative"
 import MonsterService from "../../services/MonsterService";
+import { FormattedMessage } from "react-intl";
 
 type Props = {
     monster: MonsterInitiative
@@ -60,22 +61,22 @@ export default function InitiativeCard(props: Props) {
         <div className="initiative-card bg-blue-200 rounded-md border-2 border-neutral-800/10 p-4 my-2 text-left">
             <p><b>{monster.name}</b></p>
             <div className="flex justify-between my-2">
-                <p className="mx-2">dexterity: {monster.dexterity}</p>
-                <p className="mx-2">bonus: {monster.bonus}</p>
-                <p className="mx-2">initiative: {monster.initiative ? monster.initiative : "null"}</p>
-                <button className="dnd-btn" onClick={handleAutomatic}>automatic</button>
+                <p className="mx-2"><FormattedMessage id="dexterity"/>: {monster.dexterity}</p>
+                <p className="mx-2"><FormattedMessage id="bonus"/>: {monster.bonus}</p>
+                <p className="mx-2"><FormattedMessage id="initiative"/>: {monster.initiative ? monster.initiative : "null"}</p>
+                <button className="dnd-btn" onClick={handleAutomatic}><FormattedMessage id="automatic"/></button>
             </div>
             <div className="my-2">
-                <p>How to calculate: roll a D20 + bonus = initiative</p>
+                <p><FormattedMessage id="howToInitiative"/></p>
             </div>
             <div className="my-2">
                 <form noValidate className="flex" onSubmit={handleSave}>
-                    <label htmlFor="d20">D20: </label>
+                    <label htmlFor="d20"><FormattedMessage id="d20"/>: </label>
                     <input name="d20" type="number" value={d20} onChange={handleChange}/>
-                    <p className="mx-2">bonus: {monster.bonus}</p>
-                    <label htmlFor="initiative">total: </label>
+                    <p className="mx-2"><FormattedMessage id="bonus"/>: {monster.bonus}</p>
+                    <label htmlFor="initiative"><FormattedMessage id="total"/>: </label>
                     <input type="number" name="initiative" value={initiative} onChange={handleChange}/>
-                    <button className="dnd-btn ml-4" disabled={initiativeCanBeSave()} >save</button>
+                    <button className="dnd-btn ml-4" disabled={initiativeCanBeSave()} ><FormattedMessage id="save"/></button>
                 </form>
             </div>
         </div>

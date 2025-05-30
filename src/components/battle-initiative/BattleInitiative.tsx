@@ -16,25 +16,36 @@ export default function BattleInitiative(props: Props) {
     const battleId = +params?.battleId!;
 
     const [ monsterInitiativePreview, setMonsterInitiativePreview] = useState<MonsterInitiative[]>([])
+    
 
     const fetchInitiatives = useCallback(async (battleId: number) => {
         const response = await MonsterService.getMonstersInitiativesFromBattle(battleId);
         setMonsterInitiativePreview(response);
     },[])
 
+    const update = useCallback(() => {
+        updateBattle();
+    },[updateBattle])
+
+    const handleCalculateAll = useCallback(async(): Promise<void> => {
+        await MonsterService.calculateAllInitiative(monsterInitiativePreview);
+        updateBattle();
+    },[monsterInitiativePreview, updateBattle])
+
     useEffect(() => {
         if (battleId) {
             fetchInitiatives(battleId);
         }
-    },[battleId, fetchInitiatives])
+    },[battleId, fetchInitiatives, update])
 
     return (
-        <div className="calculate-initiative-container">
-            { monsterInitiativePreview.map((monster) => {
+        <div className="calculate-initiative-container mt-4">
+            <button className="dnd-btn" onClick={handleCalculateAll}>Calculate all Inititative</button>
+            { monsterInitiativePreview.sort((a,b) => a.id - b.id).map((monster) => {
                 return <InitiativeCard
                 key={monster.id}
                 monster={monster}
-                updateBattle={updateBattle}
+                update={update}
                 />
             })}
         </div>

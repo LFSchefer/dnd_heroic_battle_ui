@@ -1,13 +1,14 @@
 import { ChangeEvent, SyntheticEvent, useEffect, useState } from "react";
 import { MonsterInitiative } from "../../models/battle-monster/MonterInitiative"
+import MonsterService from "../../services/MonsterService";
 
 type Props = {
     monster: MonsterInitiative
-    updateBattle:() => void
+    update:() => void
 }
 
 export default function InitiativeCard(props: Props) {
-    const {monster, updateBattle} = props;
+    const {monster, update} = props;
     const [d20, setD20] = useState<string>('');
     const [initiative, setinitiative] = useState<string>('');
 
@@ -44,12 +45,15 @@ export default function InitiativeCard(props: Props) {
         return disable;
     }
 
-    const handleSave = (event: SyntheticEvent) => {
+    const handleSave = async (event: SyntheticEvent): Promise<void> => {
         event.preventDefault();
+        await MonsterService.updateMonsterInitiative(monster.id, initiative);
+        update();
     }
 
-    const handleAutomatic = () => {
-
+    const handleAutomatic = async (): Promise<void> => {
+        await MonsterService.calculateInitiative(monster);
+        update();
     }
 
     return(

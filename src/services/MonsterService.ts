@@ -26,4 +26,35 @@ export default class MonsterService {
             return [];
         }
    }
+
+   static updateMonsterInitiative = async (monsterID: number, initiative: string): Promise<void> => {
+    try {
+        const data = {
+            monsterId: monsterID,
+            initiative: Number.parseInt(initiative),
+        }
+        await axiosClient.put(`/monsters/update-initiative`, data);
+    } catch (error) {
+        console.log(error);
+        Promise.reject(error);
+    }
+   }
+
+    static calculateInitiative = async(monster: MonsterInitiative): Promise<void> => {
+        try {
+        await axiosClient.put(`/monsters/calculate-initiative`, monster);
+    } catch (error) {
+        console.log(error);
+        Promise.reject(error);
+    }
+   }
+
+   static calculateAllInitiative = async(monstersInitiative: MonsterInitiative[]): Promise<void> => {
+    try {
+        await axiosClient.put(`/monsters/calculate-all-initiative`, monstersInitiative)
+    } catch (error) {
+        console.log(error);
+        Promise.reject(error);
+    }
+   }
 }

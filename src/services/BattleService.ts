@@ -76,4 +76,15 @@ export default class BattleService {
       }
     }
   }
+
+  static getFight = async (battleId: number) => {
+    try {
+      const {data} = await axiosClient.get(`battles/${battleId}/fight`);
+      return data;
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+        console.log(console.error())
+      }
+    }
+  }
 }

@@ -99,5 +99,6 @@
   "automatic": "Automatic",
   "save": "Save",
   "d20": "D20",
-  "howToInitiative": "How to calculate: roll a D20 + bonus = initiative"
+  "howToInitiative": "How to calculate: roll a D20 + bonus = initiative",
+  "startFight": "Start the fight"
 }

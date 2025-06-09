@@ -6,6 +6,7 @@ import BattleService from "../../services/BattleService";
 import { FormattedMessage } from "react-intl";
 import MonsterBattlePreview from "../../components/monster-battle-preview/MonsterBattlePreview";
 import BattleInitiative from "../../components/battle-initiative/BattleInitiative";
+import { allMonstersHaveInitiative } from "../../utils/utils";
 
 
 export default function BattleInit() {
@@ -28,7 +29,11 @@ export default function BattleInit() {
 
     const backToBattle = (): void => {
        navigate(`/battles/${battleId}`); 
-    }
+    };
+
+    const goToFight = (): void => {
+        navigate(`/battles/${battleId}/fight`);
+    };
 
     useEffect(() => {
         if (params.battleId !== undefined && parseInt(params.battleId)) {
@@ -57,6 +62,10 @@ export default function BattleInit() {
         getBattle(battleId!);
     }
 
+    const fightCanStart = useCallback(() => {
+        return allMonstersHaveInitiative(battle);
+    },[battle]);
+
     return (
         <div className="flex flex-col items-center">
             <h1>Battle initialization !</h1>
@@ -72,6 +81,13 @@ export default function BattleInit() {
                 </button>
                 }
             </div>
+            {fightCanStart() && 
+            <div className="m-5">
+                <button className="dnd-btn mx-4" onClick={goToFight}>
+                    <FormattedMessage id={"startFight"}/>
+                </button>
+            </div>
+            }
             {searchIsOpen && 
             <MonsterSearch
             updateBattle={update}/>

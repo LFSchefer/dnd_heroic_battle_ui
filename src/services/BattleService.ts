@@ -3,6 +3,7 @@ import axiosClient from "./AxiosClient";
 import { BattlePreview } from "../models/battle/BattlePreview";
 import { BattleCreate } from "../models/battle/BattleCreate";
 import { Battle } from "../models/battle/Battle";
+import { FightType } from "../models/battle/Fight";
 
 export default class BattleService {
 
@@ -77,7 +78,7 @@ export default class BattleService {
     }
   }
 
-  static getFight = async (battleId: number) => {
+  static getFight = async (battleId: number): Promise<FightType | undefined> => {
     try {
       const {data} = await axiosClient.get(`battles/${battleId}/fight`);
       return data;

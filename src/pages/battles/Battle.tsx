@@ -52,7 +52,7 @@ export default function BattlePage() {
         <>
         <h1>TODO</h1>
         <button className="dnd-btn" onClick={goToBattleList}><FormattedMessage id="backToBattleList"/></button>
-        { battle?.turn === 0 && 
+        { battle && 
         <>  
         <div className="flex justify-center">
             <MonsterBattlePreview battleMonsters={battle.battleMonsters}/>

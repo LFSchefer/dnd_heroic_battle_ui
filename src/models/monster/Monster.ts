@@ -7,5 +7,8 @@ export type Monster = {
     name: string,
     initiative: number,
     havePlayThisround: boolean,
+    action: boolean,
+    move: boolean,
+    bonusAction: boolean,
     monster: MonsterModelDetail,
 }

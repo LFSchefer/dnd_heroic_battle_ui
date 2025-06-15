@@ -39,7 +39,7 @@ export default function Fight() {
                 <h2>turn: {fight?.turn}</h2>
                 <h2>have played: {fight?.monsters.filter( monster => monster.havePlayThisround).length}/{fight?.monsters.length}</h2>
             </div>
-            <div className="grid max-lg:grid-cols-1 grid-cols-3 gap-4 w-10/12 mx-auto">
+            <div className="grid max-lg:grid-cols-1 max-2xl:grid-cols-3 grid-cols-4 gap-4 max-2xl:w-full w-8/12 mx-auto">
                 { 
                     fight?.monsters.map( monster => {
                         return <MonsterFightCard key={monster.monsterId} monster={monster} />

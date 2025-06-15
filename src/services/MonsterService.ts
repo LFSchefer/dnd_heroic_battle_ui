@@ -1,4 +1,5 @@
 import { MonsterInitiative } from "../models/battle-monster/MonterInitiative";
+import { Monster } from "../models/monster/Monster";
 import axiosClient from "./AxiosClient"
 
 export default class MonsterService {
@@ -52,6 +53,22 @@ export default class MonsterService {
    static calculateAllInitiative = async(monstersInitiative: MonsterInitiative[]): Promise<void> => {
     try {
         await axiosClient.put(`/monsters/calculate-all-initiative`, monstersInitiative)
+    } catch (error) {
+        console.log(error);
+        Promise.reject(error);
+    }
+   }
+
+   static updateActions = async(monsterId: number, action: boolean, move: boolean, bonusAction: boolean): Promise<Monster | undefined> => {
+    try {
+        const dto = {
+            monsterId: monsterId,
+            action: action,
+            move: move,
+            bonusAction: bonusAction
+        }
+        const {data} = await axiosClient.put(`/monsters/update-actions`, dto);
+        return data;
     } catch (error) {
         console.log(error);
         Promise.reject(error);

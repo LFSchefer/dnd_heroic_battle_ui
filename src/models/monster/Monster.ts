@@ -3,7 +3,7 @@ import { MonsterModelDetail } from "./MonsterDetail"
 export type Monster = {
     monsterId: number,
     currentHitPoints: number,
-    maxHitpoints: number,
+    maxHitPoints: number,
     name: string,
     initiative: number,
     havePlayThisround: boolean,

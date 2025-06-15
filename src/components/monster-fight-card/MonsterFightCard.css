@@ -1,0 +1,27 @@
+.monster-image {
+    height: 300px;
+    margin: 0 auto;
+    object-fit: cover;
+}
+
+.monster-fight-card {
+    height: 450px;
+    width: 350px;
+    background-color: rgb(236, 235, 224);
+}
+
+.monster-image-container {
+    position: relative;
+}
+
+.monster-display-on-card-hp {
+    position: absolute;
+    top: 8px;
+    left: 14px;
+}
+
+.monster-display-on-card-ac {
+    position: absolute;
+    top: 8px;
+    right: 14px;
+}

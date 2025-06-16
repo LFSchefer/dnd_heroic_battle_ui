@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router"
 import BattleService from "../../services/BattleService";
 import { FightType } from "../../models/battle/Fight";
 import MonsterFightCard from "../../components/monster-fight-card/MonsterFightCard";
+import { Monster } from "../../models/monster/Monster";
 
 
 export default function Fight() {
@@ -31,6 +32,32 @@ export default function Fight() {
             goTo404();
         }
     },[getFight, goTo404, params.battleId])
+
+    const findMonsterIndex = (input: Monster): number => {
+        return fight!.monsters.findIndex((m, i, arr) => {
+            if (arr[i].monsterId === input.monsterId) {
+                return true;
+            }
+            return false;
+        })
+    }
+
+    const updateMonster = (input: Monster): void => {
+        if(fight && fight.monsters) {
+            setFight( prev => {
+
+            if (!prev) return prev;
+
+            const monsterIndex = findMonsterIndex(input);
+            const updatedMonsters = [...prev.monsters];
+            updatedMonsters[monsterIndex] = input;
+
+                return {...prev!,
+                    monsters: updatedMonsters
+                }
+            })
+        }
+    }
     
     return (
         <div>
@@ -42,7 +69,11 @@ export default function Fight() {
             <div className="grid max-lg:grid-cols-1 max-2xl:grid-cols-3 grid-cols-4 gap-4 max-2xl:w-full w-8/12 mx-auto">
                 { 
                     fight?.monsters.map( monster => {
-                        return <MonsterFightCard key={monster.monsterId} monster={monster} />
+                        return <MonsterFightCard 
+                        key={monster.monsterId} 
+                        monster={monster}
+                        updateMonster={updateMonster}
+                        />
                     })
                 }
             </div>

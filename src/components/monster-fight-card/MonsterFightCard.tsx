@@ -4,22 +4,25 @@ import "./MonsterFightCard.css"
 import MonsterService from "../../services/MonsterService";
 
 type Props = {
-    monster: Monster
+    monster: Monster,
+    updateMonster(input: Monster) :void,
 }
 
 export default function MonsterFightCard(props: Props) {
 
-    const {monster} = props;
+    const {monster, updateMonster} = props;
     const [monsterData, setMonsterData] = useState<Monster>();
 
     useEffect(() => {
-        setMonsterData(monster);
+        if (monster) {
+            setMonsterData(monster);
+        }
     },[monster]);
 
     const updateActions = async(monsterId: number, action: boolean, move: boolean, bonusAction: boolean) => {
         const data = await MonsterService.updateActions(monsterId, action, move, bonusAction);
         if (data) {
-            setMonsterData(data);
+            updateMonster(data);
         }
     }
 

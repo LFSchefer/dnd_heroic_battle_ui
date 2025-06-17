@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Monster } from "../../models/monster/Monster"
 import "./MonsterFightCard.css"
 import MonsterService from "../../services/MonsterService";
+import { FormattedMessage } from "react-intl";
 
 type Props = {
     monster: Monster,
@@ -38,8 +39,6 @@ export default function MonsterFightCard(props: Props) {
         updateActions(monsterData!.monsterId,monsterData!.action, monsterData!.move, !monsterData!.bonusAction);
     }
 
-
-
     return (
         <div className="monster-fight-card p-4 m-4 flex flex-col justify-between shadow-md border border-black/20 rounded-md">
             <div className="monster-image-container">
@@ -50,30 +49,30 @@ export default function MonsterFightCard(props: Props) {
             <div className="monster-info">
                 <div className="flex justify-around">
                     <div>
-                        <label htmlFor="action">action</label>
+                        <label htmlFor="action"><FormattedMessage id="action"/></label>
                         <input className="ml-2" type="checkbox" name="" id="action" checked={monsterData?.action} onChange={updateAction}/>
                     </div>
                     <div>
-                        <label htmlFor="move">move</label>
+                        <label htmlFor="move"><FormattedMessage id="move"/></label>
                         <input className="ml-2" type="checkbox" name="" id="move" checked={monsterData?.move} onChange={updateMove}/>
                     </div>
                     <div>
-                        <label htmlFor="bonus-action">bonus action</label>
+                        <label htmlFor="bonus-action"><FormattedMessage id="bonusAction"/></label>
                         <input className="ml-2" type="checkbox" name="" id="bonus-action" checked={monsterData?.bonusAction} onChange={updateBonusAction}/>
                     </div>
                 </div>
                 <p className="border-b-2 border-slate-950/50 font-bold">{monster.name}</p>
                 <div className="flex justify-around">
-                    <p>Strenght: {monster.monster.strength}</p>
-                    <p>Dexterity: {monster.monster.dexterity}</p>
+                    <p><FormattedMessage id="strength"/>: {monster.monster.strength}</p>
+                    <p><FormattedMessage id="dexterity"/>: {monster.monster.dexterity}</p>
                 </div>
                 <div className="flex justify-around">
-                    <p>Constitution: {monster.monster.constitution}</p>
-                    <p>Intelligence: {monster.monster.intelligence}</p>
+                    <p><FormattedMessage id="constitution"/>: {monster.monster.constitution}</p>
+                    <p><FormattedMessage id="intelligence"/>: {monster.monster.intelligence}</p>
                 </div>
                 <div className="flex justify-around">
-                    <p>Wisdom: {monster.monster.wisdom}</p>
-                    <p>Charisma: {monster.monster.charisma}</p>
+                    <p><FormattedMessage id="wisdom"/>: {monster.monster.wisdom}</p>
+                    <p><FormattedMessage id="charisma"/>: {monster.monster.charisma}</p>
                 </div>
 
             </div>

@@ -1,6 +1,5 @@
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
-import DiceRoller from "../../components/dice-roller/diceRoller";
 import { useStoreActions, useStoreState } from "../../store/hooks";
 
 export default function Home() {
@@ -18,11 +17,11 @@ export default function Home() {
     navigate("/campaigns");
   };
 
-  const goToSignIn = ():void => {
+  const goToSignIn = (): void => {
     navigate("/sign-in");
   };
 
-  const goToSignUp = ():void => {
+  const goToSignUp = (): void => {
     navigate("/sign-up");
   };
 
@@ -68,7 +67,6 @@ export default function Home() {
           <FormattedMessage id="presentationTextDetail4"/>
         </div>
       </div>
-      < DiceRoller/>
     </>
   )
 }

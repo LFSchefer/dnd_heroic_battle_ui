@@ -100,5 +100,11 @@
   "save": "Save",
   "d20": "D20",
   "howToInitiative": "How to calculate: roll a D20 + bonus = initiative",
-  "startFight": "Start the fight"
+  "startFight": "Start the fight",
+  "turn": "Turn",
+  "fight": "Fight",
+  "havePlayed": "Have played",
+  "action": "Action",
+  "move": "Move",
+  "bonusAction": "Bonus action"
 }

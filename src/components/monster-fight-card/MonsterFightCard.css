@@ -2,6 +2,16 @@
     height: 300px;
     margin: 0 auto;
     object-fit: cover;
+    position: relative;
+}
+
+.damage-image {
+    position: absolute;
+    width: 300px;
+    background-color: rgba(255, 0, 0, 0.411);
+    left: 8px;
+    z-index: 1;
+    bottom: 0;
 }
 
 .monster-fight-card {
@@ -18,10 +28,12 @@
     position: absolute;
     top: 8px;
     left: 14px;
+    z-index: 1;
 }
 
 .monster-display-on-card-ac {
     position: absolute;
     top: 8px;
     right: 14px;
+    z-index: 1;
 }

@@ -46,9 +46,12 @@ export default function MonsterFightCard(props: Props) {
         handleDamageModal(monster.monsterId);
     }
 
+    const damageImageStyle = {"height": `${((monster.maxHitPoints - monster.currentHitPoints)/monster.maxHitPoints)*300}px`};
+
     return (
         <div className="monster-fight-card p-4 m-4 flex flex-col justify-between shadow-md border border-black/20 rounded-md">
             <div className="monster-image-container">
+                <div className="damage-image" style={damageImageStyle}></div>
                 <img className="monster-image" src={monster.monster.imageUrl ? monster.monster.imageUrl : ""} alt={`monster-${monster.name}-image`} />
                 {monster.currentHitPoints === 0 ? 
                 <p className="dnd-btn-small w-fit monster-display-on-card-hp" onClick={openModal}>KO <FontAwesomeIcon icon={faSkull} /></p> :

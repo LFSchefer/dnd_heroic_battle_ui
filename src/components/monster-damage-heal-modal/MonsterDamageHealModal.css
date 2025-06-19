@@ -11,19 +11,12 @@
     margin-top: -75px;
     overflow: auto;
     background-color: rgb(236, 235, 224);
+    z-index: 3;
 }
 
 .close-damage-modal {
     position: absolute;
     top: 4%;
     right: 4%;
-    z-index: 3;
+    z-index: 4;
 }
-
-/* .amount {
-    position: relative;
-}
-
-.feedback-amount {
-    position: absolute;
-} */

@@ -1,4 +1,5 @@
 import { MonsterInitiative } from "../models/battle-monster/MonterInitiative";
+import { DamageHeal } from "../models/monster/DamageHeal";
 import { Monster } from "../models/monster/Monster";
 import axiosClient from "./AxiosClient"
 
@@ -68,6 +69,21 @@ export default class MonsterService {
             bonusAction: bonusAction
         }
         const {data} = await axiosClient.put(`/monsters/update-actions`, dto);
+        return data;
+    } catch (error) {
+        console.log(error);
+        Promise.reject(error);
+    }
+   }
+
+   static updateHp = async(monsterId: number, amount: number, type: DamageHeal): Promise<Monster | undefined> => {
+    try {
+        const dto = {
+            monsterId: monsterId,
+            amount: amount,
+            type: type
+        };
+        const {data} = await axiosClient.patch(`/monsters/update-hp`, dto);
         return data;
     } catch (error) {
         console.log(error);

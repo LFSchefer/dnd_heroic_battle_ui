@@ -5,6 +5,9 @@ import { FightType } from "../../models/battle/Fight";
 import MonsterFightCard from "../../components/monster-fight-card/MonsterFightCard";
 import { Monster } from "../../models/monster/Monster";
 import { FormattedMessage } from "react-intl";
+import MonsterDamageHealModal from "../../components/monster-damage-heal-modal/MonsterDamageHealModal";
+import MonsterService from "../../services/MonsterService";
+import { DamageHeal } from "../../models/monster/DamageHeal";
 
 
 export default function Fight() {
@@ -13,6 +16,8 @@ export default function Fight() {
     const navigate = useNavigate();
     const [battleId, setBattleId] = useState<number>();
     const [fight, setFight] = useState<FightType>();
+    const [damageModal, setDamageModal] = useState<boolean>(false);
+    const [selectedMonsterId, setSelectedMonsterId] = useState<number | null>(null);
 
     const goTo404 = useCallback((): void => {
         navigate("/*");
@@ -33,6 +38,15 @@ export default function Fight() {
             goTo404();
         }
     },[getFight, goTo404, params.battleId])
+
+    const handleDamageModal = (monsterId: number) => {
+        setSelectedMonsterId(monsterId)
+        setDamageModal(true);
+    }
+
+    const closeDamageModal = () => {
+        setDamageModal(false);
+    }
 
     const findMonsterIndex = (input: Monster): number => {
         return fight!.monsters.findIndex((m, i, arr) => {
@@ -59,6 +73,14 @@ export default function Fight() {
             })
         }
     }
+
+    const updateMonsterHp = async(monsterId: number, amount: number, type: DamageHeal): Promise<void> => {
+        const response = await MonsterService.updateHp(monsterId, amount, type);
+        if (response) {
+            setDamageModal(false);
+            updateMonster(response);            
+        }
+    }
     
     return (
         <div className="fight-container py-5">
@@ -71,13 +93,22 @@ export default function Fight() {
                 { 
                     fight?.monsters.map( monster => {
                         return <MonsterFightCard 
-                                key={monster.monsterId} 
-                                monster={monster}
-                                updateMonster={updateMonster}
-                                />
+                                    key={monster.monsterId} 
+                                    monster={monster}
+                                    updateMonster={updateMonster}
+                                    handleDamageModal={handleDamageModal}
+                                    />
                     })
                 }
             </div>
+            {damageModal &&
+                <MonsterDamageHealModal
+                    monster={fight?.monsters.filter(m => m.monsterId === selectedMonsterId)[0]}
+                    isOpen={damageModal}
+                    close={closeDamageModal}
+                    updateMonsterHp={updateMonsterHp}
+                    />
+            }
         </div>
     )
 }

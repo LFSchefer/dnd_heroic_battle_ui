@@ -3,15 +3,18 @@ import { Monster } from "../../models/monster/Monster"
 import "./MonsterFightCard.css"
 import MonsterService from "../../services/MonsterService";
 import { FormattedMessage } from "react-intl";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSkull } from "@fortawesome/free-solid-svg-icons";
 
 type Props = {
     monster: Monster,
     updateMonster(input: Monster) :void,
+    handleDamageModal(monsterId: number): void,
 }
 
 export default function MonsterFightCard(props: Props) {
 
-    const {monster, updateMonster} = props;
+    const {monster, updateMonster, handleDamageModal} = props;
     const [monsterData, setMonsterData] = useState<Monster>();
 
     useEffect(() => {
@@ -39,12 +42,19 @@ export default function MonsterFightCard(props: Props) {
         updateActions(monsterData!.monsterId,monsterData!.action, monsterData!.move, !monsterData!.bonusAction);
     }
 
+    const openModal = () => {
+        handleDamageModal(monster.monsterId);
+    }
+
     return (
         <div className="monster-fight-card p-4 m-4 flex flex-col justify-between shadow-md border border-black/20 rounded-md">
             <div className="monster-image-container">
                 <img className="monster-image" src={monster.monster.imageUrl ? monster.monster.imageUrl : ""} alt={`monster-${monster.name}-image`} />
-                <p className="dnd-btn-small w-fit monster-display-on-card-hp">HP: {monster.currentHitPoints}/{monster.maxHitPoints}</p>
-                <p className="dnd-btn-small w-fit monster-display-on-card-ac">AC: {monster.monster.armorClass}</p>
+                {monster.currentHitPoints === 0 ? 
+                <p className="dnd-btn-small w-fit monster-display-on-card-hp" onClick={openModal}>KO <FontAwesomeIcon icon={faSkull} /></p> :
+                <p className="dnd-btn-small w-fit monster-display-on-card-hp" onClick={openModal}>HP {monster.currentHitPoints}/{monster.maxHitPoints}</p>
+                }
+                <p className="dnd-btn-small w-fit monster-display-on-card-ac">AC {monster.monster.armorClass}</p>
             </div>
             <div className="monster-info">
                 <div className="flex justify-around">

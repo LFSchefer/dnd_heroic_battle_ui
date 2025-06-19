@@ -106,5 +106,6 @@
   "havePlayed": "Have played",
   "action": "Action",
   "move": "Move",
-  "bonusAction": "Bonus action"
+  "bonusAction": "Bonus action",
+  "invalidAmount": "amount must be a positive number"
 }

@@ -8,7 +8,6 @@
 .damage-image {
     position: absolute;
     width: 300px;
-    background-color: rgba(255, 0, 0, 0.411);
     left: 8px;
     z-index: 1;
     bottom: 0;

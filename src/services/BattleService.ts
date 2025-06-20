@@ -88,4 +88,16 @@ export default class BattleService {
       }
     }
   }
+
+  static nextTurn = async (battleId: number): Promise<FightType | undefined> => {
+    try {
+      const {data} = await axiosClient.patch(`battles/${battleId}/next-turn`)
+      return data;
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+          console.log(error)
+          Promise.reject(error);
+        }
+    }
+  }
 }

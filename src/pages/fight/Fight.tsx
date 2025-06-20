@@ -81,13 +81,21 @@ export default function Fight() {
             updateMonster(response);            
         }
     }
+
+    const handleNextTurn = async(): Promise<void> => {
+        if (battleId) {
+            const data = await BattleService.nextTurn(battleId);
+            setFight(data);
+        }
+    }
     
     return (
         <div className="fight-container py-5">
             <div className="fight-info bg-blue-200 rounded-md border-2 border-neutral-800/10 p-5 mb-5 flex justify-evenly w-2/4 mx-auto">
                 <h2><FormattedMessage id="fight"/>: {fight?.battleName}</h2>
                 <h2><FormattedMessage id="turn"/>: {fight?.turn}</h2>
-                <h2><FormattedMessage id="havePlayed"/>: {fight?.monsters.filter( monster => monster.havePlayThisround).length}/{fight?.monsters.length}</h2>
+                <h2><FormattedMessage id="havePlayed"/>: {fight?.monsters.filter( monster => monster.havePlayThisRound).length}/{fight?.monsters.length}</h2>
+                <button className="dnd-btn" onClick={handleNextTurn}>next</button>
             </div>
             <div className="grid max-lg:grid-cols-1 max-2xl:grid-cols-3 grid-cols-4 gap-4 max-2xl:w-full w-8/12 mx-auto">
                 { 

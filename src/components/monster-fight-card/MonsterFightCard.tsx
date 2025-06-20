@@ -59,6 +59,7 @@ export default function MonsterFightCard(props: Props) {
                 <p className="dnd-btn-small w-fit monster-display-on-card-hp" onClick={openModal}>HP {monster.currentHitPoints}/{monster.maxHitPoints}</p>
                 }
                 <p className="dnd-btn-small w-fit monster-display-on-card-ac">AC {monster.monster.armorClass}</p>
+                {monster.hisTurn && <p className="dnd-btn-small w-fit monster-display-on-card-at">Active turn</p>}
             </div>
             <div className="monster-info">
                 <div className="flex justify-around">

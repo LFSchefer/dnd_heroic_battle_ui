@@ -1,5 +1,6 @@
 .monster-image {
     height: 300px;
+    width: 300px;
     margin: 0 auto;
     object-fit: cover;
     position: relative;
@@ -34,5 +35,12 @@
     position: absolute;
     top: 8px;
     right: 14px;
+    z-index: 1;
+}
+
+.monster-display-on-card-at {
+    position: absolute;
+    bottom: 8px;
+    left: 14px;
     z-index: 1;
 }

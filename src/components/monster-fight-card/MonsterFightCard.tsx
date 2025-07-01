@@ -65,15 +65,15 @@ export default function MonsterFightCard(props: Props) {
                 <div className="flex justify-around">
                     <div>
                         <label htmlFor="action"><FormattedMessage id="action"/></label>
-                        <input className="ml-2" type="checkbox" name="" id="action" checked={monsterData?.action} onChange={updateAction}/>
+                        <input className="ml-2" type="checkbox" name="" id="action" checked={monsterData?.action} onChange={updateAction} disabled={monster.currentHitPoints === 0}/>
                     </div>
                     <div>
                         <label htmlFor="move"><FormattedMessage id="move"/></label>
-                        <input className="ml-2" type="checkbox" name="" id="move" checked={monsterData?.move} onChange={updateMove}/>
+                        <input className="ml-2" type="checkbox" name="" id="move" checked={monsterData?.move} onChange={updateMove} disabled={monster.currentHitPoints === 0}/>
                     </div>
                     <div>
                         <label htmlFor="bonus-action"><FormattedMessage id="bonusAction"/></label>
-                        <input className="ml-2" type="checkbox" name="" id="bonus-action" checked={monsterData?.bonusAction} onChange={updateBonusAction}/>
+                        <input className="ml-2" type="checkbox" name="" id="bonus-action" checked={monsterData?.bonusAction} onChange={updateBonusAction} disabled={monster.currentHitPoints === 0}/>
                     </div>
                 </div>
                 <p className="border-b-2 border-slate-950/50 font-bold">{monster.name}</p>

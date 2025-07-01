@@ -20,6 +20,7 @@ export default function MonsterDamageHealModal(props: Props) {
     const [amount, setAmount] = useState<string>("");
     const [type, setType] = useState<DamageHeal>(DamageHeal.Damage);
     const [isAmountValid, setIsAmountValid] = useState<boolean>(true);
+    const [isNoInteraction, setIsNoInteraction] = useState<boolean>(true);
 
     const handleType = (type: string): void => {
         setType(DamageHeal.Damage === type ? DamageHeal.Damage : DamageHeal.Heal);
@@ -27,16 +28,17 @@ export default function MonsterDamageHealModal(props: Props) {
 
     const handleAmount = (input: string): void => {
         setAmount(input);
+        setIsNoInteraction(false);
     };
 
     useEffect(() => {
-        if (amount.trim() !== "" && Number.parseInt(amount) > 0) {
+        if ((amount.trim() !== "" && Number.parseInt(amount) > 0) || isNoInteraction) {
             setIsAmountValid(true);
         } else {
             setIsAmountValid(false);
         }
 
-    },[amount])
+    },[amount, isNoInteraction])
 
     const updateHp = (): void => {
         if (isAmountValid && monster?.monsterId) {
@@ -62,7 +64,7 @@ export default function MonsterDamageHealModal(props: Props) {
                     <input id="damage-amount" type="number" value={amount} onChange={e => handleAmount(e.target.value)}/>
                 </div>
                 {!isAmountValid && <p className="-mb-5 pt-1 text-red-600 italic text-sm feedback-amount">< FormattedMessage id="invalidAmount"/></p>}
-                <button className="dnd-btn mx-auto mt-12" onClick={updateHp} disabled={!isAmountValid}><FormattedMessage id="save"/></button>
+                <button className="dnd-btn mx-auto mt-12" onClick={updateHp} disabled={isNoInteraction || !isAmountValid}><FormattedMessage id="save"/></button>
                 <button className="close-damage-modal dnd-btn" onClick={close}><FontAwesomeIcon icon={faXmark} style={{color: "#ffffff",}} size="lg"/></button>
             </div>
         </div>

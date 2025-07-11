@@ -8,11 +8,11 @@ export default function Cgu() {
 
     const navigateBack = (): void => {
         navigate("/");
-    } 
+    }
 
     return (
         <div className="cgu relative">
-            <h1 className="py-8 font-bold">Conditions Générales d'Utilisation (CGU)</h1>
+            <h1 className="py-8 font-bold"><FormattedMessage id="GCU"/></h1>
             <button className="dnd-btn fixed btn-cgu" onClick={navigateBack}><FormattedMessage id="backHome"/></button>
             <div className="text-left w-6/12 m-auto pb-8">
                 <h2 className="font-semibold mt-8 mb-4">1. Préambule</h2>

@@ -2,5 +2,7 @@ export type BattleMonsterPreview = {
     id: number,
     monsterId: number,
     initiative: number | null,
-    name: string
+    name: string,
+    currentHitPoints: number,
+    maxHitPoints: number
 }

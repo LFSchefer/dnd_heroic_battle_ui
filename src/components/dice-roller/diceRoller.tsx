@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Dices } from "../../models/Dice/Dices";
+import { Dices } from "../../models/dice/Dices";
 import { FormattedMessage } from "react-intl";
 
 export default function DiceRoller() {

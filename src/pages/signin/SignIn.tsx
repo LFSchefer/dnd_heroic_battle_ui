@@ -5,11 +5,14 @@ import UserService from "../../services/UserService";
 import { SignInForm } from "../../models/user/SignInForm";
 import { SignInResponse } from "../../models/user/SignInResponse";
 import { useStoreActions } from "../../store/hooks";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDiceD20 } from "@fortawesome/free-solid-svg-icons";
 
 export default function SignIn() {
 
     const [formInput, setFormInput] = useState<SignInForm>({email: '', password:''});
     const [apiResponse, setApiResponse] = useState<SignInResponse | undefined>(undefined);
+    const [loginInProgess, setLoginInProgess] = useState<boolean>(false);
     const {setUser} = useStoreActions( action => action.user)
 
     const navigate = useNavigate();
@@ -25,8 +28,11 @@ export default function SignIn() {
 
     const handleClick = async (event: SyntheticEvent) => {
         event.preventDefault();
+        setApiResponse(undefined);
+        setLoginInProgess(true);
         const response: SignInResponse = await UserService.signIn(formInput);
         setApiResponse(response);
+        setLoginInProgess(false);
         if (!response.error) {
             setUser(response);
             navigate("/");
@@ -93,7 +99,10 @@ export default function SignIn() {
                         type="submit"
                         className="flex w-full justify-center dnd-btn"
                     >
-                        < FormattedMessage id="signIn"/>
+                        {loginInProgess ? 
+                            <FontAwesomeIcon icon={faDiceD20} size="xl" style={{color: "#ffffff",}} spin /> :
+                            < FormattedMessage id="signIn"/>
+                        }
                     </button>
                     </div>
                 </form>

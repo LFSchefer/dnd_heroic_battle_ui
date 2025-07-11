@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-#root {
-  background-color: rgb(240, 240, 235);
-}
-
 .App {
   text-align: center;
   font-family: Livvic ,Roboto, system-ui, -apple-system, Oxygen, Ubuntu ,source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -39,6 +35,11 @@ transition: 0.2s;
   background: #0bbaf0;
 }
 
+.dnd-btn:disabled {
+  cursor:inherit;
+  background: gray;
+}
+
 .dnd-btn-small {
   cursor: pointer;
   box-sizing: border-box;
@@ -54,3 +55,8 @@ transition: 0.2s;
   .dnd-btn-small:hover {
     background: #0bbaf0;
   }
+
+  .dnd-btn-small:disabled {
+  cursor:inherit;
+  background: gray;
+}

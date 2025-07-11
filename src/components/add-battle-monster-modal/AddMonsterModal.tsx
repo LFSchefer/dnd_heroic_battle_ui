@@ -118,17 +118,17 @@ export default function AddMonsterModal(props: Props) {
                     <form noValidate className="my-6">
                         <div className="mb-5">
                             <label htmlFor="custom-name" className="mx-5"><FormattedMessage id="name"/></label>
-                            <input id="custom-name" className="mt-1" type="text" value={customName} onChange={e => updateName(e.target.value)} />
+                            <input name="custom-name" className="mt-1" type="text" value={customName} onChange={e => updateName(e.target.value)} />
                             {!inputsAreValid.name && <div><span className="text-red-700 text-sm mx-5"><FormattedMessage id="nameBlank"/></span></div>}
                         </div>
                         <div className="mb-5">
                             <label htmlFor="current-hit-points" ><FormattedMessage id="currentHitPoints"/></label>
-                            <input id="current-hit-points" className="mt-1" type="number" value={currentHitPoints} onChange={e => updateCurrentHitPoints(+e.target.value)} />
+                            <input name="current-hit-points" className="mt-1" type="number" value={currentHitPoints} onChange={e => updateCurrentHitPoints(+e.target.value)} />
                             {!inputsAreValid.currentHitPoints && <div><span className="text-red-700 text-sm"><FormattedMessage id="currentHpValid"/></span></div>}
                         </div>
                         <div className="mb-5">
                             <label htmlFor="max-hit-points" ><FormattedMessage id="maxHitPoints"/></label>
-                            <input id="max-hit-points" className="mt-1" type="number" value={maxHitPoints} onChange={e => updateMaxHitPoints(+e.target.value)} />
+                            <input name="max-hit-points" className="mt-1" type="number" value={maxHitPoints} onChange={e => updateMaxHitPoints(+e.target.value)} />
                             {!inputsAreValid.maxHitPoints && <div><span className="text-red-700 text-sm"><FormattedMessage id="maxHpValid"/></span></div>}
                         </div>
                         <p><FormattedMessage id="wantToRollYourself"/></p>

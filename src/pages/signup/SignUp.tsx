@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router";
 import { signUpForm } from "../../models/user/signUpForm";
 import { validateEmail, validatePassword } from "../../utils/utils";
 import UserService from "../../services/UserService";
+import { FormErrors } from "../../models/errors/FormErrors";
 
 export default function SignUp() {
 
@@ -19,6 +20,7 @@ export default function SignUp() {
         password: false,
         confirmPassword: false
     });
+    const [apiError, setApiError] = useState<FormErrors | undefined>(undefined);
 
     const navigate = useNavigate();
 
@@ -36,8 +38,10 @@ export default function SignUp() {
         if (validateInputs()) {
             const response = await UserService.signUp(signUpData);
             if (!response.error) {
+                setApiError(undefined)
                 navigate("/sign-in")
             }
+            setApiError(response.error)
         }
     }
 
@@ -119,7 +123,7 @@ export default function SignUp() {
             </h2>
             </div>
 
-            <div className="mt-10 sm:mx-auto sm:w-7/12 max-w-3xl">
+            <div className="mt-10 sm:mx-auto sm:w-7/12">
             <form className="border rounded-lg border-cyan-800/20 px-8 py-12 bg-sky-600/10 shadow-md" onSubmit={handleSubmit} noValidate>
                 <div className="part-one md:flex md:justify-between">
 
@@ -129,7 +133,7 @@ export default function SignUp() {
                                 < FormattedMessage id="userName"/>
                             </label>
                         </div>
-                    <div className="mt-2 max-w-96">
+                    <div className="mt-2">
                         <input
                         id="user-name"
                         name="userName"
@@ -140,6 +144,8 @@ export default function SignUp() {
                         onChange={setField}
                         />
                         {errorSignUpForm.userName && <span className="text-red-600 italic text-sm"><FormattedMessage id="invalidUserName"/></span>}
+                        {apiError?.fieldErros?.userName![0] === "Size" && <span className="text-red-600 italic text-sm"><FormattedMessage id="invalidUserName"/></span>}
+                        {apiError?.globalErrors![0] === "UniqueUserCreate" && <span className="text-red-600 italic text-sm"><FormattedMessage id="uniqueUserCreate"/></span>}
                     </div>
                     </div>
                     <div className="email w-full md:w-6/12 mx-2 mt-4">
@@ -148,7 +154,7 @@ export default function SignUp() {
                                 < FormattedMessage id="emailAdresse"/>
                             </label>
                         </div>
-                    <div className="mt-2 max-w-96">
+                    <div className="mt-2">
                         <input
                         id="email"
                         name="email"
@@ -160,6 +166,8 @@ export default function SignUp() {
                         onChange={setField}
                         />
                         {errorSignUpForm.email && <span className="text-red-600 italic text-sm"><FormattedMessage id="invalidEmail"/></span>}
+                        {apiError?.fieldErros?.email![0] === "Email" && <span className="text-red-600 italic text-sm"><FormattedMessage id="invalidEmail"/></span>}
+                        {apiError?.globalErrors![0] === "UniqueUserCreate" && <span className="text-red-600 italic text-sm"><FormattedMessage id="uniqueUserCreate"/></span>}
                     </div>
                     </div>
 
@@ -172,7 +180,7 @@ export default function SignUp() {
                                 < FormattedMessage id="password"/>
                             </label>
                         </div>
-                        <div className="mt-2 max-w-96">
+                        <div className="mt-2">
                             <input
                             id="password"
                             name="password"
@@ -183,6 +191,7 @@ export default function SignUp() {
                             value={signUpData.password}
                             onChange={setField}
                             />
+                            {apiError?.fieldErros?.password![0] === "ValidPassword" && <span className="text-red-600 italic text-sm"><FormattedMessage id="invalidPassword"/></span>}
                             {errorSignUpForm.password && <span className="text-red-600 italic text-sm"><FormattedMessage id="invalidPassword"/></span>}
                         </div>
                     </div>
@@ -192,10 +201,10 @@ export default function SignUp() {
                                 < FormattedMessage id="confirmPassword"/>
                             </label>
                         </div>
-                        <div className="mt-2 max-w-96">
+                        <div className="mt-2">
                             <input
                             id="passwordConfirm"
-                            name="confirmPassword"
+                            name="passwordConfirm"
                             type="password"
                             required
                             autoComplete="current-password"

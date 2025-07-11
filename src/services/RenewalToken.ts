@@ -16,7 +16,6 @@ export default async function renewalToken() {
         sessionStorage.setItem('refresh_token', data.refreshToken);
         sessionStorage.setItem('expiration', data.expiration.toString());
     } else {
-        console.log("in else token renewal")
         const baseURL = window.location.origin;
         window.location.replace(baseURL + "/sign-in");
     }

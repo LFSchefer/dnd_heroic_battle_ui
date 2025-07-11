@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./Footer.css"
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons"
 import { FormattedMessage } from "react-intl"
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 export default function Footer() {
 
@@ -11,7 +11,7 @@ export default function Footer() {
  }
 
     return (
-        <div className="footer mt-12">
+        <div className="footer">
             <div className="flex justify-between min-h-full items-center mx-4">
                 <div className="items-center"><FormattedMessage id="appVersion"/>{process.env.REACT_APP_VERSION}</div>
                 <div><button onClick={goToCgu}><FormattedMessage id="cgu"/></button></div>

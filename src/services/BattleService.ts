@@ -3,6 +3,7 @@ import axiosClient from "./AxiosClient";
 import { BattlePreview } from "../models/battle/BattlePreview";
 import { BattleCreate } from "../models/battle/BattleCreate";
 import { Battle } from "../models/battle/Battle";
+import { FightType } from "../models/battle/Fight";
 
 export default class BattleService {
 
@@ -74,6 +75,29 @@ export default class BattleService {
       if (axios.isAxiosError(error)) {
         console.log(console.error())
       }
+    }
+  }
+
+  static getFight = async (battleId: number): Promise<FightType | undefined> => {
+    try {
+      const {data} = await axiosClient.get(`battles/${battleId}/fight`);
+      return data;
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+        console.log(console.error())
+      }
+    }
+  }
+
+  static nextTurn = async (battleId: number): Promise<FightType | undefined> => {
+    try {
+      const {data} = await axiosClient.patch(`battles/${battleId}/next-turn`)
+      return data;
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+          console.log(error)
+          Promise.reject(error);
+        }
     }
   }
 }

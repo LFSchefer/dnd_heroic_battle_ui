@@ -197,14 +197,14 @@ export default function SignUp() {
                     </div>
                     <div className="confirm w-full md:w-6/12 mx-2 mt-4">
                         <div className="flex items-center justify-between">
-                            <label htmlFor="passwordConfirm" className="block text-sm/6 font-medium text-gray-900">
+                            <label htmlFor="confirmPassword" className="block text-sm/6 font-medium text-gray-900">
                                 < FormattedMessage id="confirmPassword"/>
                             </label>
                         </div>
                         <div className="mt-2">
                             <input
-                            id="passwordConfirm"
-                            name="passwordConfirm"
+                            id="confirmPassword"
+                            name="confirmPassword"
                             type="password"
                             required
                             autoComplete="current-password"

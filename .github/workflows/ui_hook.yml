@@ -13,6 +13,6 @@ jobs:
       - name: Send Webhook
         uses: joelwmale/webhook-action@master
         with:
-          url: https://jenkins.readresolve.tech/generic-webhook-trigger/invoke
+          url: https://jenkins.readresolve.tech/job/eucalyptus-folder/job/UI/generic-webhook-trigger/invoke
           headers: '{"Content-Type": "application/json"}'
           body: '{"event": "push", "repository": "${{ github.repository }}"}'

@@ -11,7 +11,11 @@ import { faDiceD20 } from "@fortawesome/free-solid-svg-icons";
 export default function SignIn() {
 
     const [formInput, setFormInput] = useState<SignInForm>({email: '', password:''});
-    const [apiResponse, setApiResponse] = useState<SignInResponse | undefined>(undefined);
+    const [apiResponse, setApiResponse] = useState<SignInResponse | undefined >({
+                    userName: '',
+                    email: '',
+                    tokens: undefined,
+                });
     const [loginInProgess, setLoginInProgess] = useState<boolean>(false);
     const {setUser} = useStoreActions( action => action.user)
 
@@ -33,7 +37,7 @@ export default function SignIn() {
         const response: SignInResponse = await UserService.signIn(formInput);
         setApiResponse(response);
         setLoginInProgess(false);
-        if (!response.error) {
+        if (!response.error && response.tokens) {
             setUser(response);
             navigate("/");
         }
@@ -94,7 +98,7 @@ export default function SignIn() {
                     </div>
 
                     <div className="pt-6">
-                        {(apiResponse?.error || apiResponse?.userName === null) && <p className="mb-4 -mt-9 text-red-600 italic text-sm">< FormattedMessage id="loginError"/></p>}
+                        {(apiResponse?.error || apiResponse?.userName === undefined) && <p className="mb-4 -mt-9 text-red-600 italic text-sm">< FormattedMessage id="loginError"/></p>}
                     <button
                         type="submit"
                         className="flex w-full justify-center dnd-btn"

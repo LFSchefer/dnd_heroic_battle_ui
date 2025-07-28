@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Outlet } from "react-router";
 import ProtectedRoute from "./components/protected-route/ProtectedRoute";
 import Home from "./pages/home/Home";
 import NotFound from "./pages/notfound/NotFound";
@@ -10,51 +10,73 @@ import BattlePage from "./pages/battles/Battle";
 import BattleInit from "./pages/battles/BattleInit";
 import Cgu from "./pages/cgu/Cgu";
 import Fight from "./pages/fight/Fight";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
+import "./App.css"
+
+function Layout() {
+  return (
+    <>
+      <div className="App">
+        <Header />
+        <Outlet />
+        <Footer />
+      </div>
+    </>
+  );
+}
 
 export const router = createBrowserRouter ([
-  {
+    {
     path: "/",
-    element: < Home />
-  },
-  {
-    path: "*",
-    element: < NotFound/>
-  },
-  {
-    path: "/cgu",
-    element: < Cgu/>
-  },
-  {
-    path: "/sign-in",
-    element: < SignIn />
-  },
-  {
-    path: "/sign-up",
-    element: < SignUp />
-  },
-  {
-    element:<ProtectedRoute />,
+    element: < Layout />,
     children: [
       {
-        path:"/campaigns",
-        element: <Campaigns/>
+        path: "/",
+        element: < Home />
       },
       {
-        path:"/campaigns/:campaignId",
-        element: < CampaignBattles />
+        path: "*",
+        element: < NotFound/>
       },
       {
-        path:"/battles/:battleId",
-        element: < BattlePage />
+        path: "/cgu",
+        element: < Cgu/>
       },
       {
-        path:"/battles/:battleId/initialize",
-        element: < BattleInit />
+        path: "/sign-in",
+        element: < SignIn />
       },
       {
-        path:"/battles/:battleId/fight",
-        element: < Fight />
+        path: "/sign-up",
+        element: < SignUp />
+      },
+      {
+        element:<ProtectedRoute />,
+        children: [
+          {
+            path:"/campaigns",
+            element: <Campaigns/>
+          },
+          {
+            path:"/campaigns/:campaignId",
+            element: < CampaignBattles />
+          },
+          {
+            path:"/battles/:battleId",
+            element: < BattlePage />
+          },
+          {
+            path:"/battles/:battleId/initialize",
+            element: < BattleInit />
+          },
+          {
+            path:"/battles/:battleId/fight",
+            element: < Fight />
+          },
+        ]
       },
     ]
   },
+  
 ])

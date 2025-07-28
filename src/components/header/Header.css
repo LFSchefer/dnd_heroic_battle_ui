@@ -1,9 +1,6 @@
-footer {
+header {
     height: 50px;
     background-color: #05a7d8;
     color: antiquewhite;
     box-shadow: 5px 5px 15px 3px rgba(0,0,0, 0.2);
-    position: absolute;
-    bottom: -50px;
-    min-width: 100%;
 }

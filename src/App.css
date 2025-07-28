@@ -8,6 +8,7 @@
   monospace;
   background-color: rgb(240, 240, 235);
   min-height: 100vh;
+  position: relative;
 }
 
 .link {

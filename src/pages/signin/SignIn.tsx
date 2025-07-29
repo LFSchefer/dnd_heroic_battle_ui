@@ -35,6 +35,7 @@ export default function SignIn() {
         setApiResponse(undefined);
         setLoginInProgess(true);
         const response: SignInResponse = await UserService.signIn(formInput);
+        console.log(response)
         setApiResponse(response);
         setLoginInProgess(false);
         if (!response.error && response.tokens) {
@@ -98,7 +99,8 @@ export default function SignIn() {
                     </div>
 
                     <div className="pt-6">
-                        {(apiResponse?.error || apiResponse?.userName === undefined) && <p className="mb-4 -mt-9 text-red-600 italic text-sm">< FormattedMessage id="loginError"/></p>}
+                        {(apiResponse?.error?.message === "Network Error") && <p className="mb-4 -mt-9 text-red-600 italic text-sm">< FormattedMessage id="networkError"/></p>}
+                        {(apiResponse?.error && apiResponse?.error?.message !== "Network Error") && <p className="mb-4 -mt-9 text-red-600 italic text-sm">< FormattedMessage id="loginError"/></p>}
                     <button
                         type="submit"
                         className="flex w-full justify-center dnd-btn"

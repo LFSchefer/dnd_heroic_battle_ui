@@ -29,7 +29,7 @@ export default class UserService {
                     userName: undefined,
                     email: undefined,
                     tokens: undefined,
-                    error: error.response?.data
+                    error: error
                 }
             } 
                 return {

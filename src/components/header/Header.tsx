@@ -1,12 +1,16 @@
-import { useLocation } from "react-router";
+import { useNavigate } from "react-router";
 import "./Header.css"
 import { useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
+import { useStoreActions } from "../../store/hooks";
 
 export default function Header() {
 
-    const navigation = useLocation();
+    const navigate = useNavigate();
 
     const [userLogin, setUserLogin] = useState<boolean>(false);
+    const { logout } = useStoreActions(action => action.user);
+    
 
     useEffect(() => {
         if (!sessionStorage.getItem('access_token')) {
@@ -14,19 +18,40 @@ export default function Header() {
         } else {
             setUserLogin(true);
         }
-    },[navigation])
+    },[navigate])
+
+    const goToHome = (): void => {
+        navigate("/");
+    }
+
+    const goToSignIn = (): void  => {
+        navigate("/sign-in")
+    }
+
+    const goToSignUp = (): void  => {
+        navigate("/sign-up")
+    }
+
+      const handleLogout = (): void => {
+        logout();
+    };
 
 
     return(
         <header className="header">
             <div className="flex justify-between min-h-full items-center mx-4">
-                <div>DND HEROIC BATTLE</div>
+                <div className="link" onClick={goToHome}>
+                    <h2 className="text-lg font-bold">DND HEROIC BATTLES</h2>
+                </div>
                 <div className="sign-in-up-logout">
                     <nav>
                         {!userLogin ? 
-                        <div>sign</div>
+                        <div className="flex">
+                            <div className="mx-2 dnd-btn-small-invert" onClick={goToSignIn}><FormattedMessage id="signIn"/></div>
+                            <div className="mx-2 dnd-btn-small-invert" onClick={goToSignUp}><FormattedMessage id="signUp"/></div>
+                        </div>
                         :
-                        <div>log</div>
+                        <div className="mx-2 dnd-btn-small-invert" onClick={handleLogout}><FormattedMessage id="logout"/></div>
                         }
                     </nav>
                 </div>

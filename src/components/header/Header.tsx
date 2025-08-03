@@ -3,6 +3,7 @@ import "./Header.css"
 import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useStoreActions } from "../../store/hooks";
+import HeaderNavigation from "../header-navigation/HeaderNavigation";
 
 export default function Header() {
 
@@ -43,6 +44,7 @@ export default function Header() {
                 <div className="link" onClick={goToHome}>
                     <h2 className="text-lg font-bold">DND HEROIC BATTLES</h2>
                 </div>
+                <HeaderNavigation/>
                 <div className="sign-in-up-logout">
                     <nav>
                         {!userLogin ? 

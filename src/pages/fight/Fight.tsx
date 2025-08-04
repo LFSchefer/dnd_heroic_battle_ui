@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router"
 import BattleService from "../../services/BattleService";
 import { FightType } from "../../models/battle/Fight";
@@ -10,7 +10,7 @@ import MonsterService from "../../services/MonsterService";
 import { DamageHeal } from "../../models/monster/DamageHeal";
 
 
-export default function Fight() {
+const Fight: FC = () => {
 
     const params = useParams();
     const navigate = useNavigate();
@@ -120,3 +120,5 @@ export default function Fight() {
         </div>
     )
 }
+
+export default Fight;

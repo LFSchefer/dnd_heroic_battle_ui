@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus} from '@fortawesome/free-solid-svg-icons';
 import { FormattedMessage } from "react-intl";
+import { FC } from "react";
 
 
 type Props = {
@@ -11,7 +12,7 @@ type Props = {
     handleDetail: (params: number) => void;
 }
 
-export default function MonsterSearchResult(props: Props) {
+const MonsterSearchResult: FC<Props> = (props: Props) => {
 
     const {modelId, monsterName, challenge, handleAdd, handleDetail} = props;
 
@@ -26,3 +27,5 @@ export default function MonsterSearchResult(props: Props) {
         </>
     )
 }
+
+export default MonsterSearchResult;

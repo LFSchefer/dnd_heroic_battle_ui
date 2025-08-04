@@ -1,8 +1,9 @@
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router"
 import "./Cgu.css"
+import { FC } from "react";
 
-export default function Cgu() {
+const Cgu: FC = () => {
 
     const navigate = useNavigate();
 
@@ -47,3 +48,5 @@ export default function Cgu() {
         </div>
     )
 }
+
+export default Cgu;

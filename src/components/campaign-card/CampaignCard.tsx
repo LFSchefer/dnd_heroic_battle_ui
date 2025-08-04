@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Campaign } from "../../models/campaign/Campaign";
 import { FormattedDate, FormattedMessage } from "react-intl";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,7 +13,7 @@ type Props = {
   onUpdate: () => Promise<void>
 };
 
-export default function CampaignCard({campaignProps, onUpdate}:Props) {
+const CampaignCard: FC<Props> = ({campaignProps, onUpdate}:Props) => {
 
   const [campaign, setCampaign] = useState<Campaign>(campaignProps);
   const [isInEdition, setIsInEdition] = useState<boolean>(false);
@@ -109,3 +109,6 @@ export default function CampaignCard({campaignProps, onUpdate}:Props) {
   )
 
 }
+
+
+export default CampaignCard;

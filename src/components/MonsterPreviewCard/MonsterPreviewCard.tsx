@@ -1,10 +1,11 @@
+import { FC } from "react";
 import { BattleMonsterPreview } from "../../models/battle-monster/BattleMonsterPreview"
 
 type Props = {
     monster: BattleMonsterPreview,
 }
 
-export default function MonsterPreviewCard(props: Props) {
+const MonsterPreviewCard: FC<Props> = (props: Props) => {
     const { monster} = props;
     return (
         <div className="monster-preview-card bg-blue-200 rounded-md border-2 border-neutral-800/10 p-2">
@@ -14,3 +15,5 @@ export default function MonsterPreviewCard(props: Props) {
         </div>
     )
 }
+
+export default MonsterPreviewCard;

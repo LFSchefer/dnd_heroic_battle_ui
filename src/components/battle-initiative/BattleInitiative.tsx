@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import MonsterService from "../../services/MonsterService";
 import { MonsterInitiative } from "../../models/battle-monster/MonterInitiative";
@@ -9,7 +9,7 @@ type Props = {
     updateBattle:() => void
 }
 
-export default function BattleInitiative(props: Props) {
+const BattleInitiative: FC<Props> = (props: Props) => {
 
     const {updateBattle} = props;
 
@@ -54,3 +54,5 @@ export default function BattleInitiative(props: Props) {
         </div>
     )
 }
+
+export default BattleInitiative;

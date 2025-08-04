@@ -1,26 +1,19 @@
-import { useCallback, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Campaign } from "../../models/campaign/Campaign";
 import CampaignService from "../../services/CampaignService";
 import CampaignCard from "../../components/campaign-card/CampaignCard";
-import { useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import { CampaignCreate } from "../../models/campaign/CampaignCreate";
 
 
 
-export default function Campaigns() {
+const Campaigns: FC = () => {
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
   const [isNewCampaign, setIsNewCampaign] = useState<boolean>(false);
   const [newCampaign, setNewCampaign] = useState<CampaignCreate>();
   const [nameIsValid, setNameIsValid] = useState<boolean>(false);
-
-  const navigate = useNavigate();
-
-  const goBackHome = (): void => {
-    navigate("/");
-  };
 
   const getCampaings = useCallback(async (): Promise<void> => {
     const result: Campaign[] = await CampaignService.getCampaigns();
@@ -55,7 +48,6 @@ export default function Campaigns() {
 
   return (
     <div className="w-10/12 m-auto">
-      <button onClick={goBackHome} className="dnd-btn m-4"><FormattedMessage id="backHome"/></button>
       {isNewCampaign ?
         <>
         <div className="inline-grid">
@@ -81,3 +73,5 @@ export default function Campaigns() {
     </div>
   )
 }
+
+export default Campaigns;

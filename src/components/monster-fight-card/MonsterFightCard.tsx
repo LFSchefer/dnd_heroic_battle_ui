@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Monster } from "../../models/monster/Monster"
 import "./MonsterFightCard.css"
 import MonsterService from "../../services/MonsterService";
@@ -12,7 +12,7 @@ type Props = {
     handleDamageModal(monsterId: number): void,
 }
 
-export default function MonsterFightCard(props: Props) {
+const MonsterFightCard: FC<Props> = (props: Props) => {
 
     const {monster, updateMonster, handleDamageModal} = props;
     const [monsterData, setMonsterData] = useState<Monster>();
@@ -94,3 +94,5 @@ export default function MonsterFightCard(props: Props) {
         </div>
     )
 }
+
+export default MonsterFightCard;

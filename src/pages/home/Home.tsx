@@ -1,7 +1,8 @@
 import { FormattedMessage } from "react-intl";
 import { useStoreState } from "../../store/hooks";
+import { FC } from "react";
 
-export default function Home() {
+const Home : FC = () => {
 
   const { userName, isLogin } = useStoreState(state => state.user);
 
@@ -31,3 +32,5 @@ export default function Home() {
     </>
   )
 }
+
+export default Home;

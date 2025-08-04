@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { FC, useState } from "react"
 import { BattlePreview } from "../../models/battle/BattlePreview"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan, faCheck, faX } from '@fortawesome/free-solid-svg-icons';
@@ -14,7 +14,7 @@ type Props = {
   onUpdate: (params: number) => Promise<void>
 };
 
-export default function BattleCard(props:Props) {
+const BattleCard: FC<Props> = (props:Props) => {
 
   const [battle, setBattle] = useState<BattlePreview>(props.battle);
   const [isInFocus, setIsInFocus] = useState<boolean>(false);
@@ -108,3 +108,5 @@ export default function BattleCard(props:Props) {
     </>
   )
 }
+
+export default BattleCard;

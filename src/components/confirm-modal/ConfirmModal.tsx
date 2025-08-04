@@ -1,12 +1,13 @@
 import { FormattedMessage } from "react-intl";
 import "./ConfimModal.css"
+import { FC } from "react";
 
 type Props = {
     isOpen: boolean;
     handleClick: (params: string) => void;
 }
 
-export default function ConfirmModal(props: Props) {
+const ConfirmModal: FC<Props> = (props: Props) => {
 
     const {isOpen, handleClick} = props;
 
@@ -26,3 +27,5 @@ export default function ConfirmModal(props: Props) {
         </>
     )
 }
+
+export default ConfirmModal;

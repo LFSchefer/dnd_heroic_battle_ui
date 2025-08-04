@@ -2,7 +2,7 @@ import { FormattedMessage } from "react-intl";
 import "./AddMonsterModal.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faCheck} from '@fortawesome/free-solid-svg-icons';
-import { useCallback, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import MonsterModelService from "../../services/MonsterModelService";
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
     save: (id: number, name: string, currentHitPoints: number, maxHitPoints: number) => void
 }
 
-export default function AddMonsterModal(props: Props) {
+const AddMonsterModal: FC<Props> = (props: Props) => {
 
     const {isOpen, modelId, close, save} = props;
     const [customName, setCustomName] = useState<string>("");
@@ -147,3 +147,5 @@ export default function AddMonsterModal(props: Props) {
         </>
     )
 }
+
+export default AddMonsterModal;

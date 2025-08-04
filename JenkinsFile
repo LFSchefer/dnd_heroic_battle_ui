@@ -1,0 +1,46 @@
+pipeline {
+    agent {
+        label "${node}"
+    }
+    tools {
+        nodejs "NODE22"
+    }
+    stages {
+        stage("Build") {
+            steps {
+                sh """#!/bin/bash
+                node -v
+                set -e
+                cd /home/eucalyptus-jenkins-node/workspace/eucalyptus-folder/UI_pipeline/
+                git clone 'https://github.com/LFSchefer/dnd_heroic_battle_ui.git' && echo "cloned"
+                cd ./dnd_heroic_battle_ui
+                touch .env
+                echo "REACT_APP_BASE_URL=https://goldengate.readresolve.tech/eucalyptus/api" >> .env
+                echo 'REACT_APP_VERSION=\$npm_package_version' >> .env
+                echo "GENERATE_SOURCEMAP=false" >> .env
+                
+                npm install
+                npm run build
+                """
+            }
+        }
+        stage("Deploy") {
+            steps {
+                sh"""#!/bin/bash
+                rm -rf /srv/readresolve.tech/eucalyptus/www/*
+                cp -r /home/eucalyptus-jenkins-node/workspace/eucalyptus-folder/UI_pipeline/dnd_heroic_battle_ui/build/* /srv/readresolve.tech/eucalyptus/www
+                cd /srv/readresolve.tech/eucalyptus/www
+                ls -la
+                """
+            }
+        }
+        
+        stage("Clean up") {
+            steps {
+                sh"""#!/bin/bash
+                rm -rf /home/eucalyptus-jenkins-node/workspace/eucalyptus-folder/UI_pipeline/*
+                """
+            }
+        }
+    }
+}

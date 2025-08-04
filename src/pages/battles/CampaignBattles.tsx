@@ -60,15 +60,12 @@ const CampaignBattles: FC = () => {
 
   return (
     <div className="w-10/12 m-auto">
-    <button onClick={backToCampaigns} className="dnd-btn m-4">
-      <FormattedMessage id="backToCampaigns"/>
-    </button>
-    <h1><FormattedMessage id="campaignBattles"/> :</h1>
     {!isBattleCreation && 
     <button onClick={toggleBattleCreation} className="dnd-btn m-2">
       <FontAwesomeIcon icon={faPlus} style={{color: "#ffffff",}} size="lg"/> <FormattedMessage id="createNewBattle"/>
     </button>
     }
+    <h1><FormattedMessage id="campaignBattles"/> :</h1>
     {isBattleCreation &&
             <>
             <div className="inline-grid">

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import BattleService from "../../services/BattleService";
 import { FormattedMessage } from "react-intl";
@@ -6,7 +6,7 @@ import { Battle } from "../../models/battle/Battle";
 import MonsterBattlePreview from "../../components/monster-battle-preview/MonsterBattlePreview";
 import { allMonstersHaveInitiative } from "../../utils/utils";
 
-export default function BattlePage() {
+const BattlePage: FC = () => {
 
     const params = useParams();
     const navigate = useNavigate();
@@ -76,3 +76,5 @@ export default function BattlePage() {
         </>
     )
 }
+
+export default BattlePage;

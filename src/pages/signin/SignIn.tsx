@@ -1,4 +1,4 @@
-import { ChangeEvent, SyntheticEvent, useState } from "react";
+import { ChangeEvent, FC, SyntheticEvent, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { NavLink, useNavigate } from "react-router";
 import UserService from "../../services/UserService";
@@ -8,7 +8,7 @@ import { useStoreActions } from "../../store/hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDiceD20 } from "@fortawesome/free-solid-svg-icons";
 
-export default function SignIn() {
+const SignIn: FC = () => {
 
     const [formInput, setFormInput] = useState<SignInForm>({email: '', password:''});
     const [apiResponse, setApiResponse] = useState<SignInResponse | undefined >({
@@ -123,3 +123,5 @@ export default function SignIn() {
         </>
     )
 };
+
+export default SignIn;

@@ -1,7 +1,8 @@
+import { FC } from "react";
 import { FormattedMessage } from "react-intl";
 import { useLocation, useNavigate } from "react-router"
 
-export default function HeaderNavigation() {
+const HeaderNavigation: FC = () => {
     
     const location = useLocation();
     const path = location.pathname;
@@ -30,3 +31,5 @@ export default function HeaderNavigation() {
         </div>
     )
 }
+
+export default HeaderNavigation;

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import { FormattedMessage } from "react-intl";
 import BattleService from "../../services/BattleService";
@@ -8,7 +8,7 @@ import { faCheck, faPlus, faX } from "@fortawesome/free-solid-svg-icons";
 import { BattleCreate } from "../../models/battle/BattleCreate";
 import BattleCard from "../../components/battle-card/BattleCard";
 
-export default function CampaignBattles() {
+const CampaignBattles: FC = () => {
 
   const params = useParams();
   const navigate = useNavigate();
@@ -97,3 +97,5 @@ export default function CampaignBattles() {
     </div>
   )
 }
+
+export default CampaignBattles;

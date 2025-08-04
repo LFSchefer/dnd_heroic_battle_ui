@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router";
 import "./Header.css"
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useStoreActions, useStoreState } from "../../store/hooks";
 import HeaderNavigation from "../header-navigation/HeaderNavigation";
 
-export default function Header() {
+const Header: FC = () => {
 
     const navigate = useNavigate();
 
@@ -61,3 +61,5 @@ export default function Header() {
         </header>
     )
 }
+
+export default Header;

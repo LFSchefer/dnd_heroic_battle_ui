@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { BattleMonsterPreview } from "../../models/battle-monster/BattleMonsterPreview";
 import MonsterPreviewCard from "../MonsterPreviewCard/MonsterPreviewCard";
 
@@ -5,7 +6,7 @@ type Props = {
     battleMonsters?: BattleMonsterPreview[];
 }
 
-export default function MonsterBattlePreview(props: Props) {
+const MonsterBattlePreview: FC<Props> = (props: Props) => {
 
     const {battleMonsters} = props;
 
@@ -26,3 +27,5 @@ export default function MonsterBattlePreview(props: Props) {
         </div>
     )
 }
+
+export default MonsterBattlePreview;

@@ -1,7 +1,7 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./MonsterModelDetailModal.css"
-import { useCallback, useEffect, useState } from "react"
+import { FC, useCallback, useEffect, useState } from "react"
 import { MonsterModelDetail } from "../../models/monster/MonsterDetail"
 import MonsterModelService from "../../services/MonsterModelService"
 import { FormattedMessage } from "react-intl"
@@ -12,7 +12,7 @@ type Props = {
     close: () => void
 }
 
-export default function MonsterModelDetailModal(props: Props) {
+const MonsterModelDetailModal: FC<Props> = (props: Props) => {
 
     const {isOpen, modelId, close} = props;
     const [monsterDetail, setMonsterDetail] = useState< MonsterModelDetail | undefined >(undefined);
@@ -169,3 +169,5 @@ export default function MonsterModelDetailModal(props: Props) {
         </>
     )
 }
+
+export default MonsterModelDetailModal;

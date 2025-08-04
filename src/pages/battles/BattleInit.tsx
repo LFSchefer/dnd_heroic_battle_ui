@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router"
 import MonsterSearch from "../../components/monster-search/MonsterModelSearch";
 import { Battle } from "../../models/battle/Battle";
@@ -9,7 +9,7 @@ import BattleInitiative from "../../components/battle-initiative/BattleInitiativ
 import { allMonstersHaveInitiative } from "../../utils/utils";
 
 
-export default function BattleInit() {
+const BattleInit: FC = () => {
 
     const navigate = useNavigate();
     const params = useParams();
@@ -99,3 +99,5 @@ export default function BattleInit() {
         </div>
     )
 }
+
+export default BattleInit;

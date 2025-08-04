@@ -2,7 +2,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FormattedMessage } from "react-intl";
 import { Monster } from "../../models/monster/Monster";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import "./MonsterDamageHealModal.css"
 import { DamageHeal } from "../../models/monster/DamageHeal";
 
@@ -14,7 +14,7 @@ type Props = {
     updateMonsterHp(monsterId: number, amount: number, type: string): void;
 }
 
-export default function MonsterDamageHealModal(props: Props) {
+const MonsterDamageHealModal: FC<Props> = (props: Props) => {
 
     const {isOpen, close, monster, updateMonsterHp} = props;
     const [amount, setAmount] = useState<string>("");
@@ -72,3 +72,5 @@ export default function MonsterDamageHealModal(props: Props) {
         </>
     )
 }
+
+export default MonsterDamageHealModal;

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { MonsterPreview } from "../../models/monster/MonsterPreview";
 import MonsterModelService from "../../services/MonsterModelService";
 import { SearchInput } from "../../models/monster/SearchInput";
@@ -15,7 +15,7 @@ type Props = {
     updateBattle:() => void
 }
 
-export default function MonsterModelSearch(props: Props) {
+const MonsterModelSearch: FC<Props> = (props: Props) => {
 
     const {updateBattle} = props;
 
@@ -176,3 +176,5 @@ export default function MonsterModelSearch(props: Props) {
         </div>
     )
 }
+
+export default MonsterModelSearch;

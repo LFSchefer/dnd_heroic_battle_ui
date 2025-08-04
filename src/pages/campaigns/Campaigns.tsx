@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Campaign } from "../../models/campaign/Campaign";
 import CampaignService from "../../services/CampaignService";
@@ -10,7 +10,7 @@ import { CampaignCreate } from "../../models/campaign/CampaignCreate";
 
 
 
-export default function Campaigns() {
+const Campaigns: FC = () => {
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
   const [isNewCampaign, setIsNewCampaign] = useState<boolean>(false);
   const [newCampaign, setNewCampaign] = useState<CampaignCreate>();
@@ -81,3 +81,5 @@ export default function Campaigns() {
     </div>
   )
 }
+
+export default Campaigns;

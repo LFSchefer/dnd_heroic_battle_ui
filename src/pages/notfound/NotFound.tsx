@@ -1,7 +1,8 @@
+import { FC } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 
-export default function NotFound() {
+const NotFound: FC = () => {
 
   const navigate = useNavigate();
 
@@ -29,3 +30,5 @@ export default function NotFound() {
 </main>
   )
 }
+
+export default NotFound;

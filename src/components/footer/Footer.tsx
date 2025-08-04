@@ -2,8 +2,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./Footer.css"
 import { FormattedMessage } from "react-intl"
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { FC } from "react";
 
-export default function Footer() {
+const Footer: FC = () => {
 
  const goToCgu = (): void => {
     const baseURL = window.location.origin;
@@ -31,3 +32,5 @@ export default function Footer() {
         </footer>
     )
 }
+
+export default Footer;

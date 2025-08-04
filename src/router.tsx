@@ -1,18 +1,19 @@
 import { createBrowserRouter, Outlet } from "react-router";
-import ProtectedRoute from "./components/protected-route/ProtectedRoute";
-import Home from "./pages/home/Home";
-import NotFound from "./pages/notfound/NotFound";
-import SignIn from "./pages/signin/SignIn";
-import SignUp from "./pages/signup/SignUp";
-import Campaigns from "./pages/campaigns/Campaigns";
-import CampaignBattles from "./pages/battles/CampaignBattles";
-import BattlePage from "./pages/battles/Battle";
-import BattleInit from "./pages/battles/BattleInit";
-import Cgu from "./pages/cgu/Cgu";
-import Fight from "./pages/fight/Fight";
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
 import "./App.css"
+import { lazy } from "react";
+import ProtectedRoute from "./components/protected-route/ProtectedRoute";
+const NotFound = lazy(() => import("./pages/notfound/NotFound"));
+const SignIn = lazy(() => import("./pages/signin/SignIn"));
+const SignUp = lazy(() => import("./pages/signup/SignUp"));
+const Campaigns = lazy(() => import("./pages/campaigns/Campaigns"));
+const CampaignBattles = lazy(() => import("./pages/battles/CampaignBattles"));
+const BattlePage = lazy(() => import("./pages/battles/Battle"));
+const BattleInit = lazy(() => import("./pages/battles/BattleInit"));
+const Cgu = lazy(() => import("./pages/cgu/Cgu"));
+const Fight = lazy(() => import("./pages/fight/Fight"));
+const Header = lazy(() => import("./components/header/Header"));
+const Home = lazy(() => import("./pages/home/Home"));
+const Footer = lazy(() => import("./components/footer/Footer"));
 
 function Layout() {
   return (

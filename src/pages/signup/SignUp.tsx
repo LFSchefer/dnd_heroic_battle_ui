@@ -1,4 +1,4 @@
-import { ChangeEvent, SyntheticEvent, useState } from "react";
+import { ChangeEvent, FC, SyntheticEvent, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { NavLink, useNavigate } from "react-router";
 import { signUpForm } from "../../models/user/signUpForm";
@@ -6,7 +6,7 @@ import { validateEmail, validatePassword } from "../../utils/utils";
 import UserService from "../../services/UserService";
 import { FormErrors } from "../../models/errors/FormErrors";
 
-export default function SignUp() {
+const SignUp: FC = () => {
 
     const [signUpData, setSignUpData] = useState<signUpForm>({
         userName: '',
@@ -238,3 +238,5 @@ export default function SignUp() {
     </>
     )
 }
+
+export default SignUp;

@@ -17,7 +17,6 @@ const HeaderNavigation: FC = () => {
     // const goToBattleList = (): void => {
     //     navigate(`/campaigns/${params?.campaignId}`);
     // }
-    // Test hook
 
     console.log(params)
     

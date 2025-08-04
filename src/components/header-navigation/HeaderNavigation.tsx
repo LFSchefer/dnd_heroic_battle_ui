@@ -14,9 +14,9 @@ const HeaderNavigation: FC = () => {
         navigate("/campaigns");
     };
 
-    const goToBattleList = (): void => {
-        navigate(`/campaigns/${params?.campaignId}`);
-    }
+    // const goToBattleList = (): void => {
+    //     navigate(`/campaigns/${params?.campaignId}`);
+    // }
 
     console.log(params)
     

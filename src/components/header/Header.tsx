@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import "./Header.css"
 import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { useStoreActions } from "../../store/hooks";
+import { useStoreActions, useStoreState } from "../../store/hooks";
 import HeaderNavigation from "../header-navigation/HeaderNavigation";
 
 export default function Header() {
@@ -10,16 +10,17 @@ export default function Header() {
     const navigate = useNavigate();
 
     const [userLogin, setUserLogin] = useState<boolean>(false);
+    const { isLogin } = useStoreState( state => state.user);
     const { logout } = useStoreActions(action => action.user);
     
 
     useEffect(() => {
-        if (!sessionStorage.getItem('access_token')) {
+        if (!isLogin) {
             setUserLogin(false);
         } else {
             setUserLogin(true);
         }
-    },[navigate])
+    },[isLogin, navigate])
 
     const goToHome = (): void => {
         navigate("/");
@@ -36,7 +37,6 @@ export default function Header() {
       const handleLogout = (): void => {
         logout();
     };
-
 
     return(
         <header className="header">

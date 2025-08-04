@@ -35,7 +35,6 @@ export default function SignIn() {
         setApiResponse(undefined);
         setLoginInProgess(true);
         const response: SignInResponse = await UserService.signIn(formInput);
-        console.log(response)
         setApiResponse(response);
         setLoginInProgess(false);
         if (!response.error && response.tokens) {

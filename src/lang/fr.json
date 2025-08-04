@@ -107,5 +107,6 @@
   "action": "Action",
   "move": "Move",
   "bonusAction": "Bonus action",
-  "invalidAmount": "amount must be a positive number"
+  "invalidAmount": "amount must be a positive number",
+  "networkError": "Unable to reatch server"
 }

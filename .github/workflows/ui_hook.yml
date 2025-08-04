@@ -13,6 +13,8 @@ jobs:
       - name: Send Webhook
         uses: joelwmale/webhook-action@master
         with:
-          url: https://jenkins.readresolve.tech/job/eucalyptus-folder/job/UI/build?token=TOKEN_NAME
-          headers: '{"Content-Type": "application/json"}'
-          body: '{"event": "push", "repository": "${{ github.repository }}"}'
+          url: https://jenkins.readresolve.tech/job/eucalyptus-folder/job/UI/generic-webhook-trigger/invoke?token=b884111c7391aac914baf5e5b2625697ac62d10563d7fe06955a0ca09ff5b966
+          headers: '{
+            "Content-Type": "application/json",
+            "Authorization": "Basic ZXVjYWx5cHR1czoxMTExM2JjNjViMTUzNmIwYjFhYWI3ODAxNzY3ZGIwMDUz"}'
+          body: '{"event": "push", "repository": "${{ github.repository }}", "branch": "master"}'

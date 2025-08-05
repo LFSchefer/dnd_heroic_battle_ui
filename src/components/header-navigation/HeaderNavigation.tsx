@@ -21,8 +21,6 @@ const HeaderNavigation: FC = () => {
     const backToBattle = (): void => {
        navigate(`campaigns/${params.campaignId}/battles/${params.battleId}`); 
     };
-
-    console.log(params)
     
     return (
         <div className="flex">

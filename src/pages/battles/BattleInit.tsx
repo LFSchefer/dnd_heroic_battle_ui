@@ -29,7 +29,7 @@ const BattleInit: FC = () => {
 
 
     const goToFight = (): void => {
-        navigate({pathname: `campaigns/${params.campaignId}/battles/${battleId}/fight`});
+        navigate( `/campaigns/${params.campaignId}/battles/${battleId}/fight`, { replace: true});
     };
 
     useEffect(() => {

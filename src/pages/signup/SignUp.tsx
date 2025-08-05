@@ -5,6 +5,8 @@ import { signUpForm } from "../../models/user/signUpForm";
 import { validateEmail, validatePassword } from "../../utils/utils";
 import UserService from "../../services/UserService";
 import { FormErrors } from "../../models/errors/FormErrors";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDiceD20 } from "@fortawesome/free-solid-svg-icons";
 
 const SignUp: FC = () => {
 
@@ -21,6 +23,8 @@ const SignUp: FC = () => {
         confirmPassword: false
     });
     const [apiError, setApiError] = useState<FormErrors | undefined>(undefined);
+    const [loginUpProgess, setLoginUpProgess] = useState<boolean>(false);
+
 
     const navigate = useNavigate();
 
@@ -36,11 +40,13 @@ const SignUp: FC = () => {
     const handleSubmit = async (event: SyntheticEvent): Promise<void> => {
         event.preventDefault();
         if (validateInputs()) {
+            setLoginUpProgess(true)
             const response = await UserService.signUp(signUpData);
             if (!response.error) {
                 setApiError(undefined)
                 navigate("/sign-in")
             }
+            setLoginUpProgess(false)
             setApiError(response.error)
         }
     }
@@ -222,7 +228,10 @@ const SignUp: FC = () => {
                         type="submit"
                         className="w-6/12 md:w-4/12 md:mx-2 dnd-btn"
                     >
+                        {loginUpProgess ? 
+                        <FontAwesomeIcon icon={faDiceD20} size="xl" style={{color: "#ffffff",}} spin /> :
                         < FormattedMessage id="signUp"/>
+                        }
                     </button>
                 </div>
             </form>

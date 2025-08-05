@@ -36,6 +36,7 @@ const Header: FC = () => {
 
       const handleLogout = (): void => {
         logout();
+        navigate("/", {replace: true})
     };
 
     return(

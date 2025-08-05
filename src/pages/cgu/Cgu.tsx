@@ -19,7 +19,7 @@ const Cgu: FC = () => {
                 <h2 className="font-semibold mt-8 mb-4">1. Préambule</h2>
                 <p className="text-wrap">Les présentes Conditions Générales d'Utilisation (ci-après "CGU") régissent l'utilisation de l'application Dnd Heroic Batlle (ci-après "l'Application"). En accédant et en utilisant l'Application, vous acceptez sans réserve les présentes CGU. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser l'Application.</p>
                 <h2 className="font-semibold mt-8 mb-4">2. Description de l'Application</h2>
-                <p className="text-wrap">L'Application [Nom de l'Application] est une application gratuite destinée à [décrire brièvement la fonctionnalité principale de l'application]. Elle permet aux utilisateurs de [détailler les fonctionnalités principales].</p>
+                <p className="text-wrap">L'Application DnD Heroic Battles est une application gratuite destinée à la gestion de combat Dongon & dragon. Elle permet aux utilisateurs de gérer facilement les combat d'une campagne Dongon & Dragon (gestion des tour, gestion des points de vie, etc.).</p>
                 <h2 className="font-semibold mt-8 mb-4">3. Accès à l'Application</h2>
                 <p className="text-wrap">L'accès à l'Application est gratuit et réservé aux utilisateurs majeurs ou mineurs avec l'accord de leurs représentants légaux. L'utilisation de l'Application nécessite une connexion Internet et peut entraîner des frais de données auprès de votre opérateur internet et ou mobile.</p>
                 <h2 className="font-semibold mt-8 mb-4">4. Création de Compte</h2>
@@ -43,7 +43,7 @@ const Cgu: FC = () => {
                 <h2 className="font-semibold mt-8 mb-4">10. Droit Applicable et Juridiction</h2>
                 <p className="text-wrap">Les présentes CGU sont régies par le droit français. Tout litige relatif à l'interprétation ou à l'exécution des présentes CGU sera soumis à la compétence exclusive des tribunaux français.</p>
                 <h2 className="font-semibold mt-8 mb-4">11. Contact</h2>
-                <p className="text-wrap">Pour toute question ou réclamation concernant l'Application ou les présentes CGU, veuillez contacter l'Éditeur à l'adresse suivante : [adresse email de contact].</p>
+                <p className="text-wrap">Pour toute question ou réclamation concernant l'Application ou les présentes CGU, veuillez contacter l'Éditeur à l'adresse suivante : lf.schefer@gamil.com.</p>
             </div>
         </div>
     )

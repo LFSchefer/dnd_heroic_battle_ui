@@ -27,12 +27,9 @@ const BattleInit: FC = () => {
         navigate("/*");
     },[navigate])
 
-    const backToBattle = (): void => {
-       navigate(`/battles/${battleId}`); 
-    };
 
     const goToFight = (): void => {
-        navigate(`/battles/${battleId}/fight`);
+        navigate({pathname: `campaigns/${params.campaignId}/battles/${battleId}/fight`});
     };
 
     useEffect(() => {
@@ -69,7 +66,6 @@ const BattleInit: FC = () => {
     return (
         <div className="flex flex-col items-center">
             <h1>Battle initialization !</h1>
-            <button className="dnd-btn" onClick={backToBattle}><FormattedMessage id="backToBattle"/></button>
             <MonsterBattlePreview battleMonsters={battle?.battleMonsters}/>
             <div className="flex">
                 <button className="dnd-btn mx-4" onClick={toggleSearch}>

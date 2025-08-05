@@ -64,15 +64,15 @@ export const router = createBrowserRouter ([
             element: < CampaignBattles />
           },
           {
-            path:"/battles/:battleId",
+            path:"/campaigns/:campaignId/battles/:battleId",
             element: < BattlePage />
           },
           {
-            path:"/battles/:battleId/initialize",
+            path:"/campaigns/:campaignId/battles/:battleId/initialize",
             element: < BattleInit />
           },
           {
-            path:"/battles/:battleId/fight",
+            path:"/campaigns/:campaignId/battles/:battleId/fight",
             element: < Fight />
           },
         ]

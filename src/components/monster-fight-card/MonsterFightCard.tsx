@@ -50,7 +50,7 @@ const MonsterFightCard: FC<Props> = (props: Props) => {
     "background-color": `${monster.currentHitPoints === 0 ? "rgba(0, 0, 0, 0.5)" : "rgba(255, 0, 0, 0.4)"}`};
 
     return (
-        <div className="monster-fight-card p-4 m-4 flex flex-col justify-between shadow-md border border-black/20 rounded-md">
+        <div className="monster-fight-card p-4 m-4 flex flex-col justify-between shadow-md border border-black/20 rounded-md mx-auto">
             <div className="monster-image-container">
                 <div className="damage-image" style={damageImageStyle}></div>
                 <img className="monster-image" src={monster.monster.imageUrl ? monster.monster.imageUrl : ""} alt={`monster-${monster.name}-image`} />

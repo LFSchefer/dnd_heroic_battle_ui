@@ -5,7 +5,7 @@ import { faPenToSquare, faTrashCan, faCheck, faX } from '@fortawesome/free-solid
 import './BattleCard.css'
 import { FormattedMessage } from "react-intl";
 import BattleService from "../../services/BattleService";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import ConfirmModal from "../confirm-modal/ConfirmModal";
 
 
@@ -23,9 +23,11 @@ const BattleCard: FC<Props> = (props:Props) => {
   const [confirmModalIsOpen, setConfirmModalIsOpen] = useState<boolean>(false);
 
   const navigate = useNavigate();
+  const location = useLocation()
+  const path = location.pathname;
 
   const goToBattle = (): void => {
-    navigate(`/battles/${battle.battleId}`)
+    navigate(`${path}/battles/${battle.battleId}`, )
   }
 
   const toggleIsInFocus = (): void => {

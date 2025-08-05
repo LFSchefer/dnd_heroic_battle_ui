@@ -6,13 +6,20 @@ pipeline {
         nodejs "NODE22"
     }
     stages {
+        stage("Clone") {
+            steps {
+                sh """#!/bin/bash
+                cd /home/eucalyptus-jenkins-node/workspace/eucalyptus-folder/UI_pipeline/
+                git clone 'https://github.com/LFSchefer/dnd_heroic_battle_ui.git' && echo "cloned"
+                """
+            }
+        }
         stage("Build") {
             steps {
                 sh """#!/bin/bash
                 node -v
                 set -e
                 cd /home/eucalyptus-jenkins-node/workspace/eucalyptus-folder/UI_pipeline/
-                git clone 'https://github.com/LFSchefer/dnd_heroic_battle_ui.git' && echo "cloned"
                 cd ./dnd_heroic_battle_ui
                 touch .env
                 echo "REACT_APP_BASE_URL=https://goldengate.readresolve.tech/eucalyptus/api" >> .env

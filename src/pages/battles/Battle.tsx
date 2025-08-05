@@ -1,5 +1,5 @@
 import { FC, useCallback, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import BattleService from "../../services/BattleService";
 import { FormattedMessage } from "react-intl";
 import { Battle } from "../../models/battle/Battle";
@@ -10,7 +10,8 @@ const BattlePage: FC = () => {
 
     const params = useParams();
     const navigate = useNavigate();
-    const [ battleId, setBattleId] = useState<number>();
+    const location = useLocation();
+    const path = location.pathname;
     const [ battle, setBattle] = useState<Battle>();
 
 
@@ -19,7 +20,7 @@ const BattlePage: FC = () => {
     },[navigate])
 
     const goToFight = (): void => {
-        navigate(`/battles/${battleId}/fight`);
+        navigate(`${path}/fight`);
     };
 
     const getBattle = async (id: number): Promise<void> => {
@@ -28,16 +29,11 @@ const BattlePage: FC = () => {
     }
 
     const goToBattleInit = (): void => {
-        navigate(`/battles/${battleId}/initialize`);
-    }
-
-    const goToBattleList = (): void => {
-        navigate(`/campaigns/${battle?.campaignId}`);
+        navigate(`${path}/initialize`);
     }
     
     useEffect(() => {
         if (params.battleId !== undefined && parseInt(params.battleId)) {
-            setBattleId(+params.battleId);
             getBattle(+params.battleId);
         } else {
             goTo404();
@@ -50,8 +46,6 @@ const BattlePage: FC = () => {
 
     return (
         <>
-        <h1>TODO</h1>
-        <button className="dnd-btn" onClick={goToBattleList}><FormattedMessage id="backToBattleList"/></button>
         { battle && 
         <>  
         <div className="flex justify-center">

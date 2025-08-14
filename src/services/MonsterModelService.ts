@@ -2,7 +2,7 @@ import { SearchInput } from "../models/monster/SearchInput";
 import { SearchResult } from "../models/monster/SearchResult";
 import {MonsterPreviewCreation} from "../models/monster/MonsterPreviewCreation";
 import axiosClient from "./AxiosClient"
-import { MonsterModelDetail } from "../models/monster/MonsterDetail";
+import { MonsterModelDetail } from "../models/monster/MonsterModelDetail";
 
 export default class MonsterModelService {
 

@@ -1,14 +1,14 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FormattedMessage } from "react-intl";
-import { Monster } from "../../models/monster/Monster";
 import { FC, useEffect, useState } from "react";
 import "./MonsterDamageHealModal.css"
 import { DamageHeal } from "../../models/monster/DamageHeal";
+import { MonsterFight } from "../../models/monster/MonsterFight";
 
 
 type Props = {
-    monster: Monster | undefined;
+    monster: MonsterFight | undefined;
     isOpen: boolean;
     close(): void;
     updateMonsterHp(monsterId: number, amount: number, type: string): void;

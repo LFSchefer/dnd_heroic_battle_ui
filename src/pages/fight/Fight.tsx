@@ -74,8 +74,8 @@ const Fight: FC = () => {
         }
     }
 
-    const updateMonsterHp = async(monsterId: number, amount: number, type: DamageHeal): Promise<void> => {
-        const response = await MonsterService.updateHp(monsterId, amount, type);
+    const updateMonsterHp = async(monsterId: number, amount: number, type: DamageHeal, damageTypeId: number | null): Promise<void> => {
+        const response = await MonsterService.updateHp(monsterId, amount, type, damageTypeId);
         if (response) {
             setDamageModal(false);
             updateMonster(response);            

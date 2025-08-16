@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus} from '@fortawesome/free-solid-svg-icons';
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, FormattedNumber } from "react-intl";
 import { FC } from "react";
 
 
@@ -20,7 +20,7 @@ const MonsterSearchResult: FC<Props> = (props: Props) => {
         <>
         <tr>
             <th className="text-left border border-slate-700/50 font-medium">{monsterName}</th>
-            <th className="border border-slate-700/50 font-medium">{challenge}</th>
+            <th className="border border-slate-700/50 font-medium"><FormattedNumber minimumFractionDigits={1}  value={challenge}/></th>
             <th className="link border border-slate-700/50 font-medium" onClick={e => handleDetail(modelId)}><FormattedMessage id="details"/></th>
             <th className="border border-slate-700/50"><button className="dnd-btn-small" onClick={e => handleAdd(modelId)}><FontAwesomeIcon icon={faPlus} style={{color: "#ffffff",}} size="lg"/></button></th>
         </tr>

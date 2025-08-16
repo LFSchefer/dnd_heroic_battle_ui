@@ -1,8 +1,8 @@
-import { Monster } from "../monster/Monster"
+import { MonsterFight } from "../monster/MonsterFight"
 
 export type FightType = {
     battleId: number,
     battleName: string,
     turn: number,
-    monsters: Monster[]
+    monsters: MonsterFight[]
 }

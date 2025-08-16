@@ -1,6 +1,6 @@
-import { MonsterModelDetail } from "./MonsterModelDetail"
+import { MonsterModel } from "./MonsterModel";
 
-export type Monster = {
+export type MonsterFight = {
     monsterId: number,
     currentHitPoints: number,
     maxHitPoints: number,
@@ -11,5 +11,5 @@ export type Monster = {
     action: boolean,
     move: boolean,
     bonusAction: boolean,
-    monster: MonsterModelDetail,
+    monster: MonsterModel,
 }

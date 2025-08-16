@@ -5,9 +5,10 @@ import MonsterService from "../../services/MonsterService";
 import { FormattedMessage } from "react-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSkull } from "@fortawesome/free-solid-svg-icons";
+import { MonsterFight } from "../../models/monster/MonsterFight";
 
 type Props = {
-    monster: Monster,
+    monster: MonsterFight,
     updateMonster(input: Monster) :void,
     handleDamageModal(monsterId: number): void,
 }
@@ -15,7 +16,7 @@ type Props = {
 const MonsterFightCard: FC<Props> = (props: Props) => {
 
     const {monster, updateMonster, handleDamageModal} = props;
-    const [monsterData, setMonsterData] = useState<Monster>();
+    const [monsterData, setMonsterData] = useState<MonsterFight>();
 
     useEffect(() => {
         if (monster) {

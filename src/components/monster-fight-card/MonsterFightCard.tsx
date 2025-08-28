@@ -47,8 +47,8 @@ const MonsterFightCard: FC<Props> = (props: Props) => {
         handleDamageModal(monster.monsterId);
     }
 
-    const damageImageStyle = {"height": `${((monster.maxHitPoints - monster.currentHitPoints)/monster.maxHitPoints)*300}px`, 
-    "background-color": `${monster.currentHitPoints === 0 ? "rgba(0, 0, 0, 0.5)" : "rgba(255, 0, 0, 0.4)"}`};
+    const damageImageStyle = {"height": `${((monster?.maxHitPoints - monster?.currentHitPoints)/monster?.maxHitPoints)*300}px`,
+    "background-color": `${monster?.currentHitPoints === 0 ? "rgba(0, 0, 0, 0.5)" : "rgba(255, 0, 0, 0.4)"}`};
 
     return (
         <div className="monster-fight-card p-4 m-4 flex flex-col justify-between shadow-md border border-black/20 rounded-md mx-auto">

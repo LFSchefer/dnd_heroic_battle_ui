@@ -76,12 +76,13 @@ export default class MonsterService {
     }
    }
 
-   static updateHp = async(monsterId: number, amount: number, type: DamageHeal): Promise<Monster | undefined> => {
+   static updateHp = async(monsterId: number, amount: number, type: DamageHeal, damageTypeId: number | null): Promise<Monster | undefined> => {
     try {
         const dto = {
             monsterId: monsterId,
             amount: amount,
-            type: type
+            type: type,
+            damageTypeId: damageTypeId
         };
         const {data} = await axiosClient.patch(`/monsters/update-hp`, dto);
         return data;

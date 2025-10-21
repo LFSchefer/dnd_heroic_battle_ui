@@ -63,7 +63,8 @@ const MonsterDamageHealModal: FC<Props> = (props: Props) => {
 
     const updateHp = (): void => {
         if (isAmountValid && monster?.monsterId) {
-            updateMonsterHp(monster?.monsterId, Number.parseInt(amount), type, selectedDamageTypeId === 0 ? null : selectedDamageTypeId)
+            updateMonsterHp(monster?.monsterId, Number.parseInt(amount),
+             type, selectedDamageTypeId === 0 ? null : selectedDamageTypeId)
         } 
     }
 

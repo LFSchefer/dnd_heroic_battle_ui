@@ -16,7 +16,7 @@
     "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.20",
-    "axios": "^1.9.0",
+    "axios": "^1.12.2",
     "easy-peasy": "^6.0.5",
     "postcss-cli": "^11.0.1",
     "react": "^18.3.1",

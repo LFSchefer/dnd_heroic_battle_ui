@@ -14,7 +14,7 @@ const MonsterBattlePreview: FC<Props> = (props: Props) => {
         <div className="monster-battle-preview p-4 border-2 border-sky-500">
                 <h3 className="mb-4">Battle monsters list:</h3>
                 { battleMonsters && 
-                    <div className="grid grid-cols-4 gap-4">
+                    <div className="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-4">
                         {
                             battleMonsters.sort((a,b) => { return a.id - b.id}).map( monster => {
                                 return <MonsterPreviewCard 

@@ -4,10 +4,10 @@ import BattleService from "../../services/BattleService";
 import { FightType } from "../../models/battle/Fight";
 import MonsterFightCard from "../../components/monster-fight-card/MonsterFightCard";
 import { Monster } from "../../models/monster/Monster";
-import { FormattedMessage } from "react-intl";
 import MonsterDamageHealModal from "../../components/monster-damage-heal-modal/MonsterDamageHealModal";
 import MonsterService from "../../services/MonsterService";
 import { DamageHeal } from "../../models/monster/DamageHeal";
+import FightInfo from "../../components/fight-info/FightInfo";
 
 
 const Fight: FC = () => {
@@ -91,12 +91,13 @@ const Fight: FC = () => {
     
     return (
         <div className="fight-container py-5">
-            <div className="fight-info bg-blue-200 rounded-md border-2 border-neutral-800/10 p-5 mb-5 flex justify-evenly w-2/4 mx-auto">
-                <h2><FormattedMessage id="fight"/>: {fight?.battleName}</h2>
-                <h2><FormattedMessage id="turn"/>: {fight?.turn}</h2>
-                <h2><FormattedMessage id="havePlayed"/>: {fight?.monsters.filter( monster => monster.havePlayThisRound).length}/{fight?.monsters.length}</h2>
-                <button className="dnd-btn" onClick={handleNextTurn}>next</button>
-            </div>
+            <FightInfo
+            battleName={fight?.battleName ?? "null"}
+            turn={fight?.turn ?? 0}
+            havePlayThisRound={fight?.monsters.filter( monster => monster.havePlayThisRound).length ?? 0}
+            totalMonsters={fight?.monsters.length ?? 0}
+            handleNextTurn={handleNextTurn}
+            />
             <div className="grid max-lg:grid-cols-1 max-2xl:grid-cols-3 grid-cols-4 gap-4 max-2xl:w-full w-8/12 mx-auto">
                 { 
                     fight?.monsters.map( monster => {

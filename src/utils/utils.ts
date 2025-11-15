@@ -1,4 +1,4 @@
-import { Battle } from "../models/battle/Battle";
+import type { Battle } from "../models/battle/Battle";
 
 export const validateEmail = (email: string): boolean => {
     const result = String(email)

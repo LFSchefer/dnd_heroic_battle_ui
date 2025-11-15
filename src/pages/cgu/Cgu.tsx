@@ -1,7 +1,7 @@
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router"
 import "./Cgu.css"
-import { FC } from "react";
+import type { FC } from "react";
 
 const Cgu: FC = () => {
 

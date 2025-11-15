@@ -1,11 +1,11 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FormattedMessage } from "react-intl";
-import { FC, useCallback, useEffect, useState } from "react";
+import { type FC, useCallback, useEffect, useState } from "react";
 import "./MonsterDamageHealModal.css"
 import { DamageHeal } from "../../models/monster/DamageHeal";
-import { MonsterFight } from "../../models/monster/MonsterFight";
-import { DamageType } from "../../models/damage-type/DamageType";
+import type { MonsterFight } from "../../models/monster/MonsterFight";
+import type { DamageType } from "../../models/damage-type/DamageType";
 import DamageTypeService from "../../services/DamageTypeService";
 
 type Props = {

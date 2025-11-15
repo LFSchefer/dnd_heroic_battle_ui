@@ -1,7 +1,7 @@
-import { FC, useCallback, useEffect, useState } from "react";
-import { MonsterPreview } from "../../models/monster/MonsterPreview";
+import { type FC, useCallback, useEffect, useState } from "react";
+import type { MonsterPreview } from "../../models/monster/MonsterPreview";
 import MonsterModelService from "../../services/MonsterModelService";
-import { SearchInput } from "../../models/monster/SearchInput";
+import type { SearchInput } from "../../models/monster/SearchInput";
 import MonsterSearchResult from "../monster-search-result/MonsterSearchResult";
 import AddBattleMonsterModal from "../add-battle-monster-modal/AddMonsterModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

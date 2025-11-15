@@ -1,5 +1,5 @@
-import { FC, useState } from "react";
-import { Campaign } from "../../models/campaign/Campaign";
+import { type FC, useState } from "react";
+import type { Campaign } from "../../models/campaign/Campaign";
 import { FormattedDate, FormattedMessage } from "react-intl";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrashCan, faCheck, faX } from '@fortawesome/free-solid-svg-icons';

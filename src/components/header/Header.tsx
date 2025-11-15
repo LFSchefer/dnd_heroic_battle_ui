@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import "./Header.css"
-import { FC, useEffect, useState } from "react";
+import { type FC, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useStoreActions, useStoreState } from "../../store/hooks";
 import HeaderNavigation from "../header-navigation/HeaderNavigation";

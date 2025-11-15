@@ -1,4 +1,4 @@
-import { TokenRenewal } from "../models/user/TokenRenewal";
+import type { TokenRenewal } from "../models/user/TokenRenewal";
 import axiosClient from "./AxiosClient";
 
 export default async function renewalToken() {

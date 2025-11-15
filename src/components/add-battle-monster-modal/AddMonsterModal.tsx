@@ -2,7 +2,7 @@ import { FormattedMessage } from "react-intl";
 import "./AddMonsterModal.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faCheck} from '@fortawesome/free-solid-svg-icons';
-import { FC, useCallback, useEffect, useState } from "react";
+import { type FC, useCallback, useEffect, useState } from "react";
 import MonsterModelService from "../../services/MonsterModelService";
 
 type Props = {

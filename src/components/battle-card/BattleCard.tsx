@@ -1,5 +1,5 @@
-import { FC, useState } from "react"
-import { BattlePreview } from "../../models/battle/BattlePreview"
+import { type FC, useState } from "react"
+import type { BattlePreview } from "../../models/battle/BattlePreview";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan, faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import './BattleCard.css'
@@ -39,7 +39,7 @@ const BattleCard: FC<Props> = (props:Props) => {
   }
 
   const updateState = (params: string) => {
-    let valid = BattleService.IsValid(params);
+    const valid = BattleService.IsValid(params);
     setNameIsValid(valid);
       setBattle( prev => {
         return { ...prev,

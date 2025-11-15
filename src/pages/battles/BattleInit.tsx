@@ -1,7 +1,7 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import { type FC, useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router"
 import MonsterSearch from "../../components/monster-search/MonsterModelSearch";
-import { Battle } from "../../models/battle/Battle";
+import type { Battle } from "../../models/battle/Battle";
 import BattleService from "../../services/BattleService";
 import { FormattedMessage } from "react-intl";
 import MonsterBattlePreview from "../../components/monster-battle-preview/MonsterBattlePreview";

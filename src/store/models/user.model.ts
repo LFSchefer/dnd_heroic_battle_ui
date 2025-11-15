@@ -1,5 +1,5 @@
-import { action, Action } from "easy-peasy";
-import { SignInResponse } from "../../models/user/SignInResponse";
+import { action, type Action } from "easy-peasy";
+import type { SignInResponse } from "../../models/user/SignInResponse";
 
 export interface UserStoreModel {
     userName: string | undefined,

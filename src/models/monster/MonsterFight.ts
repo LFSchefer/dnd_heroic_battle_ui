@@ -1,4 +1,4 @@
-import { MonsterModel } from "./MonsterModel";
+import type { MonsterModel } from "./MonsterModel";
 
 export type MonsterFight = {
     monsterId: number,

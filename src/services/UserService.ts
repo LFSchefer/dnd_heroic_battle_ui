@@ -1,8 +1,8 @@
 import axios from "axios";
-import { SignInForm } from "../models/user/SignInForm";
+import type { SignInForm } from "../models/user/SignInForm";
 import axiosClient from "./AxiosClient";
-import { signUpForm } from "../models/user/signUpForm";
-import { SignInResponse } from "../models/user/SignInResponse";
+import type { signUpForm } from "../models/user/signUpForm";
+import type { SignInResponse } from "../models/user/SignInResponse";
 
 export default class UserService {
 

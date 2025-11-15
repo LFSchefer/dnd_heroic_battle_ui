@@ -12,7 +12,7 @@ import French from './lang/fr.json';
 
 const local = navigator.language
 
-let lang: any;
+let lang: unknown;
 if (local==="fr-FR") {
   lang = French;
 } else  {
@@ -30,4 +30,3 @@ root.render(
       </IntlProvider>
     </StoreProvider>
 );
-

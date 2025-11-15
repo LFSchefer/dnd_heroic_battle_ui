@@ -1,5 +1,5 @@
 export type Dices = {
-  [x: string]: any,
+  [x: string]: unknown,
   "4": number[] | null,
   "6": number[] | null,
   "8": number[] | null,

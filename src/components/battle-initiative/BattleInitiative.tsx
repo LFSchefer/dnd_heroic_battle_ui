@@ -1,7 +1,7 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import { type FC, useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import MonsterService from "../../services/MonsterService";
-import { MonsterInitiative } from "../../models/battle-monster/MonterInitiative";
+import type { MonsterInitiative } from "../../models/battle-monster/MonterInitiative";
 import InitiativeCard from "../initiative-card/InitiativeCard";
 import { FormattedMessage } from "react-intl";
 

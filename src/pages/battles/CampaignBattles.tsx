@@ -1,11 +1,11 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import { type FC, useCallback, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import { FormattedMessage } from "react-intl";
 import BattleService from "../../services/BattleService";
-import { BattlePreview } from "../../models/battle/BattlePreview";
+import type { BattlePreview } from "../../models/battle/BattlePreview";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faPlus, faX } from "@fortawesome/free-solid-svg-icons";
-import { BattleCreate } from "../../models/battle/BattleCreate";
+import type { BattleCreate } from "../../models/battle/BattleCreate";
 import BattleCard from "../../components/battle-card/BattleCard";
 
 const CampaignBattles: FC = () => {

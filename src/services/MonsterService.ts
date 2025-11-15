@@ -1,6 +1,6 @@
-import { MonsterInitiative } from "../models/battle-monster/MonterInitiative";
+import type { MonsterInitiative } from "../models/battle-monster/MonterInitiative";
 import { DamageHeal } from "../models/monster/DamageHeal";
-import { Monster } from "../models/monster/Monster";
+import type { Monster } from "../models/monster/Monster";
 import axiosClient from "./AxiosClient"
 
 export default class MonsterService {

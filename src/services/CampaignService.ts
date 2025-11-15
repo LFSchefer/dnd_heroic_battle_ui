@@ -1,7 +1,7 @@
 import axios from "axios";
-import { Campaign } from "../models/campaign/Campaign";
+import type { Campaign } from "../models/campaign/Campaign";
 import axiosClient from "./AxiosClient";
-import { CampaignCreate } from "../models/campaign/CampaignCreate";
+import type { CampaignCreate } from "../models/campaign/CampaignCreate";
 
 export default class CampaignService {
 

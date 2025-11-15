@@ -1,4 +1,4 @@
 export type FormErrors = {
-fieldErros?: any;
-globalErrors?: any[]
+fieldErros?: unknown;
+globalErrors?: unknown[]
 }

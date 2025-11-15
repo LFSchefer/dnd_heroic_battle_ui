@@ -1,4 +1,4 @@
-import { BattleMonsterPreview } from "../battle-monster/BattleMonsterPreview"
+import type { BattleMonsterPreview } from "../battle-monster/BattleMonsterPreview"
 
 export type Battle = {
     battleId: number,

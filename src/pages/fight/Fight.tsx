@@ -1,9 +1,9 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import { type FC, useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router"
 import BattleService from "../../services/BattleService";
-import { FightType } from "../../models/battle/Fight";
+import type { FightType } from "../../models/battle/Fight";
 import MonsterFightCard from "../../components/monster-fight-card/MonsterFightCard";
-import { Monster } from "../../models/monster/Monster";
+import type { Monster } from "../../models/monster/Monster";
 import MonsterDamageHealModal from "../../components/monster-damage-heal-modal/MonsterDamageHealModal";
 import MonsterService from "../../services/MonsterService";
 import { DamageHeal } from "../../models/monster/DamageHeal";

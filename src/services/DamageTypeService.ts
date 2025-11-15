@@ -1,4 +1,4 @@
-import { DamageType } from "../models/damage-type/DamageType"
+import type { DamageType } from "../models/damage-type/DamageType";
 import axiosClient from "./AxiosClient"
 
 

@@ -1,10 +1,10 @@
-import { ChangeEvent, FC, SyntheticEvent, useState } from "react";
+import { type ChangeEvent, type FC, type SyntheticEvent, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { NavLink, useNavigate } from "react-router";
-import { signUpForm } from "../../models/user/signUpForm";
+import type { signUpForm } from "../../models/user/signUpForm";
 import { validateEmail, validatePassword } from "../../utils/utils";
 import UserService from "../../services/UserService";
-import { FormErrors } from "../../models/errors/FormErrors";
+import type { FormErrors } from "../../models/errors/FormErrors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDiceD20 } from "@fortawesome/free-solid-svg-icons";
 
@@ -129,7 +129,7 @@ const SignUp: FC = () => {
             </h2>
             </div>
 
-            <div className="mt-10 sm:mx-auto sm:w-7/12">
+            <div className="mt-10 sm:mx-auto sm:w-7/12  2xl:w-6/12">
             <form className="border rounded-lg border-cyan-800/20 px-8 py-12 bg-sky-600/10 shadow-md" onSubmit={handleSubmit} noValidate>
                 <div className="part-one md:flex md:justify-between">
 
@@ -145,7 +145,7 @@ const SignUp: FC = () => {
                         name="userName"
                         type="text"
                         required
-                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:text-sm/6 px-4"
+                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:text-sm/6 px-4 bg-neutral-100"
                         value={signUpData.userName}
                         onChange={setField}
                         />
@@ -167,7 +167,7 @@ const SignUp: FC = () => {
                         type="email"
                         required
                         autoComplete="email"
-                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:text-sm/6 px-4"
+                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:text-sm/6 px-4 bg-neutral-100"
                         value={signUpData.email}
                         onChange={setField}
                         />
@@ -193,7 +193,7 @@ const SignUp: FC = () => {
                             type="password"
                             required
                             autoComplete="current-password"
-                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:text-sm/6 px-4"
+                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:text-sm/6 px-4 bg-neutral-100"
                             value={signUpData.password}
                             onChange={setField}
                             />
@@ -214,7 +214,7 @@ const SignUp: FC = () => {
                             type="password"
                             required
                             autoComplete="current-password"
-                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:text-sm/6 px-4"
+                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:text-sm/6 px-4 bg-neutral-100"
                             value={signUpData.confirmPassword}
                             onChange={setField}
                             />

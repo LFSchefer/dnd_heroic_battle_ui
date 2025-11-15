@@ -1,8 +1,8 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./MonsterModelDetailModal.css"
-import { FC, useCallback, useEffect, useState } from "react"
-import { MonsterModelDetail } from "../../models/monster/MonsterModelDetail"
+import { type FC, useCallback, useEffect, useState } from "react"
+import type { MonsterModelDetail } from "../../models/monster/MonsterModelDetail"
 import MonsterModelService from "../../services/MonsterModelService"
 import { FormattedMessage } from "react-intl"
 

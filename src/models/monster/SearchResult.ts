@@ -1,4 +1,4 @@
-import { MonsterPreview } from "./MonsterPreview"
+import type { MonsterPreview } from "./MonsterPreview"
 
 export type SearchResult = {
     result: MonsterPreview[],

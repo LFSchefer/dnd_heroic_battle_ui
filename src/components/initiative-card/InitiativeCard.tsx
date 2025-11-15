@@ -1,5 +1,5 @@
-import { ChangeEvent, SyntheticEvent, useEffect, useState } from "react";
-import { MonsterInitiative } from "../../models/battle-monster/MonterInitiative"
+import { type ChangeEvent, type SyntheticEvent, useEffect, useState } from "react";
+import type { MonsterInitiative } from "../../models/battle-monster/MonterInitiative";
 import MonsterService from "../../services/MonsterService";
 import { FormattedMessage } from "react-intl";
 

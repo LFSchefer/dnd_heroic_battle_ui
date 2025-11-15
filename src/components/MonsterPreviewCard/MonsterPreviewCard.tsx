@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { BattleMonsterPreview } from "../../models/battle-monster/BattleMonsterPreview"
+import type { FC } from "react";
+import type { BattleMonsterPreview } from "../../models/battle-monster/BattleMonsterPreview";
 
 type Props = {
     monster: BattleMonsterPreview,

@@ -1,8 +1,8 @@
-import { SearchInput } from "../models/monster/SearchInput";
-import { SearchResult } from "../models/monster/SearchResult";
-import {MonsterPreviewCreation} from "../models/monster/MonsterPreviewCreation";
+import type { SearchInput } from "../models/monster/SearchInput";
+import type { SearchResult } from "../models/monster/SearchResult";
+import type { MonsterPreviewCreation } from "../models/monster/MonsterPreviewCreation";
 import axiosClient from "./AxiosClient"
-import { MonsterModelDetail } from "../models/monster/MonsterModelDetail";
+import type { MonsterModelDetail } from "../models/monster/MonsterModelDetail";
 
 export default class MonsterModelService {
 

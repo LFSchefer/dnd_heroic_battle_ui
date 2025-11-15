@@ -1,4 +1,4 @@
-import { MonsterFight } from "../monster/MonsterFight"
+import type { MonsterFight } from "../monster/MonsterFight"
 
 export type FightType = {
     battleId: number,

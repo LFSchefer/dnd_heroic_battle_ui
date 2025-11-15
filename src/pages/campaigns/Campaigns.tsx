@@ -1,11 +1,11 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import { type FC, useCallback, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { Campaign } from "../../models/campaign/Campaign";
+import type { Campaign } from "../../models/campaign/Campaign";
 import CampaignService from "../../services/CampaignService";
 import CampaignCard from "../../components/campaign-card/CampaignCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faCheck, faX } from '@fortawesome/free-solid-svg-icons';
-import { CampaignCreate } from "../../models/campaign/CampaignCreate";
+import type { CampaignCreate } from "../../models/campaign/CampaignCreate";
 
 
 

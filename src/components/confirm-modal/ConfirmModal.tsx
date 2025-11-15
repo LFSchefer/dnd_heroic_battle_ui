@@ -1,6 +1,6 @@
 import { FormattedMessage } from "react-intl";
 import "./ConfimModal.css"
-import { FC } from "react";
+import type { FC } from "react";
 
 type Props = {
     isOpen: boolean;

@@ -1,9 +1,9 @@
 import axios from "axios";
 import axiosClient from "./AxiosClient";
-import { BattlePreview } from "../models/battle/BattlePreview";
-import { BattleCreate } from "../models/battle/BattleCreate";
-import { Battle } from "../models/battle/Battle";
-import { FightType } from "../models/battle/Fight";
+import type { BattlePreview } from "../models/battle/BattlePreview";
+import type { BattleCreate } from "../models/battle/BattleCreate";
+import type { Battle } from "../models/battle/Battle";
+import type { FightType } from "../models/battle/Fight";
 
 export default class BattleService {
 

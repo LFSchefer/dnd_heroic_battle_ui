@@ -1,4 +1,4 @@
-import { createBrowserRouter, Outlet } from "react-router";
+import { createBrowserRouter } from "react-router";
 import "./App.css"
 import { lazy } from "react";
 import ProtectedRoute from "./components/protected-route/ProtectedRoute";
@@ -11,21 +11,8 @@ const BattlePage = lazy(() => import("./pages/battles/Battle"));
 const BattleInit = lazy(() => import("./pages/battles/BattleInit"));
 const Cgu = lazy(() => import("./pages/cgu/Cgu"));
 const Fight = lazy(() => import("./pages/fight/Fight"));
-const Header = lazy(() => import("./components/header/Header"));
 const Home = lazy(() => import("./pages/home/Home"));
-const Footer = lazy(() => import("./components/footer/Footer"));
-
-function Layout() {
-  return (
-    <>
-      <div className="App">
-        <Header />
-        <Outlet />
-        <Footer />
-      </div>
-    </>
-  );
-}
+import Layout from './Layout';
 
 export const router = createBrowserRouter ([
     {

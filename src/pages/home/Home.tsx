@@ -1,6 +1,6 @@
 import { FormattedMessage } from "react-intl";
 import { useStoreState } from "../../store/hooks";
-import { FC } from "react";
+import type { FC } from "react";
 
 const Home : FC = () => {
 

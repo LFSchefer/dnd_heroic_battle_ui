@@ -1,4 +1,4 @@
-import { MonsterModelDetail } from "./MonsterModelDetail"
+import type { MonsterModelDetail } from "./MonsterModelDetail"
 
 export type Monster = {
     monsterId: number,

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus} from '@fortawesome/free-solid-svg-icons';
 import { FormattedMessage, FormattedNumber } from "react-intl";
-import { FC } from "react";
+import type { FC } from "react";
 
 
 type Props = {

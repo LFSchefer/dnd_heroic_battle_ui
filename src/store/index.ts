@@ -1,4 +1,4 @@
-import { userStoreModel, UserStoreModel } from "./models/user.model";
+import { userStoreModel, type UserStoreModel } from "./models/user.model";
 
 export interface StoreModel {
     user: UserStoreModel

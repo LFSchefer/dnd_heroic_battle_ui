@@ -72,10 +72,10 @@ export default function InitiativeCard(props: Props) {
             <div className="my-2">
                 <form noValidate className="flex item-center" onSubmit={handleSave}>
                     <label htmlFor="d20" className="self-center"><FormattedMessage id="d20"/>: </label>
-                    <input id="d20" type="number" value={d20} onChange={handleChange} className="block rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:text-sm/6 px-4 w-24 mx-4"/>
+                    <input id="d20" type="number" value={d20} onChange={handleChange} className="block rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:text-sm/6 px-4 w-24 mx-4 bg-neutral-100"/>
                     <p className="mx-2 mr-8 self-center"><FormattedMessage id="bonus"/>: {monster.bonus}</p>
                     <label htmlFor="initiative" className="self-center"><FormattedMessage id="total"/>: </label>
-                    <input type="number" id="initiative" value={initiative} onChange={handleChange} className="block rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:text-sm/6 px-4 w-24 mx-4"/>
+                    <input type="number" id="initiative" value={initiative} onChange={handleChange} className="block rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:text-sm/6 px-4 w-24 mx-4 bg-neutral-100"/>
                     <button className="dnd-btn ml-4" disabled={initiativeCanBeSave()} ><FormattedMessage id="save"/></button>
                 </form>
             </div>

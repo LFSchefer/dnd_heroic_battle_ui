@@ -38,7 +38,7 @@ const MonsterModelDetailModal: FC<Props> = (props: Props) => {
                     {monsterDetail && 
                     <div>
                         {monsterDetail.imageUrl && 
-                            <img src={monsterDetail.imageUrl} alt={monsterDetail.monsterName} />
+                            <img src={monsterDetail.imageUrl} alt={monsterDetail.monsterName} className="mx-auto rounded-md" />
                         }
                         <h2 className="font-bold">{monsterDetail.monsterName}</h2>
                         <div className="">

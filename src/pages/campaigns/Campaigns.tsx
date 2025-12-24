@@ -51,7 +51,7 @@ const Campaigns: FC = () => {
       {isNewCampaign ?
         <>
         <div className="inline-grid">
-        <input type="text" className="rounded-md py-1.5 pl-7 pr-20 ring-1 ring-inset ring-gray-300" onChange={(e) => updateNewCampaign(e.target.value)} style={isValidInputStyle} autoFocus/>
+        <input type="text" className="rounded-md py-1.5 pl-7 pr-20 ring-1 ring-inset ring-gray-300 bg-neutral-100" onChange={(e) => updateNewCampaign(e.target.value)} style={isValidInputStyle} autoFocus/>
         {nameIsValid ? <></> : <span className="text-red-700 text-sm"><FormattedMessage id="campaignNameValidation"/></span>}
         </div>
         <button>{validationBtn}</button>

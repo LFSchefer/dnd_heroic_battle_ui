@@ -27,9 +27,11 @@ const AddMonsterModal: FC<Props> = (props: Props) => {
 
     const getModel = useCallback( async(): Promise<void> =>  {
         const data = await MonsterModelService.getMonsterPreviewCreation(modelId!);
-        setCustomName(data?.monsterName!)
-        setMaxHitPoints(data?.hitPoints!)
-        setHitPointsRoll(data?.hitPointsRoll!)
+        if (data) {
+            setCustomName(data?.monsterName)
+            setMaxHitPoints(data?.hitPoints)
+            setHitPointsRoll(data?.hitPointsRoll)
+        }
     },[modelId])
 
     useEffect(() => {
@@ -118,17 +120,17 @@ const AddMonsterModal: FC<Props> = (props: Props) => {
                     <form noValidate className="my-6">
                         <div className="mb-5">
                             <label htmlFor="custom-name" className="mx-5"><FormattedMessage id="name"/></label>
-                            <input name="custom-name" className="mt-1" type="text" value={customName} onChange={e => updateName(e.target.value)} />
+                            <input name="custom-name" className="mt-1 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:text-sm/6 px-4 bg-neutral-100" type="text" value={customName} onChange={e => updateName(e.target.value)} />
                             {!inputsAreValid.name && <div><span className="text-red-700 text-sm mx-5"><FormattedMessage id="nameBlank"/></span></div>}
                         </div>
                         <div className="mb-5">
                             <label htmlFor="current-hit-points" ><FormattedMessage id="currentHitPoints"/></label>
-                            <input name="current-hit-points" className="mt-1" type="number" value={currentHitPoints} onChange={e => updateCurrentHitPoints(+e.target.value)} />
+                            <input name="current-hit-points" className="mt-1 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:text-sm/6 px-4 bg-neutral-100" type="number" value={currentHitPoints} onChange={e => updateCurrentHitPoints(+e.target.value)} />
                             {!inputsAreValid.currentHitPoints && <div><span className="text-red-700 text-sm"><FormattedMessage id="currentHpValid"/></span></div>}
                         </div>
                         <div className="mb-5">
                             <label htmlFor="max-hit-points" ><FormattedMessage id="maxHitPoints"/></label>
-                            <input name="max-hit-points" className="mt-1" type="number" value={maxHitPoints} onChange={e => updateMaxHitPoints(+e.target.value)} />
+                            <input name="max-hit-points" className="mt-1 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:text-sm/6 px-4 bg-neutral-100" type="number" value={maxHitPoints} onChange={e => updateMaxHitPoints(+e.target.value)} />
                             {!inputsAreValid.maxHitPoints && <div><span className="text-red-700 text-sm"><FormattedMessage id="maxHpValid"/></span></div>}
                         </div>
                         <p><FormattedMessage id="wantToRollYourself"/></p>
@@ -137,7 +139,7 @@ const AddMonsterModal: FC<Props> = (props: Props) => {
                     <div className="flex justify-around">
                         <button className="dnd-btn" onClick={close}><FontAwesomeIcon icon={faXmark} style={{color: "#ffffff",}} size="lg"/></button>
                         {inputsAreValid.name && inputsAreValid.currentHitPoints && inputsAreValid.maxHitPoints &&
-                        <button className="dnd-btn" onClick={e => save(modelId!, customName, currentHitPoints, maxHitPoints)}><FontAwesomeIcon icon={faCheck} style={{color: "#ffffff",}} size="lg"/></button>
+                        <button className="dnd-btn" onClick={() => save(modelId!, customName, currentHitPoints, maxHitPoints)}><FontAwesomeIcon icon={faCheck} style={{color: "#ffffff",}} size="lg"/></button>
                         }
                     </div>
                 </div>

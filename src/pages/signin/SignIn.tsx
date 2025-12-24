@@ -98,7 +98,7 @@ const SignIn: FC = () => {
                     </div>
 
                     <div className="pt-6">
-                        {(apiResponse?.error?.message === "Network Error") && <p className="mb-4 -mt-9 text-red-600 italic text-sm">< FormattedMessage id="networkError"/></p>}
+                        {(apiResponse?.error && apiResponse?.error?.message === "Network Error") && <p className="mb-4 -mt-9 text-red-600 italic text-sm">< FormattedMessage id="networkError"/></p>}
                         {(apiResponse?.error && apiResponse?.error?.message !== "Network Error") && <p className="mb-4 -mt-9 text-red-600 italic text-sm">< FormattedMessage id="loginError"/></p>}
                     <button
                         type="submit"

@@ -25,7 +25,7 @@
 
 .close-detail-modal {
     position: absolute;
-    top: -3%;
+    top: 1%;
     right: -4%;
     z-index: 3;
 }

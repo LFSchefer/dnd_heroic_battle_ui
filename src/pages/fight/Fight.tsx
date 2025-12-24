@@ -49,7 +49,7 @@ const Fight: FC = () => {
     }
 
     const findMonsterIndex = (input: Monster): number => {
-        return fight!.monsters.findIndex((m, i, arr) => {
+        return fight!.monsters.findIndex((_m, i, arr) => {
             if (arr[i].monsterId === input.monsterId) {
                 return true;
             }

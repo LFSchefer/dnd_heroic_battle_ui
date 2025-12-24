@@ -72,11 +72,11 @@ const MonsterDamageHealModal: FC<Props> = (props: Props) => {
         <>
         {isOpen && 
         <div className="confirm-bg">
-            <div className="damage-modal w-full max-w-96 rounded-lg shadow-md py-4 px-4 m-5" style={type === DamageHeal.Damage ? {height: "330px"} : {height: "280px"}}>
+            <div className="damage-modal w-full max-w-96 rounded-lg shadow-md py-4 px-4 m-5" style={type === DamageHeal.Damage ? {height: "350px"} : {height: "300px"}}>
                 <h1 className="font-bold">{monster?.name}</h1>
                 <div className="flex justify-evenly mt-8">
                     <label htmlFor="damage-or-heal">type</label>
-                    <select name="damage-or-heal" id="damage-or-heal" value={type} onChange={e => handleType(e.target.value)}>
+                    <select name="damage-or-heal" id="damage-or-heal" className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cyan-400 px-4 bg-neutral-100" value={type} onChange={e => handleType(e.target.value)}>
                         <option value="damage">{DamageHeal.Damage}</option>
                         <option value="heal">{DamageHeal.Heal}</option>
                     </select>
@@ -84,7 +84,7 @@ const MonsterDamageHealModal: FC<Props> = (props: Props) => {
                 {type === DamageHeal.Damage && 
                 <div className="flex justify-evenly mt-8">
                     <label htmlFor="damage-type">damage type</label>
-                    <select name="damage-type" id="damage-type" value={selectedDamageTypeId} onChange={e => handleDamageType(e.target.value)}>
+                    <select name="damage-type" id="damage-type" className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cyan-400 px-4 bg-neutral-100" value={selectedDamageTypeId} onChange={e => handleDamageType(e.target.value)}>
                         <option value={0}></option>
                     {damageTypes.map( damageType => {
                         return <option key={damageType.damageTypeId} value={damageType.damageTypeId}>{damageType.damageTypeName}</option>
@@ -94,7 +94,7 @@ const MonsterDamageHealModal: FC<Props> = (props: Props) => {
                 }
                 <div className="flex justify-evenly mt-8 amount">
                     <label htmlFor="damage-amount">amount</label>
-                    <input id="damage-amount" type="number" value={amount} onChange={e => handleAmount(e.target.value)}/>
+                    <input id="damage-amount" type="number" className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cyan-400 px-4 bg-neutral-100" value={amount} onChange={e => handleAmount(e.target.value)}/>
                 </div>
                 {!isAmountValid && <p className="-mb-5 pt-1 text-red-600 italic text-sm feedback-amount">< FormattedMessage id="invalidAmount"/></p>}
                 <button className="dnd-btn mx-auto mt-12" onClick={updateHp} disabled={isNoInteraction || !isAmountValid}><FormattedMessage id="save"/></button>

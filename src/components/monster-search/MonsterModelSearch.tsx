@@ -20,7 +20,8 @@ const MonsterModelSearch: FC<Props> = (props: Props) => {
     const {updateBattle} = props;
 
     const params = useParams();
-    const battleId = +params?.battleId!;
+    let battleId: number | null = null;
+
 
     const [creationModalIsOpen, setCreationModalIsOpen] = useState<boolean>(false);
     const [detailModalIsOpen, setDetailModalIsOpen] = useState<boolean>(false);
@@ -35,8 +36,10 @@ const MonsterModelSearch: FC<Props> = (props: Props) => {
 
     const getMonsterPreviews = useCallback( async () => {
         const response = await MonsterModelService.getMonsterPreview(searchInput);
-        setMonsterViews(response?.result!);
-        setTotalPages(response?.totalPages!);
+        if (response) {
+            setMonsterViews(response?.result);
+            setTotalPages(response?.totalPages);
+        }
     },[searchInput])
 
     useEffect(() => {
@@ -101,6 +104,11 @@ const MonsterModelSearch: FC<Props> = (props: Props) => {
         setCreationModalIsOpen(false);
         setSelectMonster(null);
     }
+    if (params.battleId) {
+        battleId = +params?.battleId;
+    } else {
+        return <></>
+    }
 
     const saveMonster = async (modelId: number, name: string, currentHitPoints: number, maxHitPoints: number) => {
         await MonsterService.createBattleMonster(modelId, name.trim(), currentHitPoints, maxHitPoints, battleId);
@@ -108,17 +116,18 @@ const MonsterModelSearch: FC<Props> = (props: Props) => {
         updateBattle();
     }
 
+
     return (
         <div className="monster-search flex flex-col items-center w-8/12">
             <div className="search-form border-2 border-neutral-800/10 rounded-md m-4 p-2 bg-blue-200 shadow-md">
                 <form noValidate className="flex justify-around">
                     <div className="monster-name mx-4">
                         <label htmlFor="monster-name" className="mx-2"><FormattedMessage id="search"/></label>
-                        <input type="text" name="monster-name" id="monster-name" className="rounded-md" onChange={e => updateName(e.target.value)} value={searchInput.name} />
+                        <input type="text" name="monster-name" id="monster-name" className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:text-sm/6 px-4 bg-neutral-100" onChange={e => updateName(e.target.value)} value={searchInput.name} />
                     </div>
                     <div className="limit mx-4">
                         <label htmlFor="limit" className="mx-2"><FormattedMessage id="limit"/></label>
-                        <select name="limit" id="limit" className="rounded-md" value={searchInput.limit} onChange={ e => updateLimit(e.target.value)}>
+                        <select name="limit" id="limit" className="rounded-md bg-neutral-100 py-1.5" value={searchInput.limit} onChange={ e => updateLimit(e.target.value)}>
                             <option value="5">5</option>
                             <option value="10">10</option>
                             <option value="20">20</option>

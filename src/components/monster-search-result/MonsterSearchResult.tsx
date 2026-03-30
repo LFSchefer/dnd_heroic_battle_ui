@@ -22,8 +22,8 @@ const MonsterSearchResult: FC<Props> = (props: Props) => {
         <tr>
             <th className="text-left border border-slate-700/50 font-medium">{monsterName}</th>
             <th className="border border-slate-700/50 font-medium"><FormattedNumber minimumFractionDigits={1}  value={challenge}/></th>
-            <th className="link border border-slate-700/50 font-medium" onClick={e => handleDetail(modelId)}><FormattedMessage id="details"/></th>
-            <th className="border border-slate-700/50"><button className="dnd-btn-small" onClick={e => handleAdd(modelId)}><FontAwesomeIcon icon={faPlus as IconDefinition} style={{color: "#ffffff",}} size="lg"/></button></th>
+            <th className="link border border-slate-700/50 font-medium" onClick={() => handleDetail(modelId)}><FormattedMessage id="details"/></th>
+            <th className="border border-slate-700/50"><button className="dnd-btn-small" onClick={() => handleAdd(modelId)}><FontAwesomeIcon icon={faPlus as IconDefinition} style={{color: "#ffffff",}} size="lg"/></button></th>
         </tr>
         </>
     )

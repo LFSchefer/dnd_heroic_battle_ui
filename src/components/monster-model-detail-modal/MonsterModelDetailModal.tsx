@@ -5,6 +5,7 @@ import { type FC, useCallback, useEffect, useState } from "react"
 import type { MonsterModelDetail } from "../../models/monster/MonsterModelDetail"
 import MonsterModelService from "../../services/MonsterModelService"
 import { FormattedMessage } from "react-intl"
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core"
 
 type Props = {
     isOpen: boolean,
@@ -34,7 +35,7 @@ const MonsterModelDetailModal: FC<Props> = (props: Props) => {
         <div className="bg-modal">
             <div className="detail-modal w-full rounded-lg shadow-md py-4 px-4 m-5 w-1/4">
                 <div className="space-y-8 relative">
-                    <button className="dnd-btn close-detail-modal" onClick={close}><FontAwesomeIcon icon={faXmark} style={{color: "#ffffff",}} size="lg"/></button>
+                    <button className="dnd-btn close-detail-modal" onClick={close}><FontAwesomeIcon icon={faXmark as IconDefinition} style={{color: "#ffffff",}} size="lg"/></button>
                     {monsterDetail && 
                     <div>
                         {monsterDetail.imageUrl && 

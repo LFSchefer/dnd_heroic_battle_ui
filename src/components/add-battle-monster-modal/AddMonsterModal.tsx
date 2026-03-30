@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faCheck} from '@fortawesome/free-solid-svg-icons';
 import { type FC, useCallback, useEffect, useState } from "react";
 import MonsterModelService from "../../services/MonsterModelService";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 type Props = {
     isOpen: boolean,
@@ -137,9 +138,9 @@ const AddMonsterModal: FC<Props> = (props: Props) => {
                         <p>{hitPointsRoll}</p>
                     </form>
                     <div className="flex justify-around">
-                        <button className="dnd-btn" onClick={close}><FontAwesomeIcon icon={faXmark} style={{color: "#ffffff",}} size="lg"/></button>
+                        <button className="dnd-btn" onClick={close}><FontAwesomeIcon icon={faXmark as IconDefinition} style={{color: "#ffffff",}} size="lg"/></button>
                         {inputsAreValid.name && inputsAreValid.currentHitPoints && inputsAreValid.maxHitPoints &&
-                        <button className="dnd-btn" onClick={() => save(modelId!, customName, currentHitPoints, maxHitPoints)}><FontAwesomeIcon icon={faCheck} style={{color: "#ffffff",}} size="lg"/></button>
+                        <button className="dnd-btn" onClick={() => save(modelId!, customName, currentHitPoints, maxHitPoints)}><FontAwesomeIcon icon={faCheck as IconDefinition} style={{color: "#ffffff",}} size="lg"/></button>
                         }
                     </div>
                 </div>

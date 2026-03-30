@@ -7,6 +7,7 @@ import { DamageHeal } from "../../models/monster/DamageHeal";
 import type { MonsterFight } from "../../models/monster/MonsterFight";
 import type { DamageType } from "../../models/damage-type/DamageType";
 import DamageTypeService from "../../services/DamageTypeService";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 type Props = {
     monster: MonsterFight | undefined;
@@ -98,7 +99,7 @@ const MonsterDamageHealModal: FC<Props> = (props: Props) => {
                 </div>
                 {!isAmountValid && <p className="-mb-5 pt-1 text-red-600 italic text-sm feedback-amount">< FormattedMessage id="invalidAmount"/></p>}
                 <button className="dnd-btn mx-auto mt-12" onClick={updateHp} disabled={isNoInteraction || !isAmountValid}><FormattedMessage id="save"/></button>
-                <button className="close-damage-modal dnd-btn" onClick={close}><FontAwesomeIcon icon={faXmark} style={{color: "#ffffff",}} size="lg"/></button>
+                <button className="close-damage-modal dnd-btn" onClick={close}><FontAwesomeIcon icon={faXmark as IconDefinition} style={{color: "#ffffff",}} size="lg"/></button>
             </div>
         </div>
         }

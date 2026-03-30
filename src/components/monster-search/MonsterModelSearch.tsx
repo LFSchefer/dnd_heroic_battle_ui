@@ -10,6 +10,7 @@ import { FormattedMessage } from "react-intl";
 import { useParams } from "react-router";
 import MonsterService from "../../services/MonsterService";
 import MonsterModelDetailModal from "../monster-model-detail-modal/MonsterModelDetailModal";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 type Props = {
     updateBattle:() => void
@@ -173,13 +174,13 @@ const MonsterModelSearch: FC<Props> = (props: Props) => {
             </div>
             <div className="page-navigation flex m-4">
                 {searchInput.page > 1 &&
-                <button className="dnd-btn-small mx-2" onClick={prevPage}><FontAwesomeIcon icon={faArrowLeft} size="lg" /></button>
+                <button className="dnd-btn-small mx-2" onClick={prevPage}><FontAwesomeIcon icon={faArrowLeft as IconDefinition} size="lg" /></button>
                 }
                 {totalpages > 1 &&
                 <p className="mx-2"><FormattedMessage id="page"/>: {searchInput.page}/{totalpages}</p>
                 }
                 { searchInput.page < totalpages &&
-                <button className="dnd-btn-small mx-2" onClick={nextPage}><FontAwesomeIcon icon={faArrowRight} size="lg" /></button>
+                <button className="dnd-btn-small mx-2" onClick={nextPage}><FontAwesomeIcon icon={faArrowRight as IconDefinition} size="lg" /></button>
                 }
             </div>
         </div>

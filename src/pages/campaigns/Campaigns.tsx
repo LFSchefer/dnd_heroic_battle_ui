@@ -6,6 +6,7 @@ import CampaignCard from "../../components/campaign-card/CampaignCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import type { CampaignCreate } from "../../models/campaign/CampaignCreate";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 
 
@@ -43,8 +44,8 @@ const Campaigns: FC = () => {
 
   const isValidInputStyle = nameIsValid ? {outlineColor: "rgb(24 187 63)"  } : { outlineColor: "rgb(171 25 25)"};
   const isValidBtnStyle = nameIsValid ? {color: "rgb(255 255 255)"  } : { color: "rgb(171 25 25)"};
-  const validationBtn = nameIsValid ? <button className="dnd-btn-small mx-1"><FontAwesomeIcon icon={faCheck} size="lg"  className="link mx-3" onClick={createCampaign} style={isValidBtnStyle}/></button> :
-  <FontAwesomeIcon icon={faX}  className="link mx-3" style={isValidBtnStyle} onClick={toggleCampaignCreation} />
+  const validationBtn = nameIsValid ? <button className="dnd-btn-small mx-1"><FontAwesomeIcon icon={faCheck as IconDefinition} size="lg"  className="link mx-3" onClick={createCampaign} style={isValidBtnStyle}/></button> :
+  <FontAwesomeIcon icon={faX as IconDefinition}  className="link mx-3" style={isValidBtnStyle} onClick={toggleCampaignCreation} />
 
   return (
     <div className="w-10/12 m-auto">
@@ -57,7 +58,7 @@ const Campaigns: FC = () => {
         <button>{validationBtn}</button>
         </>
       :
-      <button onClick={toggleCampaignCreation} className="dnd-btn"><FontAwesomeIcon icon={faPlus} style={{color: "#ffffff",}} size="lg"/> <FormattedMessage id="createNewCampaign"/></button>
+      <button onClick={toggleCampaignCreation} className="dnd-btn"><FontAwesomeIcon icon={faPlus as IconDefinition} style={{color: "#ffffff",}} size="lg"/> <FormattedMessage id="createNewCampaign"/></button>
       }
       <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
         {campaigns.map( campaign => {

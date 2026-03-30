@@ -7,6 +7,7 @@ import UserService from "../../services/UserService";
 import type { FormErrors } from "../../models/errors/FormErrors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDiceD20 } from "@fortawesome/free-solid-svg-icons";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 const SignUp: FC = () => {
 
@@ -229,7 +230,7 @@ const SignUp: FC = () => {
                         className="w-6/12 md:w-4/12 md:mx-2 dnd-btn"
                     >
                         {loginUpProgess ? 
-                        <FontAwesomeIcon icon={faDiceD20} size="xl" style={{color: "#ffffff",}} spin /> :
+                        <FontAwesomeIcon icon={faDiceD20 as IconDefinition} size="xl" style={{color: "#ffffff",}} spin /> :
                         < FormattedMessage id="signUp"/>
                         }
                     </button>

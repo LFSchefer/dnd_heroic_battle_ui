@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faPlus, faX } from "@fortawesome/free-solid-svg-icons";
 import type { BattleCreate } from "../../models/battle/BattleCreate";
 import BattleCard from "../../components/battle-card/BattleCard";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 const CampaignBattles: FC = () => {
 
@@ -55,14 +56,14 @@ const CampaignBattles: FC = () => {
 
   const isValidInputStyle = nameIsValid ? {outlineColor: "rgb(24 187 63)"  } : { outlineColor: "rgb(171 25 25)"};
   const isValidBtnStyle = nameIsValid ? {color: "rgb(255 255 255)"  } : { color: "rgb(171 25 25)"};
-  const validationBtn = nameIsValid ? <button className="dnd-btn-small"><FontAwesomeIcon icon={faCheck} size="lg"  className="link mx-3" onClick={createBattle} style={isValidBtnStyle}/></button> :
-  <FontAwesomeIcon icon={faX}  className="link mx-3" style={isValidBtnStyle} onClick={toggleBattleCreation} />
+  const validationBtn = nameIsValid ? <button className="dnd-btn-small"><FontAwesomeIcon icon={faCheck as IconDefinition} size="lg"  className="link mx-3" onClick={createBattle} style={isValidBtnStyle}/></button> :
+  <FontAwesomeIcon icon={faX as IconDefinition}  className="link mx-3" style={isValidBtnStyle} onClick={toggleBattleCreation} />
 
   return (
     <div className="w-10/12 m-auto">
     {!isBattleCreation && 
     <button onClick={toggleBattleCreation} className="dnd-btn m-2">
-      <FontAwesomeIcon icon={faPlus} style={{color: "#ffffff",}} size="lg"/> <FormattedMessage id="createNewBattle"/>
+      <FontAwesomeIcon icon={faPlus as IconDefinition} style={{color: "#ffffff",}} size="lg"/> <FormattedMessage id="createNewBattle"/>
     </button>
     }
     <h1><FormattedMessage id="campaignBattles"/> :</h1>

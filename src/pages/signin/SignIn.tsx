@@ -7,6 +7,7 @@ import type { SignInResponse } from "../../models/user/SignInResponse";
 import { useStoreActions } from "../../store/hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDiceD20 } from "@fortawesome/free-solid-svg-icons";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 const SignIn: FC = () => {
 
@@ -105,7 +106,7 @@ const SignIn: FC = () => {
                         className="flex w-full justify-center dnd-btn"
                     >
                         {loginInProgess ? 
-                            <FontAwesomeIcon icon={faDiceD20} size="xl" style={{color: "#ffffff",}} spin /> :
+                            <FontAwesomeIcon icon={faDiceD20 as IconDefinition} size="xl" style={{color: "#ffffff",}} spin /> :
                             < FormattedMessage id="signIn"/>
                         }
                     </button>

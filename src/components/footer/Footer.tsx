@@ -3,6 +3,7 @@ import "./Footer.css"
 import { FormattedMessage } from "react-intl"
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import type { FC } from "react";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 const Footer: FC = () => {
 
@@ -19,12 +20,12 @@ const Footer: FC = () => {
                 <div className="icons flex">
                     <div className="mr-4">
                         <a href="https://github.com/LFSchefer/dnd_heroic_battle/wiki" target="_blank" rel="noreferrer">
-                            <FontAwesomeIcon icon={faGithub} size="xl" />
+                            <FontAwesomeIcon icon={faGithub as IconDefinition} size="xl" />
                         </a>
                     </div>
                     <div className="mr-4">
                         <a href="https://www.linkedin.com/in/lfschefer/" target="_blank" rel="noopener noreferrer">
-                            <FontAwesomeIcon icon={faLinkedin} size="xl" />
+                            <FontAwesomeIcon icon={faLinkedin as IconDefinition} size="xl" />
                         </a>
                     </div>
                 </div>

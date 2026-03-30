@@ -7,6 +7,7 @@ import { FormattedMessage } from "react-intl";
 import BattleService from "../../services/BattleService";
 import { useLocation, useNavigate } from "react-router";
 import ConfirmModal from "../confirm-modal/ConfirmModal";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 
 type Props = {
@@ -74,8 +75,8 @@ const BattleCard: FC<Props> = (props:Props) => {
 
   const isValidInputStyle = nameIsValid ? {outlineColor: "rgb(24 187 63)"  } : { outlineColor: "rgb(171 25 25)"};
   const isValidBtnStyle = nameIsValid ? {color: "rgb(255 255 255)"  } : { color: "rgb(171 25 25)"};
-  const validationBtn = nameIsValid ? <button className="dnd-btn-small mx-1"><FontAwesomeIcon icon={faCheck} size="lg"  className="link mx-3" onClick={saveChange} style={isValidBtnStyle}/></button> :
-  <FontAwesomeIcon icon={faX}  className="link mx-3" style={isValidBtnStyle} onClick={toggleEdition} />
+  const validationBtn = nameIsValid ? <button className="dnd-btn-small mx-1"><FontAwesomeIcon icon={faCheck as IconDefinition} size="lg"  className="link mx-3" onClick={saveChange} style={isValidBtnStyle}/></button> :
+  <FontAwesomeIcon icon={faX as IconDefinition}  className="link mx-3" style={isValidBtnStyle} onClick={toggleEdition} />
 
 
   return (
@@ -83,8 +84,8 @@ const BattleCard: FC<Props> = (props:Props) => {
       <div className="battle-card bg-blue-200 w-full max-w-96 rounded-lg shadow-md py-4 px-4 m-5" onMouseEnter={toggleIsInFocus} onMouseLeave={toggleIsInFocus}>
       {isInFocus && !isInEdition ?
         <div className="edition">
-          <FontAwesomeIcon icon={faPenToSquare} className="link opacity-70 edit" onClick={toggleEdition} />
-          <FontAwesomeIcon icon={faTrashCan} className="link opacity-70 trash" onClick={openModal} />
+          <FontAwesomeIcon icon={faPenToSquare as IconDefinition} className="link opacity-70 edit" onClick={toggleEdition} />
+          <FontAwesomeIcon icon={faTrashCan as IconDefinition} className="link opacity-70 trash" onClick={openModal} />
         </div>
         :
         <></>

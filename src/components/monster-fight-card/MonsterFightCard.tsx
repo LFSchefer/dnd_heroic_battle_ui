@@ -6,6 +6,7 @@ import { FormattedMessage } from "react-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSkull } from "@fortawesome/free-solid-svg-icons";
 import type { MonsterFight } from "../../models/monster/MonsterFight";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 type Props = {
     monster: MonsterFight,
@@ -60,7 +61,7 @@ const MonsterFightCard: FC<Props> = (props: Props) => {
             <div className="damage-image" style={damageImageStyle}></div>
             <img className="monster-image" src={monster.monster.imageUrl ? monster.monster.imageUrl : ""} alt={`monster-${monster.name}-image`} />
             {monster.currentHitPoints === 0 ? 
-                <p className="dnd-btn-small w-fit monster-display-on-card-hp" onClick={openModal}>KO <FontAwesomeIcon icon={faSkull} /></p> :
+                <p className="dnd-btn-small w-fit monster-display-on-card-hp" onClick={openModal}>KO <FontAwesomeIcon icon={faSkull as IconDefinition} /></p> :
                 <p className="dnd-btn-small w-fit monster-display-on-card-hp" onClick={openModal}>HP {monster.currentHitPoints}/{monster.maxHitPoints}</p>
             }
             <p className="dnd-btn-small w-fit monster-display-on-card-ac">AC {monster.monster.armorClass}</p>

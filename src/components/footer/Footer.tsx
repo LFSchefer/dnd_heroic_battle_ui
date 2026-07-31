@@ -16,7 +16,9 @@ const Footer: FC = () => {
         <footer className="footer">
             <div className="flex justify-between min-h-full items-center mx-4">
                 <div className="items-center"><FormattedMessage id="appVersion"/>{import.meta.env.VITE_APP_VERSION}</div>
-                <div><button onClick={goToCgu}><FormattedMessage id="cgu"/></button></div>
+                    <div>
+                        <button className="link" onClick={goToCgu}><FormattedMessage id="cgu"/></button>
+                    </div>
                 <div className="icons flex">
                     <div className="mr-4">
                         <a href="https://github.com/LFSchefer/dnd_heroic_battle/wiki" target="_blank" rel="noreferrer">

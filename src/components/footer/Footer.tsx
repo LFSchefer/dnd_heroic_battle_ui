@@ -4,12 +4,14 @@ import { FormattedMessage } from "react-intl"
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import type { FC } from "react";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { useNavigate } from "react-router";
 
 const Footer: FC = () => {
 
+    const navigate = useNavigate();
+
  const goToCgu = (): void => {
-    const baseURL = window.location.origin;
-    window.location.replace(baseURL + "/cgu");
+    navigate("/cgu");
  }
 
     return (

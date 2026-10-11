@@ -19,7 +19,7 @@
     "@tailwindcss/vite": "^4.2.2",
     "axios": "^1.19.0",
     "easy-peasy": "^6.1.1",
-    "postcss": "^8.5.22",
+    "postcss": "^8.5.26",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-intl": "^10.1.18",

@@ -17,7 +17,7 @@
     "@fortawesome/react-fontawesome": "^3.5.0",
     "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/vite": "^4.3.3",
-    "axios": "^1.20.0",
+    "axios": "^1.21.0",
     "easy-peasy": "^6.1.1",
     "postcss": "^8.5.32",
     "react": "^19.3.1",
@@ -35,8 +35,5 @@
     "globals": "^17.13.0",
     "typescript": "~7.0.2",
     "vite": "^8.3.5"
-  },
-  "overrides": {
-    "follow-redirects": "^1.16.2"
   }
 }
